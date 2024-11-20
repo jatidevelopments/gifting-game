@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Participant {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  pin         String?      // PIN for accessing results
+  hasAccessed Boolean     @default(false)  // Track if participant has viewed their assignment
+  assignments Assignment[] @relation("Gifter")
+  received    Assignment[] @relation("Receiver")
+}
+
+model Adjective {
+  id            Int           @id @default(autoincrement())
+  word          String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  categoryId    Int
+  asAdjective1  Assignment[]  @relation("Adjective1")
+  asAdjective2  Assignment[]  @relation("Adjective2")
+  asAdjective3  Assignment[]  @relation("Adjective3")
+}
+
+model Category {
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  adjectives Adjective[]
+}
+
+model Assignment {
+  id            Int          @id @default(autoincrement())
+  gifterId      Int
+  receiverId    Int
+  gifter        Participant  @relation("Gifter", fields: [gifterId], references: [id])
+  receiver      Participant  @relation("Receiver", fields: [receiverId], references: [id])
+  adjective1    Adjective    @relation("Adjective1", fields: [adjective1Id], references: [id])
+  adjective2    Adjective    @relation("Adjective2", fields: [adjective2Id], references: [id])
+  adjective3    Adjective    @relation("Adjective3", fields: [adjective3Id], references: [id])
+  adjective1Id  Int
+  adjective2Id  Int
+  adjective3Id  Int
+  accessUrl     String       @unique @default(uuid()) // Unique URL for each assignment
+}
