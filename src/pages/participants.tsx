@@ -1,4 +1,4 @@
-import { api } from '../trpc/server';
+import { client as api } from '../trpc/server';
 import { useState } from 'react';
 import type { NextPage } from 'next';
 import { motion, AnimatePresence } from 'framer-motion';

@@ -1,4 +1,4 @@
-import { api } from '../trpc/server';
+import { client as api } from '../trpc/server';
 import { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -23,8 +23,8 @@ type CategoryWithAdjectives = Prisma.CategoryGetPayload<{
 }>;
 
 const Adjectives: NextPage = (props) => {
-  const { data: adjectives } = api.adjective.getAll.useQuery();
-  const { data: categories } = api.category.getAll.useQuery();
+  const { data: adjectives, isLoading: isLoadingAdjectives, refetch: refetchAdjectives } = api.adjective.getAll.useQuery();
+  const { data: categories, isLoading: isLoadingCategories, refetch: refetchCategories } = api.category.getAll.useQuery();
   const [categoryNames, setCategoryNames] = useState<Record<number, string>>({});
 
   useEffect(() => {
@@ -42,8 +42,13 @@ const Adjectives: NextPage = (props) => {
 
   const utils = api.useContext();
   const addAdjective = api.adjective.add.useMutation({
-    onSuccess: () => {
-      void utils.adjective.getAll.invalidate();
+    onSuccess: async () => {
+      await Promise.all([
+        refetchAdjectives(),
+        refetchCategories(),
+        utils.adjective.getAll.invalidate(),
+        utils.category.getAll.invalidate()
+      ]);
       toast.success('Adjective added successfully!');
       setWord('');
     },
@@ -53,8 +58,13 @@ const Adjectives: NextPage = (props) => {
   });
 
   const deleteAdjective = api.adjective.delete.useMutation({
-    onSuccess: () => {
-      void utils.adjective.getAll.invalidate();
+    onSuccess: async () => {
+      await Promise.all([
+        refetchAdjectives(),
+        refetchCategories(),
+        utils.adjective.getAll.invalidate(),
+        utils.category.getAll.invalidate()
+      ]);
       toast.success('Adjective deleted successfully!');
     },
     onError: (error: any) => {
@@ -63,8 +73,13 @@ const Adjectives: NextPage = (props) => {
   });
 
   const generateForAllCategories = api.adjective.generateForAllCategories.useMutation({
-    onSuccess: () => {
-      void utils.adjective.getAll.invalidate();
+    onSuccess: async () => {
+      await Promise.all([
+        refetchAdjectives(),
+        refetchCategories(),
+        utils.adjective.getAll.invalidate(),
+        utils.category.getAll.invalidate()
+      ]);
       toast.success('Generated adjectives for all categories!');
     },
     onError: (error: any) => {
@@ -73,8 +88,13 @@ const Adjectives: NextPage = (props) => {
   });
 
   const clearAllAdjectives = api.adjective.clearAll.useMutation({
-    onSuccess: () => {
-      void utils.adjective.getAll.invalidate();
+    onSuccess: async () => {
+      await Promise.all([
+        refetchAdjectives(),
+        refetchCategories(),
+        utils.adjective.getAll.invalidate(),
+        utils.category.getAll.invalidate()
+      ]);
       toast.success('All adjectives cleared successfully!');
       setIsClearAllModalOpen(false);
     },

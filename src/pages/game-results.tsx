@@ -3,7 +3,7 @@ import { TRPCClientError } from '@trpc/client';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { useClipboard } from '../hooks/useClipboard';
-import { api } from '../trpc/server';
+import { client as api } from '../trpc/server';
 import Link from 'next/link';
 
 const GameResults: NextPage = (props) => {

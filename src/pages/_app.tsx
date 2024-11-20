@@ -4,13 +4,11 @@ import { Toaster } from 'react-hot-toast';
 import { Snow } from '../components/Snow';
 import { Layout } from '../components/Layout';
 import { SnowballEffect } from '../components/SnowballEffect';
-import { TRPCReactProvider } from '../trpc/react';
-import { HydrateClient } from '~/trpc/server';
+import { TRPCProvider } from '../trpc/provider';
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <TRPCReactProvider>
-      <HydrateClient>
+    <TRPCProvider>
       <div className="min-h-screen bg-gradient-to-b from-[#1a1f35] via-[#2c1f35] to-[#1a1f35]">
         {/* Background effects */}
         <div className="fixed inset-0 pointer-events-none">
@@ -27,8 +25,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         
         <Toaster position="bottom-right" />
       </div>
-      </HydrateClient>
-    </TRPCReactProvider>
+    </TRPCProvider>
   );
 };
 
