@@ -6,10 +6,10 @@ import { useState } from 'react';
 const menuItems = [
   { 
     href: '/', 
-    label: 'Home',
+    label: 'Start',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
       </svg>
     )
   },
@@ -18,7 +18,7 @@ const menuItems = [
     label: 'Participants',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
       </svg>
     )
   },
@@ -36,7 +36,7 @@ const menuItems = [
     label: 'Results',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
       </svg>
     )
   }
@@ -58,7 +58,7 @@ export function MobileMenu() {
     <>
       <button
         onClick={toggleMenu}
-        className="lg:hidden p-2 hover:bg-white/5 rounded-lg transition-colors text-green-400"
+        className="lg:hidden p-2 hover:bg-white/5 rounded-lg transition-colors text-gray-400 hover:text-green-400"
         aria-label="Toggle menu"
       >
         <svg
@@ -79,79 +79,59 @@ export function MobileMenu() {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ type: 'spring', damping: 20 }}
-            className="fixed inset-0 bg-[#1a1f35] z-[100] lg:hidden"
-          >
-            <div className="relative flex flex-col min-h-screen">
-              <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#1a1f35]">
-                <Link
-                  href="/"
-                  onClick={closeMenu}
-                  className="flex items-center space-x-3 text-red-500 hover:text-red-400 transition-colors font-christmas"
-                >
-                  <span className="text-2xl">🎄</span>
-                  <span className="font-bold text-xl">Gifting Game</span>
-                </Link>
-                <button
-                  onClick={closeMenu}
-                  className="p-2 hover:bg-white/5 rounded-lg transition-colors text-green-400"
-                  aria-label="Close menu"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+              onClick={closeMenu}
+            />
+            <motion.div
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed right-0 top-0 bottom-0 w-64 bg-[#1a1f35] z-50 lg:hidden"
+            >
+              <div className="flex flex-col h-full">
+                <div className="p-4 border-b border-white/10">
+                  <button
+                    onClick={closeMenu}
+                    className="p-2 hover:bg-white/5 rounded-lg transition-colors text-gray-400 hover:text-green-400 ml-auto block"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div className="flex-1 overflow-y-auto bg-[#1a1f35]">
-                <nav className="p-4">
-                  <ul className="space-y-4">
-                    {menuItems.map((item, index) => (
-                      <motion.li
-                        key={item.href}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="w-full"
-                      >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <nav className="flex-1 px-2 py-4">
+                  <div className="space-y-1">
+                    {menuItems.map((item) => {
+                      const isActive = router.pathname === item.href;
+                      return (
                         <Link
+                          key={item.href}
                           href={item.href}
                           onClick={closeMenu}
-                          className={`flex items-center space-x-4 py-4 px-4 rounded-lg transition-colors ${
-                            router.pathname === item.href
-                              ? 'bg-white/10 text-green-400'
-                              : 'text-green-400 hover:bg-white/5 hover:text-green-300'
+                          className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                            isActive
+                              ? 'text-green-400 bg-green-400/10'
+                              : 'text-gray-400 hover:text-green-400 hover:bg-white/5'
                           }`}
                         >
-                          <span className="flex-shrink-0">{item.icon}</span>
-                          <span className="text-lg font-medium">{item.label}</span>
+                          <span className="w-5 h-5">{item.icon}</span>
+                          <span>{item.label}</span>
                         </Link>
-                      </motion.li>
-                    ))}
-                  </ul>
+                      );
+                    })}
+                  </div>
                 </nav>
               </div>
-              <div className="p-6 text-center border-t border-white/10 bg-[#1a1f35]">
-                <p className="text-sm text-red-400 font-christmas">
-                  🎄 Gifting Game
-                </p>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

@@ -16,7 +16,7 @@ const LandingPage: NextPage = (props) => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h1 className="text-6xl mb-4 text-red-400 font-christmas">The Gifting Game</h1>
+          <h1 className="text-6xl mb-4 text-red-400 font-christmas">GiftWhisper</h1>
           <p className="text-2xl text-green-300">A festive way to organize your gift exchange!</p>
         </motion.div>
 

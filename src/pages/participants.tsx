@@ -58,123 +58,123 @@ const Participants: NextPage = (props) => {
     await addParticipant.mutate({ name: name.trim() });
   };
 
+  const handleDelete = (participant: any) => {
+    setParticipantToDelete(participant);
+    setIsDeleteModalOpen(true);
+  };
+
+  const confirmDelete = () => {
+    if (participantToDelete) {
+      deleteParticipant.mutate({ id: participantToDelete.id });
+    }
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="container mx-auto px-4 py-8 text-white"
-    >
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-green-400 mb-8 font-christmas">Participants 👥</h1>
+    <div className="space-y-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center"
+      >
+        <h1 className="text-4xl font-christmas text-red-400 mb-2">Participants</h1>
+        <p className="text-gray-400">Add people to your gift exchange!</p>
+      </motion.div>
 
-        <div className="mb-8">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <form onSubmit={handleSubmit} className="flex-1">
-              <div className="flex gap-4">
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter participant name"
-                  className="flex-1 px-4 py-2 rounded-lg border border-white/20 bg-white/5 focus:outline-none focus:ring-2 focus:ring-green-500 text-white placeholder-white/50"
-                />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-green-500 text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-green-600 transition-colors duration-200"
-                  disabled={addParticipant.isPending}
-                >
-                  <UserPlusIcon className="w-5 h-5" />
-                  <span className="hidden sm:inline">Add</span>
-                </motion.button>
-              </div>
-            </form>
-
-            <motion.button
-              onClick={() => setIsClearAllModalOpen(true)}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-red-500/20 text-red-400 px-6 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-red-500/30 transition-colors duration-200 w-full sm:w-auto"
-              disabled={clearAllParticipants.isPending}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
-              <span>
-                {clearAllParticipants.isPending ? 'Clearing...' : 'Clear All'}
-              </span>
-            </motion.button>
-          </div>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence>
-            {participants?.map((participant: any) => (
-              <motion.div
-                key={participant.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="border border-white/10 bg-white/5 backdrop-blur-sm p-4 rounded-xl flex items-center justify-between"
-              >
-                <div className="flex items-center gap-3">
-                  <UserIcon className="w-5 h-5 text-red-400" />
-                  <span className="text-white">{participant.name}</span>
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setParticipantToDelete({ id: participant.id, name: participant.name });
-                    setIsDeleteModalOpen(true);
-                  }}
-                  className="text-red-400 hover:text-red-300 transition-colors duration-200"
-                >
-                  <XMarkIcon className="w-5 h-5" />
-                </motion.button>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {/* Navigation Button */}
-        <div className="mt-12 flex flex-col sm:flex-row justify-end space-y-4 sm:space-y-0">
-          <Link
-            href="/adjectives"
-            className="inline-flex items-center justify-center px-6 py-4 text-lg font-medium rounded-lg bg-green-500/20 text-green-400 hover:bg-green-500/30 transition-colors w-full sm:w-auto"
+      {/* Add Participant Form */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
+      >
+        <form onSubmit={handleSubmit} className="flex gap-4">
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter participant name..."
+            className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          />
+          <button
+            type="submit"
+            disabled={!name.trim()}
+            className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
           >
-            Next: Add Adjectives
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </Link>
-        </div>
+            <UserPlusIcon className="w-5 h-5" />
+            <span className="hidden sm:inline">Add Participant</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsClearAllModalOpen(true)}
+            className="px-6 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-colors flex items-center space-x-2"
+          >
+            <XMarkIcon className="w-5 h-5" />
+            <span className="hidden sm:inline">Clear All</span>
+          </button>
+        </form>
+      </motion.div>
 
-        <ConfirmationModal
-          isOpen={isDeleteModalOpen}
-          onClose={() => {
-            setIsDeleteModalOpen(false);
-            setParticipantToDelete(null);
-          }}
-          onConfirm={() => {
-            if (participantToDelete) {
-              deleteParticipant.mutate({ id: participantToDelete.id });
-            }
-          }}
-          title="Delete Participant"
-          message={`Are you sure you want to delete ${participantToDelete?.name}? This action cannot be undone.`}
-        />
+      {/* Participants List */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+        className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+      >
+        <AnimatePresence mode="popLayout">
+          {participants?.map((participant) => (
+            <motion.div
+              key={participant.id}
+              layout
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 relative group"
+            >
+              <button
+                onClick={() => handleDelete(participant)}
+                className="absolute top-2 right-2 p-1 rounded-full bg-red-500/10 hover:bg-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <XMarkIcon className="w-5 h-5 text-red-400" />
+              </button>
+              <div className="flex items-center space-x-3">
+                <UserIcon className="w-6 h-6 text-green-400" />
+                <span className="text-white font-medium">{participant.name}</span>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
-        <ConfirmationModal
-          isOpen={isClearAllModalOpen}
-          onClose={() => setIsClearAllModalOpen(false)}
-          onConfirm={() => clearAllParticipants.mutate()}
-          title="Clear All Participants"
-          message="Are you sure you want to delete all participants? This action cannot be undone and will also remove all game assignments."
-        />
+      {/* Action Buttons */}
+      <div className="flex justify-end space-x-4">
+        <Link
+          href="/adjectives"
+          className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center space-x-2"
+        >
+          <span>Next: Adjectives</span>
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
       </div>
-    </motion.div>
+
+      <ConfirmationModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={confirmDelete}
+        title="Delete Participant"
+        message={`Are you sure you want to delete "${participantToDelete?.name}"?`}
+      />
+
+      <ConfirmationModal
+        isOpen={isClearAllModalOpen}
+        onClose={() => setIsClearAllModalOpen(false)}
+        onConfirm={() => clearAllParticipants.mutate()}
+        title="Clear All Participants"
+        message="Are you sure you want to delete all participants? This action cannot be undone."
+      />
+    </div>
   );
 };
 
