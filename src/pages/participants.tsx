@@ -87,7 +87,7 @@ const Participants: NextPage = (props) => {
         transition={{ delay: 0.2 }}
         className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
       >
-        <form onSubmit={handleSubmit} className="flex gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
           <input
             type="text"
             value={name}
@@ -147,10 +147,10 @@ const Participants: NextPage = (props) => {
       </motion.div>
 
       {/* Action Buttons */}
-      <div className="flex justify-end space-x-4">
+      <div className="flex flex-col sm:flex-row justify-end gap-4">
         <Link
           href="/adjectives"
-          className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center space-x-2"
+          className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
         >
           <span>Next: Adjectives</span>
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
