@@ -1,15 +1,18 @@
 import { initTRPC } from '@trpc/server';
-import type { Context } from './context';
+import type { Context } from '../context';
 import { z } from 'zod';
 import type { Prisma } from '@prisma/client';
 import OpenAI from 'openai';
 import { env } from "../../env.mjs";
+import superjson from 'superjson';
 
 const openai = new OpenAI({
   apiKey: env.OPENAI_API_KEY,
 });
 
-const t = initTRPC.context<Context>().create();
+const t = initTRPC.context<Context>().create({
+  transformer: superjson,
+});
 
 export const createRouter = t.router;
 export const publicProcedure = t.procedure;
@@ -70,6 +73,43 @@ export const participantRouter = createRouter({
         data: { name: input.name },
       });
     }),
+
+  generateAssignments: publicProcedure.mutation(async ({ ctx }): Promise<CreateAssignmentData[]> => {
+    const participants = await ctx.prisma.participant.findMany();
+    const adjectives = await ctx.prisma.adjective.findMany();
+    const assignments: CreateAssignmentData[] = [];
+
+    if (participants.length < 2) {
+      throw new Error('Need at least 2 participants to generate assignments');
+    }
+
+    // Shuffle participants for random assignment
+    const shuffledParticipants = shuffle([...participants]);
+    
+    // Create circular assignments
+    for (let i = 0; i < shuffledParticipants.length; i++) {
+      const gifter = shuffledParticipants[i]!;
+      const receiver = shuffledParticipants[(i + 1) % shuffledParticipants.length]!;
+      
+      // Randomly select 3 different adjectives
+      const shuffledAdjectives = shuffle([...adjectives]);
+      const [adjective1, adjective2, adjective3] = shuffledAdjectives.slice(0, 3);
+
+      if (!adjective1 || !adjective2 || !adjective3) {
+        throw new Error('Not enough adjectives available');
+      }
+
+      assignments.push({
+        gifterId: gifter.id,
+        receiverId: receiver.id,
+        adjective1Id: adjective1.id,
+        adjective2Id: adjective2.id,
+        adjective3Id: adjective3.id,
+      });
+    }
+
+    return assignments;
+  }),
 
   add: publicProcedure
     .input(z.object({ name: z.string() }))
@@ -221,7 +261,7 @@ Your response:`;
         model: "gpt-3.5-turbo",
       });
 
-      const response = completion.choices[0]?.message?.content || "";
+      const response = completion.choices[0]?.message?.content ?? "";
       const adjectives = response
         .split(",")
         .map(adj => adj.trim().toLowerCase().replace(/[^a-z]/g, ''))
@@ -282,7 +322,7 @@ Your response:`;
         const adjectives = completion.choices[0]?.message.content
           ?.split(',')
           .map(adj => adj.trim())
-          .filter(adj => adj.length > 0) || [];
+          .filter(adj => adj.length > 0) ?? [];
 
         const createdAdjectives = await Promise.all(
           adjectives.map(word =>
@@ -304,8 +344,12 @@ Your response:`;
 });
 
 export const categoryRouter = createRouter({
-  getAll: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.prisma.category.findMany();
+  getAll: publicProcedure.query(({ ctx }) => {
+    return ctx.prisma.category.findMany({
+      include: {
+        adjectives: true
+      }
+    });
   }),
 });
 
@@ -368,7 +412,11 @@ export const assignmentRouter = createRouter({
         throw new Error('Failed to get 3 random adjectives');
       }
 
-      const [adjective1, adjective2, adjective3] = randomAdjectives;
+      const [adjective1, adjective2, adjective3] = randomAdjectives as [
+        Prisma.AdjectiveGetPayload<{}>,
+        Prisma.AdjectiveGetPayload<{}>,
+        Prisma.AdjectiveGetPayload<{}>
+      ];
 
       if (!adjective1 || !adjective2 || !adjective3) {
         throw new Error('Invalid adjective found in random selection');
@@ -406,12 +454,3 @@ export const assignmentRouter = createRouter({
     );
   }),
 });
-
-export const appRouter = createRouter({
-  participant: participantRouter,
-  adjective: adjectiveRouter,
-  assignment: assignmentRouter,
-  category: categoryRouter,
-});
-
-export type AppRouter = typeof appRouter;

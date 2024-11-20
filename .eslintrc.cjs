@@ -22,7 +22,8 @@ const config = {
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/await-thenable": "off",
-    "@typescript-eslint/consistent-type-definitions": "off"
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/require-await": "off",
   },
 };
 

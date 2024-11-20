@@ -3,12 +3,12 @@ import { TRPCClientError } from '@trpc/client';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { useClipboard } from '../hooks/useClipboard';
-import { trpc } from '../utils/trpc';
+import { api } from '../trpc/server';
 import Link from 'next/link';
 
 const GameResults: NextPage = (props) => {
-  const { data: assignments, error, refetch } = trpc.assignment.getResults.useQuery();
-  const generateAssignments = trpc.assignment.generateAssignments.useMutation({
+  const { data: assignments, error, refetch } = api.assignment.getResults.useQuery();
+  const generateAssignments = api.assignment.generateAssignments.useMutation({
     onSuccess: () => {
       void refetch();
       toast.success('Assignments generated successfully!');
@@ -132,7 +132,7 @@ const GameResults: NextPage = (props) => {
         </div>
         
         <div className="grid gap-6">
-          {assignments.map((assignment, index) => (
+          {assignments.map((assignment: any, index: any) => (
             <motion.div
               key={assignment.id}
               initial={{ opacity: 0, x: -20 }}

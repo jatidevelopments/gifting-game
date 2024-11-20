@@ -1,4 +1,5 @@
-import { trpc } from '../../utils/trpc';
+import { NextPage } from 'next';
+import { api } from '../../trpc/server';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -6,24 +7,24 @@ import { z } from 'zod';
 
 const PinSchema = z.string().min(4).max(8);
 
-export default function AssignmentView() {
+const AssignmentPage: NextPage = (props) => {
   const router = useRouter();
   const { id } = router.query;
   const [pin, setPin] = useState('');
   const [error, setError] = useState('');
   const [isVerified, setIsVerified] = useState(false);
 
-  const { data: assignment, isLoading } = trpc.assignment.getAssignment.useQuery(
+  const { data: assignment, isLoading } = api.assignment.getAssignment.useQuery(
     { accessUrl: id as string },
     { enabled: !!id }
   );
 
-  const verifyPinMutation = trpc.participant.verifyPin.useMutation({
+  const verifyPinMutation = api.participant.verifyPin.useMutation({
     onSuccess: () => {
       setIsVerified(true);
       setError('');
     },
-    onError: (error) => {
+    onError: (error: any) => {
       if (error instanceof Error) {
         setError(error.message);
       } else {
@@ -33,12 +34,12 @@ export default function AssignmentView() {
     },
   });
 
-  const setPinMutation = trpc.participant.setPin.useMutation({
+  const setPinMutation = api.participant.setPin.useMutation({
     onSuccess: () => {
       setIsVerified(true);
       setError('');
     },
-    onError: (error) => {
+    onError: (error: any) => {
       if (error instanceof Error) {
         setError(error.message);
       } else {
@@ -216,3 +217,5 @@ export default function AssignmentView() {
     </div>
   );
 }
+
+export default AssignmentPage;

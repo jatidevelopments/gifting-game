@@ -1,4 +1,4 @@
-import { trpc } from '../utils/trpc';
+import { api } from '../trpc/server';
 import { useState, useEffect } from 'react';
 import type { NextPage } from 'next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,6 +6,7 @@ import { TagIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 import { ConfirmationModal } from '../components/ConfirmationModal';
 import Link from 'next/link';
+import type { Prisma } from '@prisma/client';
 
 // Emoji mappings for categories
 const categoryEmojis: Record<string, string> = {
@@ -17,60 +18,67 @@ const categoryEmojis: Record<string, string> = {
   'Interest': '🎯',
 };
 
+type CategoryWithAdjectives = Prisma.CategoryGetPayload<{
+  include: { adjectives: true };
+}>;
+
 const Adjectives: NextPage = (props) => {
-  const { data: adjectives } = trpc.adjective.getAll.useQuery();
-  const { data: categories } = trpc.category.getAll.useQuery();
+  const { data: adjectives } = api.adjective.getAll.useQuery();
+  const { data: categories } = api.category.getAll.useQuery();
   const [categoryNames, setCategoryNames] = useState<Record<number, string>>({});
 
   useEffect(() => {
     if (categories) {
-      const mappedCategories = categories.reduce((acc, category) => ({
-        ...acc,
-        [category.id]: `${categoryEmojis[category.name] ?? ''} ${category.name}`,
-      }), {});
+      const mappedCategories = categories.reduce<Record<number, string>>(
+        (acc: Record<number, string>, category: Prisma.CategoryGetPayload<{}>) => ({
+          ...acc,
+          [category.id]: `${categoryEmojis[category.name] ?? ''} ${category.name}`,
+        }),
+        {}
+      );
       setCategoryNames(mappedCategories);
     }
   }, [categories]);
 
-  const utils = trpc.useContext();
-  const addAdjective = trpc.adjective.add.useMutation({
+  const utils = api.useContext();
+  const addAdjective = api.adjective.add.useMutation({
     onSuccess: () => {
       void utils.adjective.getAll.invalidate();
       toast.success('Adjective added successfully!');
       setWord('');
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(error.message);
     }
   });
 
-  const deleteAdjective = trpc.adjective.delete.useMutation({
+  const deleteAdjective = api.adjective.delete.useMutation({
     onSuccess: () => {
       void utils.adjective.getAll.invalidate();
       toast.success('Adjective deleted successfully!');
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(error.message);
     }
   });
 
-  const generateForAllCategories = trpc.adjective.generateForAllCategories.useMutation({
+  const generateForAllCategories = api.adjective.generateForAllCategories.useMutation({
     onSuccess: () => {
       void utils.adjective.getAll.invalidate();
       toast.success('Generated adjectives for all categories!');
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(error.message);
     }
   });
 
-  const clearAllAdjectives = trpc.adjective.clearAll.useMutation({
+  const clearAllAdjectives = api.adjective.clearAll.useMutation({
     onSuccess: () => {
       void utils.adjective.getAll.invalidate();
       toast.success('All adjectives cleared successfully!');
       setIsClearAllModalOpen(false);
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(error.message);
     }
   });
@@ -196,20 +204,18 @@ const Adjectives: NextPage = (props) => {
 
         {/* Categories and their adjectives */}
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
-          {Object.entries(categoryNames).map(([id, name]) => {
-            const categoryAdjectives = adjectives?.filter(
-              (adj) => adj.categoryId === Number(id)
-            ) ?? [];
+          {categories?.map((category: any) => {
+            const categoryAdjectives = category.adjectives;
 
             return (
-              <div key={id} className="bg-white/5 rounded-lg p-6">
+              <div key={category.id} className="bg-white/5 rounded-lg p-6">
                 <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                  <span>{name}</span>
+                  <span>{categoryEmojis[category.name] ?? ''} {category.name}</span>
                   <span className="text-white/50 text-sm">({categoryAdjectives.length})</span>
                 </h2>
                 <div className="space-y-2">
                   <AnimatePresence>
-                    {categoryAdjectives.map((adjective) => (
+                    {categoryAdjectives.map((adjective: any) => (
                       <motion.div
                         key={adjective.id}
                         initial={{ opacity: 0, y: 20 }}

@@ -1,4 +1,4 @@
-import { trpc } from '../utils/trpc';
+import { api } from '../trpc/server';
 import { useState } from 'react';
 import type { NextPage } from 'next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,36 +8,38 @@ import { ConfirmationModal } from '../components/ConfirmationModal';
 import Link from 'next/link';
 
 const Participants: NextPage = (props) => {
-  const { data: participants } = trpc.participant.getAll.useQuery();
-  const utils = trpc.useContext();
-  const addParticipant = trpc.participant.add.useMutation({
+  const { data: participants, isLoading } = api.participant.getAll.useQuery(undefined, {
+    enabled: typeof window !== 'undefined',
+  });
+  const utils = api.useContext();
+  const addParticipant = api.participant.add.useMutation({
     onSuccess: () => {
       void utils.participant.getAll.invalidate();
       toast.success('Participant added successfully!');
       setName('');
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(error.message);
     }
   });
 
-  const deleteParticipant = trpc.participant.delete.useMutation({
+  const deleteParticipant = api.participant.delete.useMutation({
     onSuccess: () => {
       void utils.participant.getAll.invalidate();
       toast.success('Participant deleted successfully!');
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(error.message);
     }
   });
 
-  const clearAllParticipants = trpc.participant.clearAllParticipants.useMutation({
+  const clearAllParticipants = api.participant.clearAllParticipants.useMutation({
     onSuccess: () => {
       void utils.participant.getAll.invalidate();
       toast.success('All participants cleared successfully!');
       setIsClearAllModalOpen(false);
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(error.message);
     }
   });
@@ -108,7 +110,7 @@ const Participants: NextPage = (props) => {
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
-            {participants?.map((participant) => (
+            {participants?.map((participant: any) => (
               <motion.div
                 key={participant.id}
                 initial={{ opacity: 0, y: 20 }}

@@ -6,9 +6,12 @@ import "./src/env.mjs";
 
 /** @type {import("next").NextConfig} */
 const config = {
-  // Explicitly disable the App Router
-  experimental: {
-    appDir: false,
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "~": "/src",
+    };
+    return config;
   },
 };
 

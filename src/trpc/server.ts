@@ -1,11 +1,11 @@
 import "server-only";
 
-import { createTRPCProxyClient } from "@trpc/client";
+import { createHydrationHelpers } from "@trpc/react-query/rsc";
 import { headers } from "next/headers";
 import { cache } from "react";
 
-import { createCaller, type AppRouter } from "~/server/api/root";
-import { createTRPCContext } from "~/server/api/trpc";
+import { createCaller, type AppRouter } from "../server/api/root";
+import { createTRPCContext } from "../server/api/trpc";
 import { createQueryClient } from "./query-client";
 
 /**
@@ -21,15 +21,10 @@ const createContext = cache(async () => {
   });
 });
 
-export const api = createTRPCProxyClient<AppRouter>({
-  links: [
-    // Your links configuration here
-  ],
-});
+const getQueryClient = cache(createQueryClient);
+const caller = createCaller(createContext);
 
-/**
- * This is the primary way to use the tRPC API on the server.
- */
-export const serverClient = cache(async () => {
-  return createCaller(await createContext());
-});
+export const { trpc: api, HydrateClient } = createHydrationHelpers<AppRouter>(
+  caller,
+  getQueryClient
+);
