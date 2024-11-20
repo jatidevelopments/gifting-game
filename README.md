@@ -85,12 +85,36 @@ gifting-game/
 
 ## Deployment
 
-The application can be deployed on [Vercel](https://vercel.com) with a [Neon](https://neon.tech) PostgreSQL database:
+The application can be deployed on [Vercel](https://vercel.com) with either [Supabase](https://supabase.com) or [Neon](https://neon.tech) as your PostgreSQL database:
 
-1. Create a Neon database and get the connection string
-2. Deploy to Vercel and set up environment variables:
-   - `DATABASE_URL`: Neon PostgreSQL connection string
-   - `OPENAI_API_KEY`: OpenAI API key
+### Supabase Setup
+1. Create a Supabase project at https://supabase.com
+2. Get your connection string:
+   - Go to Project Settings → Database
+   - Scroll to "Connection string" and select "URI"
+   - Copy the connection string
+   - Replace `[YOUR-PASSWORD]` with your database password
+3. Enable access from Vercel:
+   - In Project Settings → Database → Network Access
+   - Add Vercel's IP addresses to "Trusted Sources"
+   - Or enable "Allow All" for development (not recommended for production)
+
+### Vercel Deployment
+1. Push your code to GitHub
+2. Import your repository in Vercel
+3. Set up environment variables:
+   - `DATABASE_URL`: Your Supabase/Neon connection string
+   - `OPENAI_API_KEY`: Your OpenAI API key
+4. Deploy your application
+
+### Database URL Format
+```bash
+# Supabase format:
+DATABASE_URL="postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres"
+
+# Neon format:
+DATABASE_URL="postgres://[USER]:[PASSWORD]@[ENDPOINT]/[DATABASE]"
+```
 
 ## Mobile-First Design
 
