@@ -12,7 +12,7 @@ const features = [
   {
     emoji: '✨',
     title: 'Add Magic Words',
-    description: 'Describe each person with fun adjectives'
+    description: 'Describe each person with fun magic words'
   },
   {
     emoji: '🎯',

@@ -51,7 +51,7 @@ const GameResults: NextPage = (props) => {
         >
           <h2 className="text-3xl font-christmas text-red-400 mb-4">No Results Yet</h2>
           <p className="text-gray-200 mb-8">
-            Add some participants and adjectives first, then generate your gift exchange!
+            Add some participants and magic words first, then generate your gift exchange!
           </p>
           <button
             onClick={handleGenerateAssignments}
@@ -95,13 +95,13 @@ const GameResults: NextPage = (props) => {
 
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
         <Link
-          href="/adjectives"
+          href="/magic-words"
           className="w-full sm:w-auto inline-flex items-center px-6 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-white transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
           </svg>
-          Back to Adjectives
+          Back to Magic Words
         </Link>
         <button
           onClick={handleGenerateAssignments}

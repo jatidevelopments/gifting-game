@@ -101,7 +101,7 @@ const Participants: NextPage = (props) => {
             className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
           >
             <UserPlusIcon className="w-5 h-5" />
-            <span className="hidden sm:inline">Add Participant</span>
+            <span>Add Participant</span>
           </button>
           <button
             type="button"
@@ -109,7 +109,7 @@ const Participants: NextPage = (props) => {
             className="px-6 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-colors flex items-center space-x-2"
           >
             <XMarkIcon className="w-5 h-5" />
-            <span className="hidden sm:inline">Clear All</span>
+            <span>Clear All</span>
           </button>
         </form>
       </motion.div>
@@ -149,10 +149,10 @@ const Participants: NextPage = (props) => {
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row justify-end gap-4">
         <Link
-          href="/adjectives"
+          href="/magic-words"
           className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
         >
-          <span>Next: Adjectives</span>
+          <span>Next: Magic Words</span>
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>

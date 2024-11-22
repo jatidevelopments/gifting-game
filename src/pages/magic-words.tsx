@@ -8,22 +8,58 @@ import { ConfirmationModal } from '../components/ConfirmationModal';
 import Link from 'next/link';
 import type { Prisma } from '@prisma/client';
 
-// Emoji mappings for categories
-const categoryEmojis: Record<string, string> = {
-  'Color': '🎨',
-  'Texture': '🧸',
-  'Style': '🎭',
-  'Mood': '🌟',
-  'Utility': '🛠️',
-  'Interest': '🎯',
+// Emoji and color mappings for categories
+const categoryStyles: Record<string, { emoji: string, bgColor: string, textColor: string, hoverBg: string, selectedBg: string }> = {
+  'color': {
+    emoji: '🎨',
+    bgColor: 'bg-blue-500/20',
+    textColor: 'text-blue-400',
+    hoverBg: 'hover:bg-blue-500/30',
+    selectedBg: 'bg-blue-500'
+  },
+  'texture': {
+    emoji: '🧸',
+    bgColor: 'bg-purple-500/20',
+    textColor: 'text-purple-400',
+    hoverBg: 'hover:bg-purple-500/30',
+    selectedBg: 'bg-purple-500'
+  },
+  'style': {
+    emoji: '🎭',
+    bgColor: 'bg-pink-500/20',
+    textColor: 'text-pink-400',
+    hoverBg: 'hover:bg-pink-500/30',
+    selectedBg: 'bg-pink-500'
+  },
+  'mood': {
+    emoji: '🌟',
+    bgColor: 'bg-yellow-500/20',
+    textColor: 'text-yellow-400',
+    hoverBg: 'hover:bg-yellow-500/30',
+    selectedBg: 'bg-yellow-500'
+  },
+  'utility': {
+    emoji: '🛠️',
+    bgColor: 'bg-orange-500/20',
+    textColor: 'text-orange-400',
+    hoverBg: 'hover:bg-orange-500/30',
+    selectedBg: 'bg-orange-500'
+  },
+  'interest': {
+    emoji: '🎯',
+    bgColor: 'bg-green-500/20',
+    textColor: 'text-green-400',
+    hoverBg: 'hover:bg-green-500/30',
+    selectedBg: 'bg-green-500'
+  },
 };
 
-type CategoryWithAdjectives = Prisma.CategoryGetPayload<{
+type CategoryWithMagicWords = Prisma.CategoryGetPayload<{
   include: { adjectives: true };
 }>;
 
-const Adjectives: NextPage = (props) => {
-  const { data: adjectives, isLoading: isLoadingAdjectives, refetch: refetchAdjectives } = api.adjective.getAll.useQuery();
+const MagicWords: NextPage = (props) => {
+  const { data: magicWords, isLoading: isLoadingMagicWords, refetch: refetchMagicWords } = api.adjective.getAll.useQuery();
   const { data: categories, isLoading: isLoadingCategories, refetch: refetchCategories } = api.category.getAll.useQuery();
   const [categoryNames, setCategoryNames] = useState<Record<number, string>>({});
 
@@ -32,7 +68,7 @@ const Adjectives: NextPage = (props) => {
       const mappedCategories = categories.reduce<Record<number, string>>(
         (acc: Record<number, string>, category: Prisma.CategoryGetPayload<{}>) => ({
           ...acc,
-          [category.id]: `${categoryEmojis[category.name] ?? ''} ${category.name}`,
+          [category.id]: `${categoryStyles[category.name.toLowerCase()]?.emoji ?? ''} ${category.name}`,
         }),
         {}
       );
@@ -41,15 +77,15 @@ const Adjectives: NextPage = (props) => {
   }, [categories]);
 
   const utils = api.useContext();
-  const addAdjective = api.adjective.add.useMutation({
+  const addMagicWord = api.adjective.add.useMutation({
     onSuccess: async () => {
       await Promise.all([
-        refetchAdjectives(),
+        refetchMagicWords(),
         refetchCategories(),
         utils.adjective.getAll.invalidate(),
         utils.category.getAll.invalidate()
       ]);
-      toast.success('Adjective added successfully!');
+      toast.success('Magic word added successfully!');
       setWord('');
       setDescription('');
     },
@@ -58,15 +94,15 @@ const Adjectives: NextPage = (props) => {
     }
   });
 
-  const deleteAdjective = api.adjective.delete.useMutation({
+  const deleteMagicWord = api.adjective.delete.useMutation({
     onSuccess: async () => {
       await Promise.all([
-        refetchAdjectives(),
+        refetchMagicWords(),
         refetchCategories(),
         utils.adjective.getAll.invalidate(),
         utils.category.getAll.invalidate()
       ]);
-      toast.success('Adjective deleted successfully!');
+      toast.success('Magic word deleted successfully!');
     },
     onError: (error: any) => {
       toast.error(error.message);
@@ -76,27 +112,27 @@ const Adjectives: NextPage = (props) => {
   const generateForAllCategories = api.adjective.generateForAllCategories.useMutation({
     onSuccess: async () => {
       await Promise.all([
-        refetchAdjectives(),
+        refetchMagicWords(),
         refetchCategories(),
         utils.adjective.getAll.invalidate(),
         utils.category.getAll.invalidate()
       ]);
-      toast.success('Generated adjectives for all categories!');
+      toast.success('Generated magic words for all categories!');
     },
     onError: (error: any) => {
       toast.error(error.message);
     }
   });
 
-  const clearAllAdjectives = api.adjective.clearAll.useMutation({
+  const clearAllMagicWords = api.adjective.clearAll.useMutation({
     onSuccess: async () => {
       await Promise.all([
-        refetchAdjectives(),
+        refetchMagicWords(),
         refetchCategories(),
         utils.adjective.getAll.invalidate(),
         utils.category.getAll.invalidate()
       ]);
-      toast.success('All adjectives cleared successfully!');
+      toast.success('All magic words cleared successfully!');
       setIsClearAllModalOpen(false);
     },
     onError: (error: any) => {
@@ -108,26 +144,26 @@ const Adjectives: NextPage = (props) => {
   const [description, setDescription] = useState('');
   const [selectedCategoryId, setSelectedCategoryId] = useState('');
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [adjectiveToDelete, setAdjectiveToDelete] = useState<{ id: number; word: string } | null>(null);
+  const [magicWordToDelete, setMagicWordToDelete] = useState<{ id: number; word: string } | null>(null);
   const [isClearAllModalOpen, setIsClearAllModalOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     if (!word.trim() || !selectedCategoryId) {
-      toast.error('Please enter an adjective and select a category');
+      toast.error('Please enter a magic word and select a category');
       return;
     }
-    await addAdjective.mutate({ word: word.trim(), categoryId: Number(selectedCategoryId) });
+    await addMagicWord.mutate({ word: word.trim(), categoryId: Number(selectedCategoryId) });
   };
 
-  const handleDelete = (adjective: any) => {
-    setAdjectiveToDelete(adjective);
+  const handleDelete = (magicWord: any) => {
+    setMagicWordToDelete(magicWord);
     setIsDeleteModalOpen(true);
   };
 
   const confirmDelete = () => {
-    if (adjectiveToDelete) {
-      deleteAdjective.mutate({ id: adjectiveToDelete.id });
+    if (magicWordToDelete) {
+      deleteMagicWord.mutate({ id: magicWordToDelete.id });
     }
   };
 
@@ -138,8 +174,8 @@ const Adjectives: NextPage = (props) => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center"
       >
-        <h1 className="text-4xl font-christmas text-red-400 mb-2">Adjectives</h1>
-        <p className="text-gray-400">Add descriptive words to make gift-giving more exciting!</p>
+        <h1 className="text-4xl font-christmas text-red-400 mb-2">Magic Words</h1>
+        <p className="text-gray-400">Add descriptive magic words to make gift-giving more exciting!</p>
       </motion.div>
 
       {/* Category Selection */}
@@ -149,22 +185,32 @@ const Adjectives: NextPage = (props) => {
         transition={{ delay: 0.2 }}
         className="flex flex-wrap gap-3 justify-center"
       >
-        {categories?.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => setSelectedCategoryId(String(category.id))}
-            className={`px-4 py-2 rounded-full border transition-colors ${
-              selectedCategoryId === String(category.id)
-                ? 'bg-green-500 border-green-500 text-white'
-                : 'border-white/20 text-white hover:border-green-500 hover:text-green-500'
-            }`}
-          >
-            {categoryEmojis[category.name]} {category.name}
-          </button>
-        ))}
+        {categories?.map((category) => {
+          console.log('Category:', category.name, 'Style:', categoryStyles[category.name.toLowerCase()]);
+          const style = categoryStyles[category.name.toLowerCase()] ?? {
+            emoji: '✨',
+            bgColor: 'bg-white/5',
+            textColor: 'text-white',
+            hoverBg: 'hover:bg-white/10',
+            selectedBg: 'bg-green-500'
+          };
+          return (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategoryId(String(category.id))}
+              className={`px-4 py-2 rounded-full border transition-colors ${
+                selectedCategoryId === String(category.id)
+                  ? `${style.selectedBg} border-transparent text-white`
+                  : `border-white/20 ${style.textColor} hover:border-transparent ${style.hoverBg}`
+              }`}
+            >
+              {style.emoji} {category.name}
+            </button>
+          );
+        })}
       </motion.div>
 
-      {/* Add Adjective Form */}
+      {/* Add Magic Word Form */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -176,7 +222,7 @@ const Adjectives: NextPage = (props) => {
             type="text"
             value={word}
             onChange={(e) => setWord(e.target.value)}
-            placeholder="Enter an adjective..."
+            placeholder="Enter a magic word..."
             className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-white"
           />
           <button
@@ -185,7 +231,7 @@ const Adjectives: NextPage = (props) => {
             className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
           >
             <PlusIcon className="w-5 h-5" />
-            <span>Add</span>
+            <span className="md:block">Add</span>
           </button>
           <button
             type="button"
@@ -196,7 +242,7 @@ const Adjectives: NextPage = (props) => {
             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <span>{generateForAllCategories.isPending ? 'Generating...' : 'Generate with AI'}</span>
+            <span className="md:block">{generateForAllCategories.isPending ? 'Generating...' : 'Generate with AI'}</span>
           </button>
           <button
             type="button"
@@ -204,12 +250,12 @@ const Adjectives: NextPage = (props) => {
             className="px-6 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-colors flex items-center space-x-2"
           >
             <XMarkIcon className="w-5 h-5" />
-            <span>Clear All</span>
+            <span className="md:block">Clear All</span>
           </button>
         </form>
       </motion.div>
 
-      {/* Adjectives List */}
+      {/* Magic Words List */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -217,9 +263,9 @@ const Adjectives: NextPage = (props) => {
         className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
       >
         <AnimatePresence mode="popLayout">
-          {adjectives?.map((adjective) => (
+          {magicWords?.map((magicWord) => (
             <motion.div
-              key={adjective.id}
+              key={magicWord.id}
               layout
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -227,18 +273,22 @@ const Adjectives: NextPage = (props) => {
               className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 relative group"
             >
               <button
-                onClick={() => handleDelete(adjective)}
+                onClick={() => handleDelete(magicWord)}
                 className="absolute top-2 right-2 p-1 rounded-full bg-red-500/10 hover:bg-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity"
               >
                 <XMarkIcon className="w-5 h-5 text-red-400" />
               </button>
               <div className="flex items-center space-x-2 mb-2">
                 <TagIcon className="w-5 h-5 text-green-400" />
-                <span className="text-white font-medium">{adjective.word}</span>
+                <span className="text-white font-medium">{magicWord.word}</span>
               </div>
               <div className="mt-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400">
-                  {categoryNames[adjective.categoryId]}
+                <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm ${
+                  categoryStyles[categories?.find(c => c.id === magicWord.categoryId)?.name.toLowerCase() ?? '']?.bgColor ?? 'bg-white/5'
+                } ${
+                  categoryStyles[categories?.find(c => c.id === magicWord.categoryId)?.name.toLowerCase() ?? '']?.textColor ?? 'text-white'
+                }`}>
+                  {categoryNames[magicWord.categoryId]}
                 </span>
               </div>
             </motion.div>
@@ -272,19 +322,19 @@ const Adjectives: NextPage = (props) => {
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
         onConfirm={confirmDelete}
-        title="Delete Adjective"
-        message={`Are you sure you want to delete "${adjectiveToDelete?.word}"?`}
+        title="Delete Magic Word"
+        message={`Are you sure you want to delete "${magicWordToDelete?.word}"?`}
       />
 
       <ConfirmationModal
         isOpen={isClearAllModalOpen}
         onClose={() => setIsClearAllModalOpen(false)}
-        onConfirm={() => clearAllAdjectives.mutate()}
-        title="Clear All Adjectives"
-        message="Are you sure you want to delete all adjectives? This action cannot be undone."
+        onConfirm={() => clearAllMagicWords.mutate()}
+        title="Clear All Magic Words"
+        message="Are you sure you want to delete all magic words? This action cannot be undone."
       />
     </div>
   );
 };
 
-export default Adjectives;
+export default MagicWords;
