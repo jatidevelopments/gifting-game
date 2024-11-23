@@ -9,6 +9,8 @@ interface ConfirmationModalProps {
   onConfirm: () => void;
   title: string;
   message: string;
+  confirmText?: string;
+  cancelText?: string;
 }
 
 export function ConfirmationModal({
@@ -17,6 +19,8 @@ export function ConfirmationModal({
   onConfirm,
   title,
   message,
+  confirmText = 'Confirm',
+  cancelText = 'Cancel',
 }: ConfirmationModalProps) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -44,41 +48,51 @@ export function ConfirmationModal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl 
+                bg-white/10 backdrop-blur-sm p-6 text-left align-middle shadow-xl transition-all 
+                border border-white/20">
                 <Dialog.Title
                   as="h3"
-                  className="flex items-center gap-2 text-lg font-medium leading-6 text-gray-900"
+                  className="flex items-center gap-2 text-lg leading-6 
+                    bg-gradient-to-r from-purple-400 to-red-400 text-transparent bg-clip-text"
                 >
-                  <ExclamationTriangleIcon className="h-6 w-6 text-red-500" />
+                  <ExclamationTriangleIcon className="h-6 w-6 text-red-400" />
                   {title}
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-300">
                     {message}
                   </p>
                 </div>
 
-                <div className="mt-4 flex justify-end gap-2">
+                <div className="mt-4 flex justify-end gap-3">
                   <motion.button
                     type="button"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    className="inline-flex justify-center rounded-lg border border-white/10 
+                      bg-white/5 px-4 py-2 text-sm font-medium text-white/80 
+                      hover:bg-white/10 transition-colors focus:outline-none 
+                      focus-visible:ring-2 focus-visible:ring-purple-500/50"
                     onClick={onClose}
                   >
-                    Cancel
+                    {cancelText}
                   </motion.button>
                   <motion.button
                     type="button"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                    className="inline-flex justify-center rounded-lg border border-red-500/20 
+                      bg-gradient-to-r from-red-500/20 to-purple-500/20 px-4 py-2 
+                      text-sm font-medium text-white hover:from-red-500/30 hover:to-purple-500/30 
+                      transition-all focus:outline-none focus-visible:ring-2 
+                      focus-visible:ring-red-500/50"
                     onClick={() => {
                       onConfirm();
                       onClose();
                     }}
                   >
-                    Delete
+                    {confirmText}
                   </motion.button>
                 </div>
               </Dialog.Panel>

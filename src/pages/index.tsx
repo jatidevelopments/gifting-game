@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 import { NextPage } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { api } from "~/utils/api";
+import { Logo } from '~/components/Logo';
+
 import Link from 'next/link';
 
 const features = [
@@ -41,12 +45,19 @@ const item = {
   show: { opacity: 1, y: 0 }
 };
 
-const LandingPage: NextPage = () => {
+const LandingPage: NextPage = (props) => {
+  const router = useRouter();
+  const createGameRoom = api.gameRoom.create.useMutation({
+    onSuccess: (data: any) => {
+      void router.push(`/game/${data.id}/participants`);
+    },
+  });
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       <Head>
-        <title>GiftWhisper - Magical Gift Exchange</title>
-        <meta name="description" content="Create magical gift exchanges with GiftWhisper" />
+        <title>MySecretSanta - Secret Santa Gift Exchange</title>
+        <meta name="description" content="Create fun and easy Secret Santa gift exchanges with MySecretSanta" />
       </Head>
 
       {/* Main content */}
@@ -58,80 +69,61 @@ const LandingPage: NextPage = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 pt-12"
         >
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-7xl mb-6 text-red-400 font-christmas tracking-wide"
+            className="flex justify-center mb-4"
           >
-            GiftWhisper
-          </motion.h1>
-          <p className="text-2xl text-green-300 mb-8">
-            Make your gift exchange magical! ✨
-          </p>
-         {/* Get Started Button */}
-         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="text-center"
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link 
-              href="/participants" 
-              className="
-                relative inline-flex items-center justify-center
-                bg-gradient-to-br from-red-600 via-red-700 to-red-800
-                text-white text-xl px-8 py-3 rounded-full
-                transition-all duration-300 ease-out
-                shadow-[0_0_15px_rgba(220,38,38,0.3)]
-                hover:shadow-[0_0_25px_rgba(220,38,38,0.5)]
-                font-semibold
-                overflow-hidden
-                group
-              "
-            >
-              <motion.span 
-                className="relative z-10 flex items-center gap-2"
-                whileHover={{ x: [0, 4, 0] }}
-                transition={{ duration: 0.3 }}
-              >
-                Start Your Exchange
-                <motion.span
-                  animate={{ rotate: [0, 14, -8, 0] }}
-                  transition={{ 
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut"
-                  }}
-                  className="text-lg"
-                >
-                  🎁
-                </motion.span>
-              </motion.span>
-              <div className="
-                absolute inset-0 
-                bg-gradient-to-br from-red-500 via-red-600 to-red-700
-                opacity-0 group-hover:opacity-100
-                transition-opacity duration-300 ease-out
-                rounded-full
-              "/>
-              <div className="
-                absolute -inset-1
-                bg-gradient-to-br from-red-400 via-white/20 to-red-400
-                blur-[2px] opacity-30
-                group-hover:opacity-50 group-hover:blur-[3px]
-                transition-all duration-300 ease-out
-                -z-10
-                rounded-full
-              "/>
-            </Link>
+            <Logo href="/" size="large" layout="vertical" showImage={false} />
           </motion.div>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <p className="text-2xl text-green-300 mb-12">
+              <span>✨</span>
+              <span className="mx-2">Make your gift exchange magical!</span>
+              <span>✨</span>
+            </p>
+          </motion.div>
+          {/* Get Started Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="text-center"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <button 
+                onClick={() => createGameRoom.mutate()}
+                className="
+                  relative inline-flex items-center justify-center
+                  bg-gradient-to-br from-red-600 via-red-700 to-red-800
+                  text-white text-xl px-8 py-3 rounded-full
+                  transition-all duration-300 ease-out
+                  shadow-[0_0_15px_rgba(220,38,38,0.3)]
+                  hover:shadow-[0_0_25px_rgba(220,38,38,0.5)]
+                  font-semibold
+                  overflow-hidden
+                  group
+                "
+              >
+                <motion.span 
+                  className="relative z-10 flex items-center gap-2"
+                  whileHover={{ x: [0, 4, 0] }}
+                  transition={{ duration: 0.3 }}
+                >
+                  Start Your Exchange
+                  <span className="text-2xl">→</span>
+                </motion.span>
+              </button>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
         {/* Features section */}
@@ -139,27 +131,17 @@ const LandingPage: NextPage = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto px-4 mt-16"
         >
           {features.map((feature, index) => (
             <motion.div
               key={index}
               variants={item}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
             >
-              <motion.div
-                initial={{ scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                className="text-4xl mb-4"
-              >
-                {feature.emoji}
-              </motion.div>
-              <h3 className="text-xl font-semibold text-green-400 mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-gray-300">
-                {feature.description}
-              </p>
+              <div className="text-4xl mb-4">{feature.emoji}</div>
+              <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+              <p className="text-gray-400">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>

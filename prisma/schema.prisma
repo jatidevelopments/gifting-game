@@ -7,42 +7,61 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model GameRoom {
+  id           String        @id @default(uuid())
+  code         String        @unique @default(uuid())
+  createdAt    DateTime      @default(now())
+  participants Participant[]
+  assignments  Assignment[]
+  adjectives   Adjective[]
+}
+
 model Participant {
-  id          Int          @id @default(autoincrement())
-  name        String       @unique
+  id          String        @id @default(uuid())
+  name        String
   pin         String?      // PIN for accessing results
-  hasAccessed Boolean     @default(false)  // Track if participant has viewed their assignment
+  hasAccessed Boolean      @default(false)  // Track if participant has viewed their assignment
   assignments Assignment[] @relation("Gifter")
   received    Assignment[] @relation("Receiver")
+  gameRoom    GameRoom     @relation(fields: [gameRoomId], references: [id], onDelete: Cascade)
+  gameRoomId  String
+
+  @@unique([name, gameRoomId])
 }
 
 model Adjective {
-  id            Int           @id @default(autoincrement())
+  id            String        @id @default(uuid())
   word          String
   category      Category      @relation(fields: [categoryId], references: [id])
-  categoryId    Int
+  categoryId    String
   asAdjective1  Assignment[]  @relation("Adjective1")
   asAdjective2  Assignment[]  @relation("Adjective2")
   asAdjective3  Assignment[]  @relation("Adjective3")
+  gameRoom      GameRoom      @relation(fields: [gameRoomId], references: [id], onDelete: Cascade)
+  gameRoomId    String
+
+  @@unique([word, gameRoomId])
 }
 
 model Category {
-  id         Int         @id @default(autoincrement())
+  id         String       @id @default(uuid())
   name       String      @unique
   adjectives Adjective[]
 }
 
 model Assignment {
-  id            Int          @id @default(autoincrement())
-  gifterId      Int
-  receiverId    Int
-  gifter        Participant  @relation("Gifter", fields: [gifterId], references: [id])
-  receiver      Participant  @relation("Receiver", fields: [receiverId], references: [id])
-  adjective1    Adjective    @relation("Adjective1", fields: [adjective1Id], references: [id])
-  adjective2    Adjective    @relation("Adjective2", fields: [adjective2Id], references: [id])
-  adjective3    Adjective    @relation("Adjective3", fields: [adjective3Id], references: [id])
-  adjective1Id  Int
-  adjective2Id  Int
-  adjective3Id  Int
+  id            String       @id @default(uuid())
+  gifterId      String
+  receiverId    String
+  gifter        Participant  @relation("Gifter", fields: [gifterId], references: [id], onDelete: Cascade)
+  receiver      Participant  @relation("Receiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  adjective1    Adjective    @relation("Adjective1", fields: [adjective1Id], references: [id], onDelete: Restrict)
+  adjective2    Adjective    @relation("Adjective2", fields: [adjective2Id], references: [id], onDelete: Restrict)
+  adjective3    Adjective    @relation("Adjective3", fields: [adjective3Id], references: [id], onDelete: Restrict)
+  adjective1Id  String
+  adjective2Id  String
+  adjective3Id  String
   accessUrl     String       @unique @default(uuid()) // Unique URL for each assignment
+  gameRoom      GameRoom     @relation(fields: [gameRoomId], references: [id], onDelete: Cascade)
+  gameRoomId    String
 }

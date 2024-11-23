@@ -1,101 +1,26 @@
 import { useRouter } from 'next/router';
 import { NextPage } from 'next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { client as api } from '../../trpc/server';
-import { useState } from 'react';
-import toast from 'react-hot-toast';
 import Head from 'next/head';
-import { z } from 'zod';
-
-const PinSchema = z.string().min(4).max(8);
+import { useAssignment } from '~/hooks/useAssignment';
 
 const AssignmentPage: NextPage = (props) => {
   const router = useRouter();
   const { id } = router.query;
-  const [pin, setPin] = useState('');
-  const [error, setError] = useState('');
-  const [isVerified, setIsVerified] = useState(false);
-  const [showPin, setShowPin] = useState(false);
-  const [isRevealed, setIsRevealed] = useState(false);
-
-  const { data: assignment, isLoading } = api.assignment.getAssignment.useQuery(
-    { accessUrl: id as string },
-    { enabled: typeof window !== 'undefined' && !!id }
-  );
-
-  const verifyPinMutation = api.participant.verifyPin.useMutation({
-    onSuccess: () => {
-      setIsVerified(true);
-      setError('');
-      toast.success('PIN verified successfully!', {
-        icon: '🔓',
-        duration: 3000,
-      });
-    },
-    onError: (error: any) => {
-      if (error instanceof Error) {
-        setError(error.message);
-      } else {
-        setError('An unexpected error occurred');
-      }
-      setIsVerified(false);
-    },
-  });
-
-  const setPinMutation = api.participant.setPin.useMutation({
-    onSuccess: () => {
-      setIsVerified(true);
-      setError('');
-      toast.success('PIN set successfully!', {
-        icon: '🔒',
-        duration: 3000,
-      });
-    },
-    onError: (error: any) => {
-      if (error instanceof Error) {
-        setError(error.message);
-      } else {
-        setError('An unexpected error occurred');
-      }
-    },
-  });
-
-  const handlePinSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!assignment) return;
-
-    try {
-      PinSchema.parse(pin);
-
-      if (assignment.gifter.hasAccessed) {
-        await verifyPinMutation.mutateAsync({
-          participantId: assignment.gifter.id,
-          pin,
-        });
-      } else {
-        await setPinMutation.mutateAsync({
-          participantId: assignment.gifter.id,
-          pin,
-        });
-      }
-    } catch (err) {
-      if (err instanceof z.ZodError) {
-        setError('PIN must be between 4 and 8 characters');
-      } else if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unexpected error occurred');
-      }
-    }
-  };
-
-  const handleReveal = () => {
-    setIsRevealed(true);
-    toast.success('Assignment revealed! 🎁', {
-      icon: '🎄',
-      duration: 3000,
-    });
-  };
+  
+  const {
+    pin,
+    error,
+    isVerified,
+    showPin,
+    isRevealed,
+    assignment,
+    isLoading,
+    setPin,
+    handlePinSubmit,
+    handleReveal,
+    togglePinVisibility,
+  } = useAssignment(id as string);
 
   if (isLoading) {
     return (
@@ -164,7 +89,7 @@ const AssignmentPage: NextPage = (props) => {
                   />
                   <button
                     type="button"
-                    onClick={() => setShowPin(!showPin)}
+                    onClick={togglePinVisibility}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 hover:text-white"
                   >
                     {showPin ? 'Hide' : 'Show'}
@@ -194,7 +119,7 @@ const AssignmentPage: NextPage = (props) => {
   return (
     <>
       <Head>
-        <title>Your Gift Assignment | GiftWhisper</title>
+        <title>Your Gift Assignment | MySecretSanta</title>
       </Head>
       
       <div className="min-h-screen flex items-center justify-center p-4">

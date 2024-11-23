@@ -1,6 +1,6 @@
-# Gifting Game
+# MySecretSanta 🎁🎅
 
-A modern web application for organizing festive gift exchanges with AI-powered adjective generation and secure participant interactions.
+A fun and easy web application for organizing Secret Santa gift exchanges with AI-powered descriptions and secure participant interactions.
 
 ## Features
 

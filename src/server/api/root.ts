@@ -1,6 +1,5 @@
-import { participantRouter, adjectiveRouter, assignmentRouter, categoryRouter } from "~/server/router";
+import { participantRouter, adjectiveRouter, assignmentRouter, categoryRouter, gameRoomRouter } from "~/server/router";
 import { createCallerFactory, createTRPCRouter } from "./trpc";
-import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
 
 /**
  * This is the primary router for your server.
@@ -12,6 +11,7 @@ export const appRouter = createTRPCRouter({
   adjective: adjectiveRouter,
   assignment: assignmentRouter,
   category: categoryRouter,
+  gameRoom: gameRoomRouter,
 });
 
 // export type definition of API
@@ -25,15 +25,3 @@ export type AppRouter = typeof appRouter;
  *       ^? Post[]
  */
 export const createCaller = createCallerFactory(appRouter);
-
-/**
- * Inference helpers for input types
- * @example type HelloInput = RouterInputs['example']['hello']
- */
-export type RouterInputs = inferRouterInputs<AppRouter>;
-
-/**
- * Inference helpers for output types
- * @example type HelloOutput = RouterOutputs['example']['hello']
- */
-export type RouterOutputs = inferRouterOutputs<AppRouter>;

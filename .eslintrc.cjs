@@ -24,6 +24,8 @@ const config = {
     "@typescript-eslint/await-thenable": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/require-await": "off",
+    "@typescript-eslint/only-throw-error": "off",
+    "@typescript-eslint/prefer-optional-chain": "off"
   },
 };
 

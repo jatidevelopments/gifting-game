@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { MobileMenu } from './MobileMenu';
+import { Logo } from './Logo';
 
 // Generate random positions for snowflakes
 const generateSnowflakes = (count: number) => {
@@ -41,13 +42,26 @@ const generateDecorations = () => {
   // Shuffle grid cells
   const shuffledCells = [...gridCells].sort(() => Math.random() - 0.5);
   
+  // Add Santa
+  decorations.push({
+    id: 'santa',
+    type: 'santa',
+    left: '-20vw',
+    top: '20vh',
+    duration: 30,
+    delay: 0,
+    scale: 1,
+    opacity: 1
+  });
+
   // Add 3 presents in different grid cells
   for (let i = 0; i < 3; i++) {
     const cell = shuffledCells[i];
     decorations.push({
       id: `present-${i}`,
+      type: 'emoji',
       emoji: '🎁',
-      left: `${cell!.x + (Math.random() * 10 - 5)}vw`, // Add small random offset
+      left: `${cell!.x + (Math.random() * 10 - 5)}vw`,
       top: `${cell!.y + (Math.random() * 10 - 5)}vh`,
       duration: 15 + Math.random() * 10,
       delay: Math.random() * -20,
@@ -61,6 +75,7 @@ const generateDecorations = () => {
     const cell = shuffledCells[i + 3];
     decorations.push({
       id: `star-${i}`,
+      type: 'emoji',
       emoji: '✨',
       left: `${cell!.x + (Math.random() * 10 - 5)}vw`,
       top: `${cell!.y + (Math.random() * 10 - 5)}vh`,
@@ -86,33 +101,6 @@ const menuItems = [
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-      </svg>
-    )
-  },
-  { 
-    href: '/participants', 
-    label: 'Participants',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    )
-  },
-  { 
-    href: '/magic-words', 
-    label: 'Magic Words',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-      </svg>
-    )
-  },
-  { 
-    href: '/game-results', 
-    label: 'Results',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
       </svg>
     )
   }
@@ -185,25 +173,30 @@ export function Layout({ children }: LayoutProps) {
               opacity: deco.opacity,
               zIndex: 0
             }}
-            animate={deco.emoji === '✨' ? {
-              scale: [deco.scale, deco.scale * 1.2, deco.scale],
-              rotate: [0, 180, 360],
-              opacity: [deco.opacity, deco.opacity * 1.5, deco.opacity]
-            } : {
-              rotate: [0, -360],
-              x: [-10, 10, -10],
-              y: [-5, 5, -5]
-            }}
+            animate={
+              deco.type === 'santa' ? {
+                x: ['-20vw', '120vw'],
+                y: ['20vh', '10vh', '30vh', '15vh', '20vh'],
+                rotate: [-10, 10, -5, 15, -10]
+              } : deco.type === 'emoji' && deco.emoji === '✨' ? {
+                scale: [deco.scale, deco.scale * 1.2, deco.scale],
+                rotate: [0, 180, 360],
+                opacity: [deco.opacity, deco.opacity * 1.5, deco.opacity]
+              } : {
+                rotate: [0, -360],
+                x: [-10, 10, -10],
+                y: [-5, 5, -5]
+              }}
             transition={{
               duration: deco.duration,
               repeat: Infinity,
               ease: "linear",
               delay: deco.delay,
-              times: [0, 0.5, 1]
+              times: deco.type === 'santa' ? [0, 1] : undefined
             }}
-            className="text-4xl will-change-transform select-none"
+            className="will-change-transform select-none"
           >
-            {deco.emoji}
+              <span className="text-3xl">{deco.emoji}</span>
           </motion.div>
         ))}
 
@@ -231,32 +224,33 @@ export function Layout({ children }: LayoutProps) {
               ease: "easeInOut"
             }
           }}
-          className="fixed text-6xl transform -scale-x-100 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] z-0"
+          className="fixed w-24 h-24 transform -scale-x-100 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] z-0"
         >
-          🎅
+          <Image
+            src="/santa.png"
+            alt="Flying Santa"
+            width={96}
+            height={96}
+            className="w-full h-full object-contain"
+            priority
+          />
         </motion.div>
       </div>
 
       <header className="sticky top-0 z-50 border-b border-white/10 bg-white/5 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
           <div className="flex items-center justify-between h-16">
-            <Link
-              href="/"
-              className="flex items-center space-x-3 text-red-500 hover:text-red-400 transition-colors font-christmas"
-            >
-              <span className="text-2xl">🎁</span>
-              <span className="font-bold text-xl">GiftWhisper</span>
-            </Link>
+            <Logo href="/" size="normal" layout="horizontal" />
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            {/* Navigation (shown on all screen sizes) */}
+            <nav className="flex items-center space-x-1">
               {menuItems.map((item) => {
                 const isActive = router.pathname === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium font-cinzel transition-colors ${
                       isActive
                         ? 'text-green-400 bg-green-400/10'
                         : 'text-gray-400 hover:text-green-400 hover:bg-white/5'
@@ -268,9 +262,6 @@ export function Layout({ children }: LayoutProps) {
                 );
               })}
             </nav>
-
-            {/* Mobile Menu */}
-            <MobileMenu />
           </div>
         </div>
       </header>
