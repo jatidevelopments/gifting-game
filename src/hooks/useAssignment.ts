@@ -14,7 +14,7 @@ export const useAssignment = (id: string | undefined) => {
 
   // Get assignment data
   const { data: assignment, isLoading } = api.assignment.getAssignment.useQuery(
-    { accessUrl: id as string },
+    { accessUrl: id! },
     { enabled: typeof window !== 'undefined' && !!id }
   );
 

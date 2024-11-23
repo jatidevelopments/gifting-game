@@ -2,11 +2,12 @@ import { useRouter } from 'next/router';
 import { api } from '~/utils/api';
 import toast from 'react-hot-toast';
 import { TRPCClientError, TRPCClientErrorLike } from '@trpc/client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useGameResults = () => {
   const router = useRouter();
   const { gameId } = router.query;
+  const [isPostGenerationLoading, setIsPostGenerationLoading] = useState(false);
 
   const utils = api.useContext();
 
@@ -22,9 +23,21 @@ export const useGameResults = () => {
 
   const generateAssignments = api.assignment.generateAssignments.useMutation({
     onSuccess: () => {
-      toast.success('✨ Assignments generated successfully!');
+      // Set post-generation loading state
+      setIsPostGenerationLoading(true);
+      
       // Invalidate the assignments query to trigger a refresh
       void utils.assignment.getResults.invalidate({ gameRoomId: gameId as string });
+      
+      // Show success toast
+      toast.success('✨ Assignments generated successfully!', {
+        duration: 6000,
+      });
+      
+      // Keep loading state for a few more seconds after generation
+      setTimeout(() => {
+        setIsPostGenerationLoading(false);
+      }, 6000);
     },
     onError: (error: TRPCClientErrorLike<any>) => {
       if (error instanceof TRPCClientError) {
@@ -61,7 +74,7 @@ export const useGameResults = () => {
     // Data
     assignments,
     isLoadingAssignments,
-    isGenerating: generateAssignments.isPending,
+    isGenerating: generateAssignments.isPending || isPostGenerationLoading,
     gameId,
 
     // Handlers

@@ -13,24 +13,30 @@ export const CopyLinkButton: React.FC<CopyLinkButtonProps> = ({ gameCode, curren
 
   const handleCopy = async () => {
     try {
-      // Create the base URL with the game code
-      const baseUrl = `${window.location.origin}/game/${gameCode}/participants`;
-      
-      // Add a message based on the current page
+      // Generate the URL based on the current page
+      const baseUrl = `${window.location.origin}/game/${gameCode}`;
+      let pageUrl: string;
       let message = "Join our magical gift exchange! 🎁✨\n\n";
+      
       switch (currentPage) {
         case 'participants':
+          pageUrl = `${baseUrl}/participants`;
           message += "We're gathering participants for a special gift exchange. Click the link to join:";
           break;
         case 'magic-words':
+          pageUrl = `${baseUrl}/magic-words`;
           message += "We're adding magical words to make our gift exchange special. Join us:";
           break;
         case 'game-results':
+          pageUrl = `${baseUrl}/game-results`;
           message += "Our gift exchange is ready! Click to see your secret gift recipient:";
           break;
+        default:
+          pageUrl = `${baseUrl}/participants`;
+          message += "Join our Secret Santa gift exchange:";
       }
       
-      const fullMessage = `${message}\n${baseUrl}`;
+      const fullMessage = `${message}\n${pageUrl}`;
       await navigator.clipboard.writeText(fullMessage);
       
       setCopied(true);

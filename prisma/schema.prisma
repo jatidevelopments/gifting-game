@@ -64,4 +64,5 @@ model Assignment {
   accessUrl     String       @unique @default(uuid()) // Unique URL for each assignment
   gameRoom      GameRoom     @relation(fields: [gameRoomId], references: [id], onDelete: Cascade)
   gameRoomId    String
+  giftIdeaImages String[]    @default([]) // URLs of the generated gift idea images
 }

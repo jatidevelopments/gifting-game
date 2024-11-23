@@ -83,6 +83,93 @@ Rules:
   }
 }
 
+async function generateGiftIdeaImages(adjectiveDescriptions: string): Promise<string[]> {
+  try {
+    // First, generate three different gift ideas at once
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are a practical gift advisor. Generate three completely different gift ideas that don't overlap in category or purpose."
+        },
+        {
+          role: "user",
+          content: `Generate 3 different practical gift ideas for someone who is: ${adjectiveDescriptions}. 
+          Requirements for each gift:
+          - Must be available in common retail stores (Target, Amazon, etc.)
+          - Price range: $10-50
+          - Simple but thoughtful
+          - Easy to wrap
+          - No gift cards or generic items
+          - Related to their characteristics
+          - Something specific (e.g., "Leather-bound constellation sketching journal" not just "journal")
+          - Each gift must be from a different category (e.g., don't suggest multiple books or multiple games)
+
+          Return exactly 3 gift ideas, one per line, numbered 1-3. No explanations or additional text.`
+        }
+      ],
+      temperature: 0.7,
+      max_tokens: 150
+    });
+
+    const giftIdeasText = completion.choices[0]?.message.content?.trim();
+    console.log('Generated gift ideas:', giftIdeasText);
+
+    if (!giftIdeasText) {
+      console.error('Failed to generate gift ideas - empty response');
+      return [];
+    }
+
+    // Split the response into individual gift ideas
+    const giftIdeas = giftIdeasText
+      .split('\n')
+      .map(line => line.replace(/^\d+\.\s*/, '').trim())
+      .filter(idea => idea.length > 0);
+
+    if (giftIdeas.length !== 3) {
+      console.error('Failed to generate 3 distinct gift ideas - got', giftIdeas.length);
+      return [];
+    }
+
+    // Generate an image for each gift idea
+    const imagePrompt = (giftIdea: string) => `Create a product illustration of: ${giftIdea}
+    Style: Modern product catalog illustration, minimalist and clean
+    Must show: A clear, realistic representation of the exact product
+    Perspective: Slightly angled 3/4 view to show depth
+    Background: Simple gradient or solid color with subtle holiday sparkle
+    Lighting: Soft, professional product photography style
+    Colors: Rich and vibrant, product-accurate colors
+    Details: Include product textures and materials
+    Absolutely avoid: Generic gift wrapping, price tags, text, or unrealistic elements`;
+
+    const imageUrls = await Promise.all(
+      giftIdeas.map(async (giftIdea) => {
+        try {
+          const response = await openai.images.generate({
+            model: "dall-e-3",
+            prompt: imagePrompt(giftIdea),
+            n: 1,
+            size: "1024x1024",
+            quality: "standard",
+            style: "vivid"
+          });
+          return response.data[0]?.url ?? null;
+        } catch (error) {
+          console.error('Error generating image for gift idea:', giftIdea, error);
+          return null;
+        }
+      })
+    );
+
+    // Filter out any null values and return the successful image URLs
+    return imageUrls.filter((url): url is string => url !== null);
+  } catch (error) {
+    console.error('Error in gift idea generation:', error);
+    return [];
+  }
+}
+
 export const assignmentRouter = createRouter({
   getResults: publicProcedure
     .input(z.object({
@@ -179,31 +266,37 @@ export const assignmentRouter = createRouter({
         const participants = [...gameRoom.participants];
         const shuffledParticipants = shuffle(participants);
 
-        const assignments: Prisma.AssignmentCreateManyInput[] = [];
-        for (let i = 0; i < participants.length; i++) {
-          const gifter = shuffledParticipants[i];
-          const receiver = shuffledParticipants[(i + 1) % participants.length];
-          const [adj1, adj2, adj3] = wordTriplets[i] || [];
+        // Create assignments one by one since createMany doesn't support array fields
+        const createdAssignments = await Promise.all(
+          participants.map(async (_, i) => {
+            const gifter = shuffledParticipants[i];
+            const receiver = shuffledParticipants[(i + 1) % participants.length];
+            const [adj1, adj2, adj3] = wordTriplets[i] || [];
 
-          // Verify all required objects exist
-          if (!gifter || !receiver || !adj1 || !adj2 || !adj3) {
-            throw new AppError('BAD_REQUEST', 'Invalid participant or adjective data');
-          }
+            // Verify all required objects exist
+            if (!gifter || !receiver || !adj1 || !adj2 || !adj3) {
+              throw new AppError('BAD_REQUEST', 'Invalid participant or adjective data');
+            }
 
-          assignments.push({
-            gifterId: gifter.id,
-            receiverId: receiver.id,
-            adjective1Id: adj1.id,
-            adjective2Id: adj2.id,
-            adjective3Id: adj3.id,
-            gameRoomId: input.gameRoomId,
-          });
-        }
+            // Generate gift idea images
+            const adjectiveDescriptions = `${adj1.word} (${adj1.category.name}), ${adj2.word} (${adj2.category.name}), ${adj3.word} (${adj3.category.name})`;
+            const giftIdeaImages = await generateGiftIdeaImages(adjectiveDescriptions);
 
-        // Create all assignments
-        return await ctx.prisma.assignment.createMany({
-          data: assignments,
-        });
+            return ctx.prisma.assignment.create({
+              data: {
+                gifterId: gifter.id,
+                receiverId: receiver.id,
+                adjective1Id: adj1.id,
+                adjective2Id: adj2.id,
+                adjective3Id: adj3.id,
+                gameRoomId: input.gameRoomId,
+                giftIdeaImages,
+              },
+            });
+          })
+        );
+
+        return createdAssignments;
       } catch (error) {
         if (error instanceof AppError) {
           throw error;

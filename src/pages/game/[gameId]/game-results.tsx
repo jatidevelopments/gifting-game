@@ -1,10 +1,103 @@
 import type { NextPage } from 'next';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { CopyLinkButton } from '../../../components/CopyLinkButton';
 import { GameLayout } from '~/components/GameLayout';
 import { useGameResults } from '~/hooks/useGameResults';
+import { useEffect, useState } from 'react';
+
+const loadingMessages = [
+  {
+    icon: "🎲",
+    title: "Shuffling Participants",
+    description: "Making sure everyone gets a unique gift buddy..."
+  },
+  {
+    icon: "🎨",
+    title: "Creating Gift Ideas",
+    description: "Our elves are brainstorming personalized suggestions..."
+  },
+  {
+    icon: "🎁",
+    title: "Wrapping Things Up",
+    description: "Adding some festive magic to your assignments..."
+  },
+  {
+    icon: "✨",
+    title: "Sprinkling Magic Dust",
+    description: "Making your Secret Santa experience extra special..."
+  },
+  {
+    icon: "🎄",
+    title: "Spreading Holiday Cheer",
+    description: "Almost ready to reveal your magical pairings..."
+  }
+];
+
+const LoadingAnimation = () => {
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMessageIndex((prev) => (prev + 1) % loadingMessages.length);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentMessage = loadingMessages[currentMessageIndex];
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 max-w-2xl mx-auto"
+      >
+        <div className="text-center space-y-6">
+          <motion.div
+            key={currentMessageIndex}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="space-y-4"
+          >
+            <div className="relative w-24 h-24 mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-red-500/20 rounded-full animate-pulse"></div>
+              <div className="absolute inset-3 bg-gradient-to-r from-purple-500 to-red-500 rounded-full"></div>
+              <div className="absolute inset-4 bg-gray-900 rounded-full flex items-center justify-center">
+                <span className="text-4xl">{currentMessage!.icon}</span>
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <h2 className="text-2xl font-cinzel bg-gradient-to-r from-purple-400 to-red-400 text-transparent bg-clip-text">
+                {currentMessage!.title}
+              </h2>
+              <p className="text-gray-400">{currentMessage!.description}</p>
+            </div>
+          </motion.div>
+
+          <div className="flex justify-center space-x-2">
+            {loadingMessages.map((_, index) => (
+              <motion.div
+                key={index}
+                className={`w-2 h-2 rounded-full ${
+                  index === currentMessageIndex ? 'bg-purple-500' : 'bg-white/20'
+                }`}
+                animate={{
+                  scale: index === currentMessageIndex ? 1.2 : 1,
+                }}
+                transition={{ duration: 0.3 }}
+              />
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
 
 const GameResults: NextPage = (props) => {
   return (
@@ -36,7 +129,7 @@ const GameResultsContent = () => {
           color: '#fff',
           border: '1px solid rgba(255,255,255,0.1)',
         },
-        duration: 3000,
+        duration: 6000,
       });
     } catch (error) {
       toast.error('Failed to copy link. Please try again.', {
@@ -49,18 +142,9 @@ const GameResultsContent = () => {
     }
   };
 
-  if (isLoadingAssignments) {
+  if (isGenerating || isLoadingAssignments) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center"
-        >
-          <div className="w-16 h-16 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading assignments...</p>
-        </motion.div>
-      </div>
+      <LoadingAnimation />
     );
   }
 
@@ -154,7 +238,7 @@ const GameResultsContent = () => {
           <h1 className="text-3xl font-cinzel text-center">
             <span>🎁</span>
             <span className="mx-2 bg-gradient-to-r from-[#6B46C1] to-[#9F7AEA] text-transparent bg-clip-text">
-              Game Results
+              Secret Santa Assignments
             </span>
             <span>🎁</span>
           </h1>
