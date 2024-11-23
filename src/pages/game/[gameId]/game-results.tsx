@@ -150,8 +150,8 @@ const GameResultsContent = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center space-y-4"
       >
-        <div className="max-w-4xl mx-auto px-4 py-8">
-          <h1 className="text-3xl font-cinzel text-center mb-8">
+        <div className="max-w-4xl mx-auto px-4 py-3">
+          <h1 className="text-3xl font-cinzel text-center">
             <span>🎁</span>
             <span className="mx-2 bg-gradient-to-r from-[#6B46C1] to-[#9F7AEA] text-transparent bg-clip-text">
               Game Results
