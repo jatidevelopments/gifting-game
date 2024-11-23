@@ -1,154 +1,161 @@
-# MySecretSanta 🎁🎅
+# MySecretSanta 🎁✨
 
-A fun and easy web application for organizing Secret Santa gift exchanges with AI-powered descriptions and secure participant interactions.
+A magical web application that revolutionizes Secret Santa gift exchanges with AI-powered personalization, secure participant management, and delightful user experiences.
 
-## Features
+🌟 **Try it out: [MySecretSanta App](https://gifting-game.vercel.app/)**
 
-- **Smart Gift Matching**: Automated participant pairing system
-- **AI-Powered Descriptions**: Generate creative gift descriptions using OpenAI
-- **Secure Access**: PIN-based verification for participants
-- **Responsive Design**: Mobile-first approach with modern UI
-- **Category System**: Organized gift descriptions with six distinct categories:
-  - Color (visual appearance)
-  - Texture (tactile qualities)
-  - Style (design aesthetic)
-  - Mood (emotional qualities)
-  - Utility (practical aspects)
-  - Interest (target audience)
+![MySecretSanta Home](/public/product_screens/home.png)
 
-## Getting Started
+## ✨ Features
+
+### 🎯 Core Features
+- **Smart Gift Matching**: Intelligent participant pairing with secure access
+- **AI-Powered Gift Ideas**: Personalized gift suggestions using GPT-3.5-turbo and GPT-4o-mini
+- **Visual Gift Inspiration**: AI-generated gift visualizations
+- **Secure Access**: PIN-based verification system for participants
+- **Real-time Status Updates**: Dynamic progress tracking for gift generation
+- **Mobile-First Design**: Responsive and beautiful UI for all devices
+
+### 🎨 Gift Description Categories
+- **Color**: Visual appearance and aesthetic qualities
+- **Texture**: Tactile and physical properties
+- **Style**: Design and fashion characteristics
+- **Mood**: Emotional and atmospheric qualities
+- **Utility**: Practical and functional aspects
+- **Interest**: Hobby and activity-related traits
+- **Size**: Physical dimensions and proportions
+
+### 🔒 Security Features
+- Unique, cryptographically secure access URLs
+- PIN-based participant verification
+- Protected user data and preferences
+- Rate-limited API access
+
+## 🖼️ Product Showcase
+
+### Home Page
+![Home Page](/public/product_screens/home.png)
+*Create your Secret Santa exchange in seconds*
+
+### Participant Management
+![Participants](/public/product_screens/participants.png)
+*Add and manage participants with ease*
+
+### Gift Generation
+![Gift Ideas](/public/product_screens/gift-ideas.png)
+*AI-powered gift suggestions and visualizations*
+
+### Assignment View
+![Assignment](/public/product_screens/assignment.png)
+*Secure and beautiful assignment reveal*
+
+## 🚀 Getting Started
 
 ### Prerequisites
-
 - Node.js 16+ and npm
 - PostgreSQL database
 - OpenAI API key
 
-### Installation
-
-1. Clone the repository:
+### Quick Start
+1. Clone and install:
 ```bash
 git clone https://github.com/yourusername/gifting-game.git
 cd gifting-game
-```
-
-2. Install dependencies:
-```bash
 npm install
 ```
 
-3. Set up environment variables:
+2. Configure environment:
 ```bash
-# Create a .env file and add:
+# .env file
 DATABASE_URL="postgresql://user:password@localhost:5432/gifting-game"
 OPENAI_API_KEY="your-openai-api-key"
 ```
 
-4. Initialize the database:
+3. Initialize database:
 ```bash
 npx prisma db push
 npx prisma db seed
 ```
 
-5. Start the development server:
+4. Run development server:
 ```bash
 npm run dev
 ```
 
-## Project Structure
+## 🏗️ Project Structure
 
 ```
 gifting-game/
 ├── src/
-│   ├── components/         # Reusable React components
-│   ├── pages/             # Next.js pages and API routes
-│   ├── server/            # tRPC router definitions
-│   ├── styles/            # Global styles and Tailwind config
-│   └── utils/             # Utility functions and helpers
-├── prisma/
-│   ├── schema.prisma      # Database schema
-│   └── seed.ts            # Database seeding script
-├── public/                # Static assets
+│   ├── components/        # React components
+│   │   ├── ui/           # Reusable UI components
+│   │   └── game/         # Game-specific components
+│   ├── pages/            # Next.js pages
+│   │   ├── api/         # API routes
+│   │   ├── game/        # Game-related pages
+│   │   └── assignment/  # Assignment pages
+│   ├── hooks/           # Custom React hooks
+│   ├── server/          # Backend logic
+│   │   ├── router/      # tRPC routers
+│   │   └── types/       # Shared types
+│   ├── styles/          # Global styles
+│   └── utils/           # Utility functions
+├── prisma/              # Database configuration
+├── public/              # Static assets
 └── ...config files
 ```
 
-## Built With
+## 🛠️ Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Type Safety**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Database**: [PostgreSQL](https://www.postgresql.org/)
-- **ORM**: [Prisma](https://www.prisma.io/)
-- **API**: [tRPC](https://trpc.io/)
-- **AI Integration**: [OpenAI](https://openai.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+### Frontend
+- **Framework**: Next.js 13
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **State Management**: React Query
+- **Toast Notifications**: React Hot Toast
 
-## Deployment
+### Backend
+- **API Layer**: tRPC
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **AI Integration**: OpenAI SDK
+- **Authentication**: Custom PIN-based system
 
-The application can be deployed on [Vercel](https://vercel.com) with either [Supabase](https://supabase.com) or [Neon](https://neon.tech) as your PostgreSQL database:
+### Development
+- **Type Safety**: TypeScript
+- **Linting**: ESLint
+- **Formatting**: Prettier
+- **Version Control**: Git
+- **CI/CD**: Vercel
+
+## 🌐 Deployment
+
+The app is deployed on [Vercel](https://vercel.com) with [Supabase](https://supabase.com) PostgreSQL:
 
 ### Supabase Setup
-1. Create a Supabase project at https://supabase.com
-2. Get your connection string:
-   - Go to Project Settings → Database
-   - Scroll to "Connection string" and select "URI"
-   - Copy the connection string
-   - Replace `[YOUR-PASSWORD]` with your database password
-3. Enable access from Vercel:
-   - In Project Settings → Database → Network Access
-   - Add Vercel's IP addresses to "Trusted Sources"
-   - Or enable "Allow All" for development (not recommended for production)
+1. Create project at [Supabase](https://supabase.com)
+2. Configure database:
+   - Get connection string from Project Settings → Database
+   - Enable Vercel IP access in Network Access settings
+   - Set up connection pooling for better performance
 
-### Vercel Deployment
-1. Push your code to GitHub
-2. Import your repository in Vercel
-3. Set up environment variables:
-   - `DATABASE_URL`: Your Supabase/Neon connection string
-   - `OPENAI_API_KEY`: Your OpenAI API key
-4. Deploy your application
+### Vercel Setup
+1. Import from GitHub
+2. Configure environment variables:
+   ```
+   DATABASE_URL=your-supabase-connection-string
+   OPENAI_API_KEY=your-openai-api-key
+   ```
+3. Deploy and enjoy!
 
-### Database URL Format
-```bash
-# Supabase format:
-DATABASE_URL="postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres"
+## 📝 License
 
-# Neon format:
-DATABASE_URL="postgres://[USER]:[PASSWORD]@[ENDPOINT]/[DATABASE]"
-```
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Mobile-First Design
+## 🙏 Acknowledgments
 
-The application features a responsive, mobile-first design with:
-- Touch-friendly interfaces
-- Smooth animations
-- Adaptive layouts
-- Mobile navigation menu
-
-## Security Features
-
-- PIN-based authentication
-- Secure database queries with Prisma
-- Environment variable protection
-- Type-safe API routes
-
-## Game Flow
-
-1. **Setup**: Add participants to the gift exchange
-2. **Adjectives**: Generate or manually add gift descriptions
-3. **Assignment**: Automatic gift pair matching
-4. **Access**: Participants use PINs to view their assignments
-5. **Results**: View all gift pairings after the exchange
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Built with [T3 Stack](https://create.t3.gg/)
-- Powered by [OpenAI](https://openai.com/)
-- Hosted on [Vercel](https://vercel.com)
+- OpenAI for their powerful AI models
+- Vercel for hosting and deployment
+- Supabase for database infrastructure
+- The amazing open-source community

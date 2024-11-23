@@ -126,38 +126,72 @@ The adjectives should inspire gift-givers and help them think creatively about t
         try {
           const completion = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: prompt }],
+            messages: [
+              {
+                role: "system",
+                content: "You are a helpful assistant that generates descriptive adjectives for gift recommendations. Always return adjectives one per line, all lowercase, no numbers or special characters."
+              },
+              {
+                role: "user",
+                content: prompt
+              }
+            ],
             temperature: 0.7,
             max_tokens: 150,
           });
 
           const response = completion.choices[0]?.message?.content;
           if (!response) {
+            console.error('Empty response from OpenAI');
             throw new AppError('INTERNAL_SERVER_ERROR', 'No response from OpenAI');
           }
 
+          console.log('Raw OpenAI response:', response);
+
           const adjectives = response
             .split('\n')
-            .map(adj => adj.trim())
-            .filter(adj => adj.length > 0 && !adj.includes(' '))
+            .map(adj => adj.trim().toLowerCase())
+            .filter(adj => {
+              // Validate each adjective
+              const isValid = adj.length > 0 && 
+                            adj.length <= 20 && // reasonable length
+                            /^[a-z]+$/.test(adj) && // only letters
+                            !adj.includes(' '); // single word
+              
+              if (!isValid) {
+                console.log('Filtered out invalid adjective:', adj);
+              }
+              return isValid;
+            })
             .slice(0, input.count);
 
           if (adjectives.length === 0) {
+            console.error('No valid adjectives generated from response:', response);
             throw new AppError('INTERNAL_SERVER_ERROR', 'Failed to generate valid adjectives');
           }
 
+          if (adjectives.length < input.count) {
+            console.warn(`Generated only ${adjectives.length} valid adjectives out of ${input.count} requested`);
+          }
+
+          console.log('Validated adjectives:', adjectives);
+
           // Create all adjectives in a single transaction
           const createdAdjectives = await ctx.prisma.$transaction(
-            adjectives.map((adjective) => 
+            adjectives.map(word => 
               ctx.prisma.adjective.create({
                 data: {
-                  word: adjective.toLowerCase(),
-                  categoryId: input.categoryId,
-                  gameRoomId: input.gameRoomId,
+                  word,
+                  category: {
+                    connect: { id: input.categoryId }
+                  },
+                  gameRoom: {
+                    connect: { id: input.gameRoomId }
+                  }
                 },
                 include: {
                   category: true,
-                },
+                }
               })
             )
           );
@@ -275,40 +309,72 @@ The adjectives should inspire gift-givers and help them think creatively about t
         try {
           const completion = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: prompt }],
+            messages: [
+              {
+                role: "system",
+                content: "You are a helpful assistant that generates descriptive adjectives for gift recommendations. Always return adjectives one per line, all lowercase, no numbers or special characters."
+              },
+              {
+                role: "user",
+                content: prompt
+              }
+            ],
             temperature: 0.7,
             max_tokens: 150,
           });
 
           const response = completion.choices[0]?.message?.content;
           if (!response) {
+            console.error('Empty response from OpenAI');
             throw new AppError('INTERNAL_SERVER_ERROR', 'No response from OpenAI');
           }
 
+          console.log('Raw OpenAI response:', response);
+
           const adjectives = response
             .split('\n')
-            .map(adj => adj.trim())
-            .filter(adj => adj.length > 0 && !adj.includes(' '))
+            .map(adj => adj.trim().toLowerCase())
+            .filter(adj => {
+              // Validate each adjective
+              const isValid = adj.length > 0 && 
+                            adj.length <= 20 && // reasonable length
+                            /^[a-z]+$/.test(adj) && // only letters
+                            !adj.includes(' '); // single word
+              
+              if (!isValid) {
+                console.log('Filtered out invalid adjective:', adj);
+              }
+              return isValid;
+            })
             .slice(0, input.count);
 
           if (adjectives.length === 0) {
+            console.error('No valid adjectives generated from response:', response);
             throw new AppError('INTERNAL_SERVER_ERROR', 'Failed to generate valid adjectives');
           }
 
-          console.log('Generated adjectives:', adjectives);
+          if (adjectives.length < input.count) {
+            console.warn(`Generated only ${adjectives.length} valid adjectives out of ${input.count} requested`);
+          }
+
+          console.log('Validated adjectives:', adjectives);
 
           // Create all adjectives in a single transaction
           const createdAdjectives = await ctx.prisma.$transaction(
-            adjectives.map((adjective) => 
+            adjectives.map(word => 
               ctx.prisma.adjective.create({
                 data: {
-                  word: adjective.toLowerCase(),
-                  categoryId: category.id,
-                  gameRoomId: input.gameRoomId,
+                  word,
+                  category: {
+                    connect: { id: input.categoryId }
+                  },
+                  gameRoom: {
+                    connect: { id: input.gameRoomId }
+                  }
                 },
                 include: {
                   category: true,
-                },
+                }
               })
             )
           );
