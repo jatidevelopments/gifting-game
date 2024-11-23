@@ -56,40 +56,113 @@ export const adjectiveRouter = createRouter({
           throw new AppError('BAD_REQUEST', 'Count must be between 1 and 10');
         }
 
-        const prompt = `Generate ${input.count} unique adjectives that are ${category.name}. 
-          The adjectives should be appropriate for describing gifts in a gift exchange game.
-          Return only the adjectives, one per line.`;
+        const prompt = `As a Secret Santa gift exchange assistant, generate ${input.count} unique and descriptive adjectives for the category "${category.name}". These adjectives will be used to inspire and guide gift selections.
+
+Category-specific guidelines for "${category.name}":
+${category.name === 'color' ? `
+- Focus on specific, vivid color descriptions
+- Include both basic and sophisticated color terms
+- Consider seasonal and festive colors
+- Avoid overly technical color names
+Example range: "crimson", "emerald", "golden", "pastel"` : ''}
+${category.name === 'texture' ? `
+- Describe tactile and physical qualities
+- Include both comfort and material properties
+- Focus on gift-appropriate textures
+- Use easily understandable terms
+Example range: "silky", "plush", "smooth", "woven"` : ''}
+${category.name === 'style' ? `
+- Focus on aesthetic and design qualities
+- Include both classic and contemporary styles
+- Consider different taste preferences
+- Use universally understood terms
+Example range: "modern", "vintage", "minimalist", "elegant"` : ''}
+${category.name === 'mood' ? `
+- Describe emotional qualities and atmosphere
+- Include positive and uplifting terms
+- Focus on gift-giving emotions
+- Use clear emotional descriptors
+Example range: "cheerful", "peaceful", "exciting", "cozy"` : ''}
+${category.name === 'utility' ? `
+- Focus on practical and functional aspects
+- Include different types of usefulness
+- Consider various lifestyle needs
+- Use clear utility descriptors
+Example range: "practical", "versatile", "efficient", "handy"` : ''}
+${category.name === 'interest' ? `
+- Describe hobby and activity-related qualities
+- Include various interest areas
+- Focus on engaging characteristics
+- Use inspiring descriptors
+Example range: "adventurous", "creative", "educational", "entertaining"` : ''}
+${category.name === 'size' ? `
+- Describe physical dimensions and proportions
+- Include both absolute and relative terms
+- Focus on gift-appropriate sizes
+- Use easily understandable terms
+Example range: "small", "medium", "large", "oversized"` : ''}
+
+Requirements:
+1. Generate exactly ${input.count} adjectives
+2. Each adjective must be:
+   - A single word
+   - Appropriate for gift descriptions
+   - Easy to understand for all ages
+   - Positive or neutral in connotation
+3. Avoid:
+   - Duplicate or very similar words
+   - Overly complex or technical terms
+   - Negative or inappropriate terms
+   - Compound words or phrases
+
+Format:
+- Return only the adjectives
+- One adjective per line
+- No numbers, bullets, or additional formatting
+- All lowercase
+
+The adjectives should inspire gift-givers and help them think creatively about their gift choices.`;
 
         try {
           const completion = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
             messages: [{ role: "user", content: prompt }],
+            temperature: 0.7,
+            max_tokens: 150,
           });
 
-          const adjectives = completion.choices[0]?.message.content
-            ?.split('\n')
-            .map(adj => adj.trim())
-            .filter(adj => adj.length > 0) ?? [];
-
-          if (adjectives.length === 0) {
-            throw new AppError('BAD_REQUEST', 'Failed to generate adjectives');
+          const response = completion.choices[0]?.message?.content;
+          if (!response) {
+            throw new AppError('INTERNAL_SERVER_ERROR', 'No response from OpenAI');
           }
 
-          return await Promise.all(
-            adjectives.map(async (adjective) => {
-              try {
-                return await ctx.prisma.adjective.create({
-                  data: {
-                    word: adjective,
-                    categoryId: input.categoryId,
-                    gameRoomId: input.gameRoomId,
-                  },
-                });
-              } catch (error) {
-                throw handlePrismaError(error);
-              }
-            })
+          const adjectives = response
+            .split('\n')
+            .map(adj => adj.trim())
+            .filter(adj => adj.length > 0 && !adj.includes(' '))
+            .slice(0, input.count);
+
+          if (adjectives.length === 0) {
+            throw new AppError('INTERNAL_SERVER_ERROR', 'Failed to generate valid adjectives');
+          }
+
+          // Create all adjectives in a single transaction
+          const createdAdjectives = await ctx.prisma.$transaction(
+            adjectives.map((adjective) => 
+              ctx.prisma.adjective.create({
+                data: {
+                  word: adjective.toLowerCase(),
+                  categoryId: input.categoryId,
+                  gameRoomId: input.gameRoomId,
+                },
+                include: {
+                  category: true,
+                },
+              })
+            )
           );
+
+          return createdAdjectives;
         } catch (error) {
           throw handleOpenAIError(error);
         }
@@ -108,8 +181,6 @@ export const adjectiveRouter = createRouter({
       count: z.number().min(1).max(10)
     }))
     .mutation(async ({ ctx, input }) => {
-
-      console.log({categoryId: input.categoryId, gameRoomId: input.gameRoomId, count: input.count});
 
       try {
         // Check if game room exists
@@ -134,43 +205,123 @@ export const adjectiveRouter = createRouter({
 
         console.log('Generating words for category:', { id: category.id, name: category.name });
 
-        const prompt = `Generate exactly ${input.count} unique adjectives that are ${category.name}. 
-          The adjectives should be appropriate for describing gifts in a gift exchange game.
-          Return only the adjectives, one per line, without numbers or bullet points.`;
+        const prompt = `As a Secret Santa gift exchange assistant, generate ${input.count} unique and descriptive adjectives for the category "${category.name}". These adjectives will be used to inspire and guide gift selections.
 
-        const completion = await openai.chat.completions.create({
-          model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: prompt }],
-          temperature: 0.7,
-          max_tokens: 100,
-        });
+Category-specific guidelines for "${category.name}":
+${category.name === 'color' ? `
+- Focus on specific, vivid color descriptions
+- Include both basic and sophisticated color terms
+- Consider seasonal and festive colors
+- Avoid overly technical color names
+Example range: "crimson", "emerald", "golden", "pastel"` : ''}
+${category.name === 'texture' ? `
+- Describe tactile and physical qualities
+- Include both comfort and material properties
+- Focus on gift-appropriate textures
+- Use easily understandable terms
+Example range: "silky", "plush", "smooth", "woven"` : ''}
+${category.name === 'style' ? `
+- Focus on aesthetic and design qualities
+- Include both classic and contemporary styles
+- Consider different taste preferences
+- Use universally understood terms
+Example range: "modern", "vintage", "minimalist", "elegant"` : ''}
+${category.name === 'mood' ? `
+- Describe emotional qualities and atmosphere
+- Include positive and uplifting terms
+- Focus on gift-giving emotions
+- Use clear emotional descriptors
+Example range: "cheerful", "peaceful", "exciting", "cozy"` : ''}
+${category.name === 'utility' ? `
+- Focus on practical and functional aspects
+- Include different types of usefulness
+- Consider various lifestyle needs
+- Use clear utility descriptors
+Example range: "practical", "versatile", "efficient", "handy"` : ''}
+${category.name === 'interest' ? `
+- Describe hobby and activity-related qualities
+- Include various interest areas
+- Focus on engaging characteristics
+- Use inspiring descriptors
+Example range: "adventurous", "creative", "educational", "entertaining"` : ''}
+${category.name === 'size' ? `
+- Describe physical dimensions and proportions
+- Include both absolute and relative terms
+- Focus on gift-appropriate sizes
+- Use easily understandable terms
+Example range: "small", "medium", "large", "oversized"` : ''}
 
-        const adjectives = completion.choices[0]?.message.content
-          ?.split('\n')
-          .map(adj => adj.trim())
-          .filter(adj => adj.length > 0)
-          .slice(0, input.count) ?? [];
+Requirements:
+1. Generate exactly ${input.count} adjectives
+2. Each adjective must be:
+   - A single word
+   - Appropriate for gift descriptions
+   - Easy to understand for all ages
+   - Positive or neutral in connotation
+3. Avoid:
+   - Duplicate or very similar words
+   - Overly complex or technical terms
+   - Negative or inappropriate terms
+   - Compound words or phrases
 
-        if (adjectives.length === 0) {
-          throw new AppError('INTERNAL_SERVER_ERROR', 'Failed to generate adjectives');
+Format:
+- Return only the adjectives
+- One adjective per line
+- No numbers, bullets, or additional formatting
+- All lowercase
+
+The adjectives should inspire gift-givers and help them think creatively about their gift choices.`;
+
+        try {
+          const completion = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: prompt }],
+            temperature: 0.7,
+            max_tokens: 150,
+          });
+
+          const response = completion.choices[0]?.message?.content;
+          if (!response) {
+            throw new AppError('INTERNAL_SERVER_ERROR', 'No response from OpenAI');
+          }
+
+          const adjectives = response
+            .split('\n')
+            .map(adj => adj.trim())
+            .filter(adj => adj.length > 0 && !adj.includes(' '))
+            .slice(0, input.count);
+
+          if (adjectives.length === 0) {
+            throw new AppError('INTERNAL_SERVER_ERROR', 'Failed to generate valid adjectives');
+          }
+
+          console.log('Generated adjectives:', adjectives);
+
+          // Create all adjectives in a single transaction
+          const createdAdjectives = await ctx.prisma.$transaction(
+            adjectives.map((adjective) => 
+              ctx.prisma.adjective.create({
+                data: {
+                  word: adjective.toLowerCase(),
+                  categoryId: category.id,
+                  gameRoomId: input.gameRoomId,
+                },
+                include: {
+                  category: true,
+                },
+              })
+            )
+          );
+
+          return createdAdjectives;
+        } catch (error) {
+          console.error('Error in generateForAllCategories:', error);
+          if (error instanceof AppError) {
+            throw error;
+          }
+          throw handlePrismaError(error);
         }
-
-        console.log('Generated adjectives:', adjectives);
-
-        // Create all adjectives in a single transaction
-        return await ctx.prisma.$transaction(
-          adjectives.map((adjective) => 
-            ctx.prisma.adjective.create({
-              data: {
-                word: adjective,
-                categoryId: category.id, // Use the verified category.id
-                gameRoomId: input.gameRoomId,
-              },
-            })
-          )
-        );
       } catch (error) {
-        console.error('Error in generateForAllCategories:', error);
         if (error instanceof AppError) {
           throw error;
         }
