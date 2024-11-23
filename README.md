@@ -33,21 +33,37 @@ A magical web application that revolutionizes Secret Santa gift exchanges with A
 
 ## 🖼️ Product Showcase
 
-### Home Page
-![Home Page](/public/product_screens/home.png)
-*Create your Secret Santa exchange in seconds*
+### Landing Page
+![Landing Page](/public/product_screens/landing.png)
+*Welcome to MySecretSanta - Start your gift exchange journey*
 
-### Participant Management
-![Participants](/public/product_screens/participants.png)
-*Add and manage participants with ease*
+### Add Participants
+![Add Participants](/public/product_screens/add_participants.png)
+*Easily add and manage your Secret Santa participants*
 
-### Gift Generation
-![Gift Ideas](/public/product_screens/gift-ideas.png)
-*AI-powered gift suggestions and visualizations*
+### Magic Words
+![Magic Words](/public/product_screens/add_magic_words.png)
+*Add personalized magic words to enhance gift suggestions*
+
+### Assignment Creation
+![Assignment Overview](/public/product_screens/create_assignment_overview.png)
+*Review your Secret Santa setup before proceeding*
+
+### Assignment Progress
+![Assignment Progress](/public/product_screens/create_assignment_progress.png)
+*Watch as AI generates personalized gift suggestions*
+
+### Assignment Confirmation
+![Assignment Confirmation](/public/product_screens/create_assignment_confirm.png)
+*Assignments successfully created and ready to share*
+
+### PIN Verification
+![PIN Verification](/public/product_screens/pin.png)
+*Secure access with personal PIN codes*
 
 ### Assignment View
 ![Assignment](/public/product_screens/assignment.png)
-*Secure and beautiful assignment reveal*
+*Beautiful and engaging assignment reveal with AI-generated suggestions*
 
 ## 🚀 Getting Started
 
