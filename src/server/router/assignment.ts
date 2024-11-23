@@ -26,8 +26,8 @@ async function createWordTriplets(adjectives: any[], numParticipants: number) {
 
 Available words by category:
 ${Object.entries(adjectivesByCategory)
-  .map(([category, words]: any) => `${category}: ${words.join(', ')}`)
-  .join('\n')}
+      .map(([category, words]: any) => `${category}: ${words.join(', ')}`)
+      .join('\n')}
 
 Rules:
 1. Each set must contain exactly 3 words from the provided lists
@@ -47,9 +47,9 @@ Rules:
 
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ 
-        role: "user", 
-        content: prompt 
+      messages: [{
+        role: "user",
+        content: prompt
       }],
       temperature: 0.7,
       response_format: { type: "json_object" },
@@ -63,7 +63,7 @@ Rules:
 
     const parsedResponse = JSON.parse(response);
 
-   console.log('Generated word triplets:', JSON.stringify(parsedResponse, null, 2));
+    console.log('Generated word triplets:', JSON.stringify(parsedResponse, null, 2));
 
     // Map the word strings back to adjective objects
     const wordToAdjective = new Map(adjectives.map(adj => [adj.word, adj]));
@@ -147,10 +147,10 @@ async function generateGiftIdeaImages(adjectiveDescriptions: string): Promise<st
       giftIdeas.map(async (giftIdea) => {
         try {
           const response = await openai.images.generate({
-            model: "dall-e-3",
+            model: "dall-e-2",
             prompt: imagePrompt(giftIdea),
             n: 1,
-            size: "1024x1024",
+            size: "512x512",
             quality: "standard",
             style: "vivid"
           });
@@ -196,7 +196,7 @@ export const assignmentRouter = createRouter({
     }),
 
   getAssignment: publicProcedure
-    .input(z.object({ 
+    .input(z.object({
       accessUrl: z.string()
     }))
     .query(async ({ ctx, input }): Promise<AssignmentWithRelations | null> => {

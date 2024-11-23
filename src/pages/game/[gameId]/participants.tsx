@@ -37,6 +37,7 @@ const ParticipantsContent = () => {
     isClearAllModalOpen,
     setIsClearAllModalOpen,
     handleClearAll,
+    isAddingParticipant,
   } = useParticipants();
 
   const router = useRouter();
@@ -123,14 +124,23 @@ const ParticipantsContent = () => {
                 />
                 <button
                   type="submit"
-                  disabled={!newParticipant.trim()}
+                  disabled={!newParticipant.trim() || isAddingParticipant}
                   className="px-6 py-2 bg-gradient-to-r from-purple-500/20 to-red-500/20 
                     text-white/90 rounded-lg hover:from-purple-500/30 hover:to-red-500/30 
                     transition-all flex items-center justify-center gap-2 border font-cinzel
                     border-purple-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <PlusIcon className="w-5 h-5" />
-                  <span>Add</span>
+                  {isAddingParticipant ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/20 border-t-white/90 rounded-full animate-spin" />
+                      <span>Adding...</span>
+                    </>
+                  ) : (
+                    <>
+                      <PlusIcon className="w-5 h-5" />
+                      <span>Add</span>
+                    </>
+                  )}
                 </button>
               </div>
             </form>

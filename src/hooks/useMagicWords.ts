@@ -245,5 +245,6 @@ export const useMagicWords = () => {
     handleGenerateWithAI,
     handleClearAll,
     handleNext,
+    isAddingWord: addMagicWord.isPending,
   };
 };

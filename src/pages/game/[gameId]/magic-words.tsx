@@ -100,7 +100,8 @@ const MagicWordsContent = () => {
     handleDelete,
     handleClearAll,
     handleGenerateWithAI,
-    confirmDelete
+    confirmDelete,
+    isAddingWord,
   } = useMagicWords();
 
   if (isLoadingCategories || isLoadingMagicWords) {
@@ -203,34 +204,34 @@ const MagicWordsContent = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex gap-2">
-              <div className="flex-1 relative">
-                <input
-                  type="text"
-                  value={newWord}
-                  onChange={(e) => setNewWord(e.target.value)}
-                  placeholder="Enter a magic word..."
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 
-                    text-white placeholder-gray-400 focus:outline-none focus:ring-2 
-                    focus:ring-purple-500/50 focus:border-transparent"
-                />
-                {isGenerating && (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                    <div className="w-5 h-5 border-2 border-current border-t-transparent 
-                      rounded-full animate-spin text-purple-400">
-                    </div>
-                  </div>
-                )}
-              </div>
+              <input
+                type="text"
+                value={newWord}
+                onChange={(e) => setNewWord(e.target.value)}
+                placeholder="Enter a magic word..."
+                className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2 
+                  text-white placeholder-gray-400 focus:outline-none focus:ring-2 
+                  focus:ring-purple-500/50 focus:border-transparent"
+              />
               <button
                 type="submit"
-                disabled={!newWord.trim() || isGenerating || !selectedCategoryId}
+                disabled={!newWord.trim() || !selectedCategoryId || isAddingWord}
                 className="px-6 py-2 bg-gradient-to-r from-purple-500/20 to-red-500/20 
                   text-white/90 rounded-lg hover:from-purple-500/30 hover:to-red-500/30 
                   transition-all flex items-center justify-center gap-2 border font-cinzel
                   border-purple-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <PlusIcon className="w-5 h-5" />
-                <span>Add</span>
+                {isAddingWord ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/20 border-t-white/90 rounded-full animate-spin" />
+                    <span>Adding...</span>
+                  </>
+                ) : (
+                  <>
+                    <PlusIcon className="w-5 h-5" />
+                    <span>Add</span>
+                  </>
+                )}
               </button>
             </div>
 

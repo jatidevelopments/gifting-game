@@ -20,7 +20,7 @@ export const useParticipants = () => {
 
   const utils = api.useContext();
 
-  const { mutate: addParticipant, mutateAsync: addParticipantAsync } = api.participant.create.useMutation({
+  const { mutate: addParticipant, mutateAsync: addParticipantAsync, isPending: isAddingParticipant } = api.participant.create.useMutation({
     onSuccess: async () => {
       await Promise.all([
         refetchParticipants(),
@@ -120,20 +120,17 @@ export const useParticipants = () => {
     setNewParticipant,
     isDeleteModalOpen,
     setIsDeleteModalOpen,
-    isClearAllModalOpen,
-    setIsClearAllModalOpen,
     participantToDelete,
-
-    // Data
     participants,
     isLoadingParticipants,
     gameId,
-
-    // Handlers
     handleSubmit,
     handleDelete,
     confirmDelete,
-    handleClearAll,
     handleNext,
+    isClearAllModalOpen,
+    setIsClearAllModalOpen,
+    handleClearAll,
+    isAddingParticipant,
   };
 };
