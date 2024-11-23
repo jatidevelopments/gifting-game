@@ -2,7 +2,8 @@ import { useRouter } from 'next/router';
 import { api } from '~/utils/api';
 import toast from 'react-hot-toast';
 import { TRPCClientError, TRPCClientErrorLike } from '@trpc/client';
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
+import type { AssignmentWithRelations } from '~/server/router/types';
 
 export const useGameResults = () => {
   const router = useRouter();
@@ -12,7 +13,7 @@ export const useGameResults = () => {
   const utils = api.useContext();
 
   const { data: assignments, isLoading: isLoadingAssignments } =
-    api.assignment.getResults.useQuery(
+    api.assignment.getResults.useQuery<AssignmentWithRelations[]>(
       { gameRoomId: gameId as string },
       {
         enabled: Boolean(gameId) && typeof gameId === 'string',
@@ -21,23 +22,14 @@ export const useGameResults = () => {
       }
     );
 
-  const generateAssignments = api.assignment.generateAssignments.useMutation({
-    onSuccess: () => {
-      // Set post-generation loading state
+  const generateAssignments = api.assignment.generateAssignments.useMutation<AssignmentWithRelations[]>({
+    onSuccess: async (newAssignments) => {
       setIsPostGenerationLoading(true);
-      
-      // Invalidate the assignments query to trigger a refresh
-      void utils.assignment.getResults.invalidate({ gameRoomId: gameId as string });
-      
-      // Show success toast
+      await utils.assignment.getResults.invalidate({ gameRoomId: gameId as string });
       toast.success('✨ Assignments generated successfully!', {
         duration: 6000,
       });
-      
-      // Keep loading state for a few more seconds after generation
-      setTimeout(() => {
-        setIsPostGenerationLoading(false);
-      }, 6000);
+      setIsPostGenerationLoading(false);
     },
     onError: (error: TRPCClientErrorLike<any>) => {
       if (error instanceof TRPCClientError) {
@@ -48,37 +40,95 @@ export const useGameResults = () => {
     },
   });
 
-  // Error handling for assignments query
-  useEffect(() => {
-    if (assignments === undefined && !isLoadingAssignments) {
-      toast.error('Failed to load assignments');
-    }
-  }, [assignments, isLoadingAssignments]);
+  const generateGiftIdeas = api.assignment.generateGiftIdeas.useMutation({
+    onSuccess: async () => {
+      await utils.assignment.getResults.invalidate({ gameRoomId: gameId as string });
+    },
+  });
 
-  const handleGenerateAssignments = () => {
-    if (!gameId || typeof gameId !== 'string') {
-      toast.error('Invalid game ID');
-      return;
-    }
+  const generateGiftImages = api.assignment.generateGiftImages.useMutation({
+    onSuccess: async () => {
+      await utils.assignment.getResults.invalidate({ gameRoomId: gameId as string });
+    },
+  });
 
-    generateAssignments.mutate({ gameRoomId: gameId });
-  };
+  const generateAllGiftIdeasMutation = api.assignment.generateAllGiftIdeas.useMutation({
+    onSuccess: async () => {
+      await utils.assignment.getResults.invalidate({ gameRoomId: gameId as string });
+    },
+  });
 
-  const handleBack = () => {
-    if (gameId && typeof gameId === 'string') {
-      void router.push(`/game/${gameId}/magic-words`);
+  const generateAllGiftImagesMutation = api.assignment.generateAllGiftImages.useMutation({
+    onSuccess: async () => {
+      await utils.assignment.getResults.invalidate({ gameRoomId: gameId as string });
+    },
+  });
+
+  const resetGiftGenerationMutation = api.assignment.resetGiftGeneration.useMutation({
+    onSuccess: async () => {
+      await utils.assignment.getResults.invalidate({ gameRoomId: gameId as string });
+    },
+  });
+
+  const generateAllGiftIdeas = useCallback(async () => {
+    if (!gameId) return;
+    console.info('🎁 Starting gift idea generation for game:', gameId);
+    await generateAllGiftIdeasMutation.mutateAsync({ gameRoomId: gameId as string });
+  }, [gameId, generateAllGiftIdeasMutation]);
+
+  const generateAllGiftImages = useCallback(async () => {
+    if (!gameId) return;
+    console.info('🎨 Starting gift image generation for game:', gameId);
+    await generateAllGiftImagesMutation.mutateAsync({ gameRoomId: gameId as string });
+  }, [gameId, generateAllGiftImagesMutation]);
+
+  const handleGenerateAssignments = useCallback(async (generateAssignmentsFn: (params: { gameRoomId: string }) => Promise<void>) => {
+    if (!gameId) return;
+
+    try {
+      await generateAssignmentsFn({ gameRoomId: gameId as string });
+      await generateAllGiftIdeas();
+
+      // Wait 1 second before generating gift images
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      await generateAllGiftImages();
+    } catch (error) {
+      console.error('Error generating assignments:', error);
+      toast.error('Failed to generate assignments. Please try again.');
     }
-  };
+  }, [gameId, generateAllGiftIdeas, generateAllGiftImages]);
+
+  const handleRetryGeneration = useCallback(async () => {
+    if (!gameId) return;
+    try {
+      await resetGiftGenerationMutation.mutateAsync({ gameRoomId: gameId as string });
+      await generateAllGiftIdeas();
+
+      // Wait 1 second before generating gift images
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      await generateAllGiftImages();
+      toast.success('Gift generation restarted successfully!');
+    } catch (error) {
+      console.error('Failed to retry gift generation:', error);
+      toast.error('Failed to retry gift generation. Please try again.');
+    }
+  }, [gameId, resetGiftGenerationMutation, generateAllGiftIdeas]);
 
   return {
-    // Data
     assignments,
     isLoadingAssignments,
-    isGenerating: generateAssignments.isPending || isPostGenerationLoading,
-    gameId,
-
-    // Handlers
+    isPostGenerationLoading,
+    generateAssignments,
+    generateGiftIdeasForAssignment: generateGiftIdeas.mutateAsync,
+    generateGiftImagesForAssignment: generateGiftImages.mutateAsync,
+    generateAllGiftIdeas,
+    generateAllGiftImages,
     handleGenerateAssignments,
-    handleBack,
+    handleRetryGeneration,
+    isGeneratingAssignments: generateAssignments.isPending,
+    isGeneratingIdeas: generateAllGiftIdeasMutation.isPending,
+    isGeneratingImages: generateAllGiftImagesMutation.isPending,
   };
 };

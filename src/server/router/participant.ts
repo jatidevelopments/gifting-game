@@ -13,7 +13,8 @@ export const participantRouter = createRouter({
         return await ctx.prisma.participant.findMany({
           where: { gameRoomId: input.gameRoomId },
           include: {
-            assignments: true,
+            givenAssignments: true,
+            receivedAssignments: true,
           },
         });
       } catch (error) {
@@ -66,7 +67,8 @@ export const participantRouter = createRouter({
             gameRoomId: input.gameRoomId,
           },
           include: {
-            assignments: true,
+            givenAssignments: true,
+            receivedAssignments: true,
           },
         });
       } catch (error) {
@@ -142,6 +144,11 @@ export const participantRouter = createRouter({
       try {
         const participant = await ctx.prisma.participant.findUnique({
           where: { id: input.participantId },
+          select: {
+            id: true,
+            pin: true,
+            hasAccessed: true,
+          },
         });
 
         if (!participant) {
@@ -149,14 +156,22 @@ export const participantRouter = createRouter({
         }
 
         if (!participant.pin) {
-          throw new AppError('BAD_REQUEST', 'PIN has not been set');
+          throw new AppError('BAD_REQUEST', 'PIN not set for this participant');
         }
 
-        if (participant.pin !== input.pin) {
-          throw new AppError('FORBIDDEN', 'Invalid PIN');
+        const isValid = participant.pin === input.pin;
+
+        if (isValid) {
+          await ctx.prisma.participant.update({
+            where: { id: input.participantId },
+            data: { hasAccessed: true },
+          });
         }
 
-        return participant;
+        return {
+          isValid,
+          hasAccessed: participant.hasAccessed,
+        };
       } catch (error) {
         throw handlePrismaError(error);
       }

@@ -1,5 +1,11 @@
 import { TRPCError } from '@trpc/server';
 
+export enum AssignmentStatus {
+  PENDING_GIFT_IDEAS = 'PENDING_GIFT_IDEAS',
+  PENDING_IMAGES = 'PENDING_IMAGES',
+  COMPLETED = 'COMPLETED'
+}
+
 export class AppError extends Error {
   public readonly code: TRPCError['code'];
 

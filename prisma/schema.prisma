@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum AssignmentStatus {
+  PENDING_GIFT_IDEAS
+  PENDING_IMAGES
+  COMPLETED
+}
+
 model GameRoom {
   id           String        @id @default(uuid())
   code         String        @unique @default(uuid())
@@ -17,12 +23,12 @@ model GameRoom {
 }
 
 model Participant {
-  id          String        @id @default(uuid())
+  id          String       @id @default(uuid())
   name        String
   pin         String?      // PIN for accessing results
   hasAccessed Boolean      @default(false)  // Track if participant has viewed their assignment
-  assignments Assignment[] @relation("Gifter")
-  received    Assignment[] @relation("Receiver")
+  givenAssignments Assignment[] @relation("GifterAssignments")
+  receivedAssignments Assignment[] @relation("ReceiverAssignments")
   gameRoom    GameRoom     @relation(fields: [gameRoomId], references: [id], onDelete: Cascade)
   gameRoomId  String
 
@@ -30,39 +36,47 @@ model Participant {
 }
 
 model Adjective {
-  id            String        @id @default(uuid())
+  id            String       @id @default(uuid())
   word          String
-  category      Category      @relation(fields: [categoryId], references: [id])
+  category      Category     @relation(fields: [categoryId], references: [id])
   categoryId    String
-  asAdjective1  Assignment[]  @relation("Adjective1")
-  asAdjective2  Assignment[]  @relation("Adjective2")
-  asAdjective3  Assignment[]  @relation("Adjective3")
-  gameRoom      GameRoom      @relation(fields: [gameRoomId], references: [id], onDelete: Cascade)
+  asAdjective1Assignments Assignment[] @relation("Adjective1Assignments")
+  asAdjective2Assignments Assignment[] @relation("Adjective2Assignments")
+  asAdjective3Assignments Assignment[] @relation("Adjective3Assignments")
+  gameRoom      GameRoom    @relation(fields: [gameRoomId], references: [id], onDelete: Cascade)
   gameRoomId    String
 
   @@unique([word, gameRoomId])
 }
 
 model Category {
-  id         String       @id @default(uuid())
+  id         String      @id @default(uuid())
   name       String      @unique
   adjectives Adjective[]
 }
 
 model Assignment {
-  id            String       @id @default(uuid())
-  gifterId      String
-  receiverId    String
-  gifter        Participant  @relation("Gifter", fields: [gifterId], references: [id], onDelete: Cascade)
-  receiver      Participant  @relation("Receiver", fields: [receiverId], references: [id], onDelete: Cascade)
-  adjective1    Adjective    @relation("Adjective1", fields: [adjective1Id], references: [id], onDelete: Restrict)
-  adjective2    Adjective    @relation("Adjective2", fields: [adjective2Id], references: [id], onDelete: Restrict)
-  adjective3    Adjective    @relation("Adjective3", fields: [adjective3Id], references: [id], onDelete: Restrict)
-  adjective1Id  String
-  adjective2Id  String
-  adjective3Id  String
-  accessUrl     String       @unique @default(uuid()) // Unique URL for each assignment
-  gameRoom      GameRoom     @relation(fields: [gameRoomId], references: [id], onDelete: Cascade)
-  gameRoomId    String
-  giftIdeaImages String[]    @default([]) // URLs of the generated gift idea images
+  id             String           @id @default(uuid())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  gifter         Participant     @relation("GifterAssignments", fields: [gifterId], references: [id])
+  gifterId       String
+  receiver       Participant     @relation("ReceiverAssignments", fields: [receiverId], references: [id])
+  receiverId     String
+  adjective1     Adjective       @relation("Adjective1Assignments", fields: [adjective1Id], references: [id])
+  adjective1Id   String
+  adjective2     Adjective       @relation("Adjective2Assignments", fields: [adjective2Id], references: [id])
+  adjective2Id   String
+  adjective3     Adjective       @relation("Adjective3Assignments", fields: [adjective3Id], references: [id])
+  adjective3Id   String
+  gameRoom       GameRoom        @relation(fields: [gameRoomId], references: [id])
+  gameRoomId     String
+  accessUrl      String          @unique
+  giftIdeas      String[]        @default([])
+  giftIdeaImages String[]        @default([])
+  status         AssignmentStatus @default(PENDING_GIFT_IDEAS)
+
+  @@index([gifterId])
+  @@index([receiverId])
+  @@index([gameRoomId])
 }

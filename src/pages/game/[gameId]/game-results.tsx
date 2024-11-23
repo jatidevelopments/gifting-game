@@ -1,103 +1,14 @@
+import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
-import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useCallback } from 'react';
 import toast from 'react-hot-toast';
-import { CopyLinkButton } from '../../../components/CopyLinkButton';
 import { GameLayout } from '~/components/GameLayout';
+import { LoadingAnimation } from '~/components/LoadingAnimation';
 import { useGameResults } from '~/hooks/useGameResults';
-import { useEffect, useState } from 'react';
-
-const loadingMessages = [
-  {
-    icon: "🎲",
-    title: "Shuffling Participants",
-    description: "Making sure everyone gets a unique gift buddy..."
-  },
-  {
-    icon: "🎨",
-    title: "Creating Gift Ideas",
-    description: "Our elves are brainstorming personalized suggestions..."
-  },
-  {
-    icon: "🎁",
-    title: "Wrapping Things Up",
-    description: "Adding some festive magic to your assignments..."
-  },
-  {
-    icon: "✨",
-    title: "Sprinkling Magic Dust",
-    description: "Making your Secret Santa experience extra special..."
-  },
-  {
-    icon: "🎄",
-    title: "Spreading Holiday Cheer",
-    description: "Almost ready to reveal your magical pairings..."
-  }
-];
-
-const LoadingAnimation = () => {
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentMessageIndex((prev) => (prev + 1) % loadingMessages.length);
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentMessage = loadingMessages[currentMessageIndex];
-
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 max-w-2xl mx-auto"
-      >
-        <div className="text-center space-y-6">
-          <motion.div
-            key={currentMessageIndex}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="space-y-4"
-          >
-            <div className="relative w-24 h-24 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-red-500/20 rounded-full animate-pulse"></div>
-              <div className="absolute inset-3 bg-gradient-to-r from-purple-500 to-red-500 rounded-full"></div>
-              <div className="absolute inset-4 bg-gray-900 rounded-full flex items-center justify-center">
-                <span className="text-4xl">{currentMessage!.icon}</span>
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              <h2 className="text-2xl font-cinzel bg-gradient-to-r from-purple-400 to-red-400 text-transparent bg-clip-text">
-                {currentMessage!.title}
-              </h2>
-              <p className="text-gray-400">{currentMessage!.description}</p>
-            </div>
-          </motion.div>
-
-          <div className="flex justify-center space-x-2">
-            {loadingMessages.map((_, index) => (
-              <motion.div
-                key={index}
-                className={`w-2 h-2 rounded-full ${
-                  index === currentMessageIndex ? 'bg-purple-500' : 'bg-white/20'
-                }`}
-                animate={{
-                  scale: index === currentMessageIndex ? 1.2 : 1,
-                }}
-                transition={{ duration: 0.3 }}
-              />
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-};
+import { CopyLinkButton } from '../../../components/CopyLinkButton';
+import { AssignmentStatus as PrismaAssignmentStatus } from '@prisma/client';
 
 const GameResults: NextPage = (props) => {
   return (
@@ -108,15 +19,22 @@ const GameResults: NextPage = (props) => {
 };
 
 const GameResultsContent = () => {
+  const router = useRouter();
+  const gameId = router.query.gameId as string;
+
   const {
     assignments,
     isLoadingAssignments,
-    isGenerating,
-    gameId,
+    isPostGenerationLoading,
+    generateAssignments,
     handleGenerateAssignments,
+    handleRetryGeneration,
+    isGeneratingAssignments,
+    isGeneratingIdeas,
+    isGeneratingImages,
   } = useGameResults();
 
-  const handleCopyLink = async (accessUrl: string, gifterName: string) => {
+  const handleCopyLink = useCallback(async (accessUrl: string, gifterName: string) => {
     try {
       const baseUrl = `${window.location.origin}/assignment/${accessUrl}`;
       const message = `🎄 Hey ${gifterName}! Your Secret Santa assignment is ready!\n\nClick here to see who you're gifting to: ${baseUrl}`;
@@ -140,9 +58,65 @@ const GameResultsContent = () => {
         },
       });
     }
+  }, []);
+
+  const AssignmentStatus: React.FC<{ status: PrismaAssignmentStatus }> = ({ status }) => {
+    let icon = '';
+    let message = '';
+    let color = '';
+
+    switch (status) {
+      case 'PENDING_GIFT_IDEAS':
+        icon = '🎨';
+        message = 'Generating gift ideas...';
+        color = 'text-yellow-500/90';
+        break;
+      case 'PENDING_IMAGES':
+        icon = '✨';
+        message = 'Creating gift visuals...';
+        color = 'text-purple-400/90';
+        break;
+      case 'COMPLETED':
+        icon = '🎁';
+        message = 'Ready to share!';
+        color = 'text-green-400/90';
+        break;
+      default:
+        icon = '⏳';
+        message = 'Processing...';
+        color = 'text-gray-400/90';
+    }
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 5 }}
+        animate={{ opacity: 1, y: 0 }}
+        className={`flex items-center gap-2 mt-2 ${color}`}
+      >
+        <div className="relative">
+          <span className="text-lg">{icon}</span>
+          {(status === 'PENDING_GIFT_IDEAS' || status === 'PENDING_IMAGES') && (
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              animate={{
+                x: ['-100%', '100%'],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+            />
+          )}
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-medium">{message}</span>
+        </div>
+      </motion.div>
+    );
   };
 
-  if (isGenerating || isLoadingAssignments) {
+  if (isGeneratingAssignments || isLoadingAssignments || isPostGenerationLoading) {
     return (
       <LoadingAnimation />
     );
@@ -199,18 +173,19 @@ const GameResultsContent = () => {
             </div>
 
             <button
-              onClick={handleGenerateAssignments}
-              disabled={isGenerating}
+              onClick={() => handleGenerateAssignments(async (params) => {
+                await generateAssignments.mutateAsync(params);
+              })}
+              disabled={isGeneratingAssignments || isLoadingAssignments || isPostGenerationLoading}
               className="group relative px-8 py-3 bg-gradient-to-r from-purple-500 to-red-500 rounded-lg text-white font-cinzel font-bold text-lg
                 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transform hover:-translate-y-0.5 
                 transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0
                 disabled:hover:shadow-purple-500/25 flex items-center justify-center gap-2 mx-auto"
             >
-
-              {isGenerating ? (
+              {isGeneratingAssignments || isLoadingAssignments || isPostGenerationLoading ? (
                 <>
                   <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Generating...</span>
+                  <span>Processing...</span>
                 </>
               ) : (
                 <>
@@ -232,7 +207,7 @@ const GameResultsContent = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center space-y-4"
+        className="text-center space-y-2"
       >
         <div className="max-w-4xl mx-auto px-4 py-3">
           <h1 className="text-3xl font-cinzel text-center">
@@ -246,36 +221,61 @@ const GameResultsContent = () => {
         <p className="text-gray-400">Share these magical links with your participants to reveal their assignments!</p>
       </motion.div>
 
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-3">
         <Link
-          href={`/game/${gameId as string}/magic-words`}
+          href={`/game/${gameId}/magic-words`}
           className="px-6 py-2 bg-white/5 text-white/80 rounded-lg hover:bg-white/10 
             transition-colors flex items-center space-x-2 border border-white/10"
         >
           <span className="text-xl">←</span>
           <span>Previous Step</span>
         </Link>
-        <button
-          onClick={handleGenerateAssignments}
-          disabled={isGenerating}
-          className="group w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-purple-500/20 to-red-500/20 text-white/90 
-            rounded-lg hover:from-purple-500/30 hover:to-red-500/30 transition-all flex items-center justify-center 
-            gap-2 font-cinzel border border-purple-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isGenerating ? (
-            <>
-              <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
-              <span>Regenerating...</span>
-            </>
-          ) : (
-            <>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-              <span>Regenerate</span>
-            </>
-          )}
-        </button>
+        <div className="flex gap-4">
+            <button
+              onClick={handleRetryGeneration}
+              disabled={isGeneratingAssignments || isLoadingAssignments || isPostGenerationLoading || isGeneratingIdeas || isGeneratingImages}
+              className="group px-6 py-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-white/90 
+                rounded-lg hover:from-yellow-500/30 hover:to-orange-500/30 transition-all flex items-center 
+                gap-2 border border-yellow-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isGeneratingAssignments || isLoadingAssignments || isPostGenerationLoading || isGeneratingIdeas || isGeneratingImages ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+                  <span>Processing...</span>
+                </>
+              ) : (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  <span>Retry Gift Ideas</span>
+                </>
+              )}
+            </button>
+          <button
+            onClick={() => handleGenerateAssignments(async (params) => {
+              await generateAssignments.mutateAsync(params);
+            })}
+            disabled={isGeneratingAssignments || isLoadingAssignments || isPostGenerationLoading || isGeneratingIdeas || isGeneratingImages}
+            className="group px-6 py-2 bg-gradient-to-r from-purple-500/20 to-red-500/20 text-white/90 
+              rounded-lg hover:from-purple-500/30 hover:to-red-500/30 transition-all flex items-center 
+              gap-2 border border-purple-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isGeneratingAssignments || isLoadingAssignments || isPostGenerationLoading || isGeneratingIdeas || isGeneratingImages ? (
+              <>
+                <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+                <span>Processing...</span>
+              </>
+            ) : (
+              <>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <span>Regenerate</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
       <div className="grid gap-4">
@@ -287,62 +287,44 @@ const GameResultsContent = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ delay: index * 0.1 }}
-            className="group bg-white/5 hover:bg-white/8 backdrop-blur-sm rounded-xl p-6 border border-white/10 
-              transition-colors relative overflow-hidden"
+            className={`group bg-white/5 hover:bg-white/8 backdrop-blur-sm rounded-xl p-6 border 
+              transition-colors relative overflow-hidden ${
+                assignment.status === 'PENDING_GIFT_IDEAS' 
+                  ? 'border-yellow-500/20' 
+                  : 'border-white/10'
+              }`}
           >
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500/20 to-red-500/20 
-                  flex items-center justify-center border border-purple-500/20 group-hover:from-purple-500/30 
-                  group-hover:to-red-500/30 transition-colors"
+                <div className={`w-10 h-10 rounded-full bg-gradient-to-br flex items-center justify-center border 
+                  transition-colors ${
+                    assignment.status === 'PENDING_GIFT_IDEAS'
+                      ? 'from-yellow-500/20 to-orange-500/20 border-yellow-500/20'
+                      : 'from-purple-500/20 to-red-500/20 border-purple-500/20'
+                  }`}
                 >
                   <span className="text-xl">🎅</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-cinzel text-purple-400 group-hover:text-purple-300 transition-colors">
-                    {assignment.gifter.name}
-                  </h3>
-                  <p className="text-sm text-gray-400">
-                    Share their unique gift assignment link
-                  </p>
+                  <h3 className="text-lg font-cinzel text-white/90">{assignment.gifter.name}</h3>
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="text-gray-400">is gifting to</span>
+                    <span className="font-medium text-white/80">{assignment.receiver.name}</span>
+                  </div>
+                  <AssignmentStatus status={assignment.status} />
                 </div>
               </div>
-              <div className="flex gap-2 w-full sm:w-auto">
-                <button
-                  onClick={() => {
-                    void handleCopyLink(assignment.accessUrl, assignment.gifter.name);
-                  }}
-                  className="px-8 py-3 bg-purple-500/20 hover:bg-purple-500/30 
-                    transition-colors rounded-lg text-purple-300 flex items-center justify-center gap-2 
-                    border border-purple-400/20 font-cinzel"
-                >
-                  <span>Copy Link</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
-                  </svg>
-                </button>
-                <Link
-                  href={`/assignment/${assignment.accessUrl}`}
-                  className="px-8 py-3 bg-red-500/20 hover:bg-red-500/30 
-                    transition-colors rounded-lg text-red-300 flex items-center justify-center gap-2 
-                    border border-red-300/20 font-cinzel"
-                >
-                  <span>Preview</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                    <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-                  </svg>
-                </Link>
+
+              <div className="flex items-center gap-3">
+                <CopyLinkButton
+                  onClick={() => handleCopyLink(assignment.accessUrl, assignment.gifter.name)}
+                  disabled={assignment.status !== 'COMPLETED'}
+                />
               </div>
             </div>
           </motion.div>
         ))}
       </div>
-
-      {gameId && typeof gameId === 'string' && (
-        <CopyLinkButton gameCode={gameId} currentPage="game-results" />
-      )}
     </div>
   );
 };

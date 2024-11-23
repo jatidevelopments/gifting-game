@@ -1,8 +1,10 @@
-import type { Prisma } from '@prisma/client';
+import type { Prisma, Assignment } from '@prisma/client';
+import { AssignmentStatus } from './errors';
 
 export type ParticipantWithAssignments = Prisma.ParticipantGetPayload<{
   include: {
-    assignments: true;
+    givenAssignments: true;
+    receivedAssignments: true;
   };
 }>;
 
