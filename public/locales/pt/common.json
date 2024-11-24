@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Criar troca",
+    "join": "Participar da troca",
+    "start": "Começar agora",
+    "next": "Próximo",
+    "back": "Voltar",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "close": "Fechar",
+    "save": "Salvar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "share": "Compartilhar"
+  },
+  "loading": "Carregando...",
+  "error": "Ocorreu um erro",
+  "success": "Sucesso!",
+  "required": "Obrigatório",
+  "optional": "Opcional",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. Todos os direitos reservados."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "Espalhe a magia das festas!",
+    "description": "Compartilhe o MySecretSanta com amigos e família para tornar a troca de presentes ainda mais mágica",
+    "defaultTitle": " Descobri o MySecretSanta - A maneira mais mágica de organizar um Amigo Secreto! "
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "results": {
+    "copy": {
+      "message": "🎄 Bonjour {{name}} ! Ton attribution de Père Noël Secret est prête !\n\nClique ici pour voir à qui tu vas offrir un cadeau : {{url}}",
+      "success": "Lien copié pour {{name}} ! 🎁",
+      "error": "Impossible de copier le lien. Veuillez réessayer."
+    },
+    "status": {
+      "pending_ideas": {
+        "icon": "🎨",
+        "message": "Génération des idées cadeaux..."
+      },
+      "pending_images": {
+        "icon": "✨",
+        "message": "Création des visuels cadeaux..."
+      },
+      "completed": {
+        "icon": "🎁",
+        "message": "Prêt à partager !"
+      },
+      "default": {
+        "icon": "⏳",
+        "message": "En cours..."
+      }
+    },
+    "generate": {
+      "title": "Prêt à créer de la magie ?",
+      "description": "Générons les attributions magiques pour ton échange de cadeaux !",
+      "button": "Générer les attributions",
+      "retry": "Réessayer"
+    },
+    "assignments": {
+      "title": "🎄 Attributions du Père Noël Secret",
+      "subtitle": "Partage ces liens magiques avec les participants !",
+      "copied": "Copié !",
+      "copy_link": "Copier le lien",
+      "share_whatsapp": "Partager via WhatsApp",
+      "share_email": "Partager par e-mail",
+      "loading": {
+        "title": "🎁 Création de la magie",
+        "subtitle": "Génération des attributions du Père Noël Secret...",
+        "description": "Cela ne prendra qu'un instant !"
+      },
+      "is_gifting_to": "offre à",
+      "ready_to_share": "Prêt à partager",
+      "pending_gift_ideas": "Génération des idées cadeaux",
+      "in_progress": "En cours"
+    },
+    "processing": "En cours...",
+    "regenerate_ideas": "Régénérer les idées",
+    "regenerate_assignments": "Régénérer les attributions",
+    "previous_step": "Étape précédente"
+  },
+  "participants": {
+    "meta": {
+      "title": "Ajouter des participants",
+      "description": "Ajoute des participants à ton échange de cadeaux"
+    },
+    "title": "Invite tes lutins",
+    "subtitle": "Ajoute les participants magiques qui rejoindront ton échange de cadeaux !",
+    "add_section": {
+      "title": "Ajouter un participant",
+      "description": "Entre le nom d'une personne qui participera à l'échange de cadeaux",
+      "input_placeholder": "Entre le nom du participant...",
+      "adding": "Ajout en cours...",
+      "add_button": "Ajouter"
+    },
+    "next_button": "Étape suivante",
+    "no_participants": "Aucun participant ajouté pour l'instant. Commence par ajouter quelqu'un ci-dessus ! 🎁",
+    "clear_all_button": "Tout effacer",
+    "delete_modal": {
+      "title": "Supprimer le participant",
+      "message": "Es-tu sûr de vouloir supprimer \"{{name}}\" ?",
+      "confirm": "Supprimer",
+      "cancel": "Annuler"
+    },
+    "clear_all_modal": {
+      "title": "Effacer tous les participants",
+      "message": "Es-tu sûr de vouloir supprimer tous les participants ? Cette action ne peut pas être annulée.",
+      "confirm": "Tout effacer",
+      "cancel": "Annuler"
+    }
+  },
+  "magic": {
+    "title": "Ton moment magique",
+    "description": "Découvrons à qui tu vas faire plaisir !",
+    "loading": "Chargement de ton attribution...",
+    "error": "Impossible de charger l'attribution",
+    "reveal": {
+      "title": "Ton Père Noël Secret est...",
+      "description": "Tu as été attribué à {{name}} ! Voici quelques détails :",
+      "interests": "Centres d'intérêt",
+      "preferences": "Préférences",
+      "restrictions": "Restrictions",
+      "budget": "Budget",
+      "notes": "Notes"
+    }
+  },
+  "ideas": {
+    "title": "Idées cadeaux",
+    "description": "Basé sur les centres d'intérêt de ton Père Noël Secret",
+    "loading": "Génération d'idées cadeaux...",
+    "error": "Impossible de générer des idées cadeaux",
+    "empty": "Aucune idée cadeau disponible"
+  },
+  "magic_words": {
+    "title": "Crée tes mots magiques",
+    "subtitle": "Ajoute des mots enchantés pour guider le choix parfait du cadeau !",
+    "add_section": {
+      "title": "Ajouter un mot magique",
+      "description": "Entre des mots magiques qui décrivent les cadeaux parfaits (ex : douillet, créatif, aventureux)",
+      "input_placeholder": "Entre un mot magique...",
+      "add_button": "Ajouter un mot",
+      "generate_button": "Générer",
+      "select_category": "Choisis d'abord une catégorie pour ajouter ton mot magique ✨",
+      "clear_all": "Tout effacer"
+    },
+    "loading": "Chargement des mots magiques...",
+    "no_magic_words": "Aucun mot magique ajouté pour l'instant. Commence par ajouter quelques mots enchantés ci-dessus ! ✨",
+    "categories": {
+      "color": {
+        "emoji": "🎨",
+        "name": "couleur"
+      },
+      "texture": {
+        "emoji": "🧸",
+        "name": "texture"
+      },
+      "style": {
+        "emoji": "🎭",
+        "name": "style"
+      },
+      "mood": {
+        "emoji": "🌟",
+        "name": "humeur"
+      },
+      "utility": {
+        "emoji": "🛠️",
+        "name": "utilité"
+      },
+      "interest": {
+        "emoji": "🎯",
+        "name": "intérêt"
+      }
+    },
+    "navigation": {
+      "previous": "Étape précédente",
+      "next": "Étape suivante"
+    },
+    "delete_modal": {
+      "title": "Supprimer le mot magique",
+      "message": "Êtes-vous sûr de vouloir supprimer ce mot magique ?",
+      "confirm": "Supprimer",
+      "cancel": "Annuler"
+    },
+    "clear_all_modal": {
+      "title": "Effacer tous les mots magiques",
+      "message": "Êtes-vous sûr de vouloir effacer tous les mots magiques ? Cette action ne peut pas être annulée.",
+      "confirm": "Tout effacer",
+      "cancel": "Annuler"
+    }
+  },
+  "loading_animation": {
+    "messages": [
+      {
+        "icon": "🎲",
+        "title": "Mélange des participants",
+        "description": "S'assure que chacun reçoit un partenaire cadeau unique..."
+      },
+      {
+        "icon": "🎨",
+        "title": "Création d'idées cadeaux",
+        "description": "Nos lutins réfléchissent à des suggestions personnalisées..."
+      },
+      {
+        "icon": "🎁",
+        "title": "Emballage des cadeaux",
+        "description": "Ajout d'une touche de magie festive à tes attributions..."
+      },
+      {
+        "icon": "✨",
+        "title": "Saupoudrage de poussière magique",
+        "description": "Rend ton expérience de Père Noël Secret encore plus spéciale..."
+      },
+      {
+        "icon": "🎄",
+        "title": "Diffusion de l'esprit de Noël",
+        "description": "Presque prêt à révéler tes paires magiques..."
+      }
+    ]
+  },
+  "layout": {
+    "navigation": {
+      "participants": {
+        "label": "Participants"
+      },
+      "magic_words": {
+        "label": "Mots magiques"
+      },
+      "game_results": {
+        "label": "Résultats"
+      }
+    }
+  },
+  "assignment": {
+    "loading": {
+      "title": "🎄 Les lutins préparent ton attribution...",
+      "description": "Un instant pendant que nous préparons tout !"
+    },
+    "error": {
+      "title": "Ho ho... Oh non ! 🎅",
+      "message": "Le Père Noël n'a pas trouvé ton attribution dans sa liste"
+    },
+    "pin": {
+      "title": "Ho Ho Ho, {{name}} ! 🎅",
+      "create_description": "Crée un code PIN magique pour protéger ta surprise du Père Noël Secret !",
+      "enter_description": "Entre ton code PIN magique pour découvrir ton attribution du Père Noël Secret !",
+      "input_placeholder": "Entre le code PIN (4-8 caractères)",
+      "show": "Afficher",
+      "hide": "Masquer",
+      "submit_create": "🎄 Définir le PIN festif",
+      "submit_unlock": "✨ Déverrouiller la magie"
+    },
+    "click_to_reveal": "Cliquez sur le cadeau pour découvrir votre attribution !",
+    "reveal": {
+      "title": "Ho Ho Ho, {{name}} ! 🎅",
+      "pre_reveal_description": "Prêt à découvrir ta mission de Père Noël Secret ?",
+      "post_reveal_description": "Voici ton attribution festive !",
+      "reveal_button": "🎁 Déballer ton attribution",
+      "receiver_intro": "Ta mission de Père Noël Secret est d'apporter de la joie à :",
+      "magic_words_title": "✨ Mots magiques pour guider ton cadeau :",
+      "ai_ideas_title": "Idées cadeaux générées par l'IA :",
+      "ai_ideas_description": "🎨 Les lutins ont créé ces idées cadeaux magiques juste pour toi !",
+      "footer": "Chut... Garde la magie des fêtes vivante ! 🤫 ✨"
+    }
+  }
+}

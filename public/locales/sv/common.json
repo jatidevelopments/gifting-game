@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Skapa utbyte",
+    "join": "Gå med i utbyte",
+    "start": "Börja nu",
+    "next": "Nästa",
+    "back": "Tillbaka",
+    "submit": "Skicka",
+    "cancel": "Avbryt",
+    "close": "Stäng",
+    "save": "Spara",
+    "edit": "Redigera",
+    "delete": "Ta bort",
+    "share": "Dela"
+  },
+  "loading": "Laddar...",
+  "error": "Ett fel uppstod",
+  "success": "Klart!",
+  "required": "Obligatoriskt",
+  "optional": "Valfritt",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. Alla rättigheter förbehållna."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "Sprid julens magi!",
+    "description": "Dela MySecretSanta med vänner och familj för att göra julklappsutdelningen ännu mer magisk",
+    "defaultTitle": "🎁 Upptäck MySecretSanta - Det mest magiska sättet att organisera Julklappsspel! ✨"
+  }
+}

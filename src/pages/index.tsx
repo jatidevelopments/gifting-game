@@ -1,54 +1,52 @@
 import { motion } from "framer-motion";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { SocialShareButtons } from "~/components/SocialShareButtons";
 import { api } from "~/utils/api";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const features = [
   {
     emoji: "🎁",
-    title: "Easy Setup",
-    description:
-      "Create your Secret Santa group in seconds. No account needed!",
+    titleKey: "features.setup.title",
+    descriptionKey: "features.setup.description",
   },
   {
     emoji: "🎯",
-    title: "Smart Matching",
-    description:
-      "Our algorithm ensures fair and random gift assignments for everyone.",
+    titleKey: "features.matching.title",
+    descriptionKey: "features.matching.description",
   },
   {
     emoji: "✨",
-    title: "Gift Ideas",
-    description:
-      "Get AI-powered gift suggestions based on interests and budget.",
+    titleKey: "features.ideas.title",
+    descriptionKey: "features.ideas.description",
   },
   {
     emoji: "🔒",
-    title: "Private & Secure",
-    description:
-      "Assignments are kept secret and shared through private links.",
+    titleKey: "features.privacy.title",
+    descriptionKey: "features.privacy.description",
   },
 ];
 
 const howItWorks = [
   {
     step: 1,
-    title: "Create Exchange",
-    description: "Start your Secret Santa group with one click",
+    titleKey: "howItWorks.step1.title",
+    descriptionKey: "howItWorks.step1.description",
     icon: "🎯",
   },
   {
     step: 2,
-    title: "Add Members",
-    description: "Invite your friends, family, or colleagues",
+    titleKey: "howItWorks.step2.title",
+    descriptionKey: "howItWorks.step2.description",
     icon: "👥",
   },
   {
     step: 3,
-    title: "Get Matched",
-    description: "We'll randomly assign gift exchanges",
+    titleKey: "howItWorks.step3.title",
+    descriptionKey: "howItWorks.step3.description",
     icon: "🎁",
   },
 ];
@@ -68,8 +66,11 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-const LandingPage: NextPage = (props) => {
+const LandingPage: NextPage = (
+  props: InferGetStaticPropsType<typeof getStaticProps>
+) => {
   const router = useRouter();
+  const { t } = useTranslation("home");
   const url = typeof window !== "undefined" ? window.location.href : "";
 
   const createGameRoom = api.gameRoom.create.useMutation({
@@ -102,13 +103,8 @@ const LandingPage: NextPage = (props) => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <Head>
-        <title>
-          MySecretSanta - Free Secret Santa Gift Exchange Organizer | Easy & Fun
-        </title>
-        <meta
-          name="description"
-          content="Create and organize your Secret Santa gift exchange easily and for free! Perfect for family, friends, or office parties. Automatic matching, wish lists, and private links for all participants."
-        />
+        <title>{t("title")}</title>
+        <meta name="description" content={t("description")} />
         <meta
           name="keywords"
           content="Secret Santa, gift exchange, Christmas gift organizer, Secret Santa generator, gift exchange app, Secret Santa online, free Secret Santa organizer"
@@ -179,7 +175,7 @@ const LandingPage: NextPage = (props) => {
                     }}
                     transition={{ duration: 3, repeat: Infinity }}
                   >
-                    Make
+                    {t("hero.title1")}
                   </motion.span>
                 </motion.span>{" "}
                 <motion.span
@@ -201,7 +197,7 @@ const LandingPage: NextPage = (props) => {
                     transition={{ duration: 3, repeat: Infinity, delay: 0.3 }}
                     style={{ backgroundSize: "200% auto" }}
                   >
-                    Secret
+                    {t("hero.title2")}
                   </motion.span>
                 </motion.span>{" "}
                 <motion.span
@@ -223,7 +219,7 @@ const LandingPage: NextPage = (props) => {
                     transition={{ duration: 3, repeat: Infinity, delay: 0.3 }}
                     style={{ backgroundSize: "200% auto" }}
                   >
-                    Santa
+                    {t("hero.title3")}
                   </motion.span>
                 </motion.span>
                 <br />
@@ -252,7 +248,7 @@ const LandingPage: NextPage = (props) => {
                       transition={{ duration: 3, repeat: Infinity }}
                       style={{ backgroundSize: "200% auto" }}
                     >
-                      Magical
+                      {t("hero.subtitle1")}
                     </motion.span>
                   </motion.span>
                 </motion.div>{" "}
@@ -273,7 +269,7 @@ const LandingPage: NextPage = (props) => {
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    This Year
+                    {t("hero.subtitle2")}
                   </motion.span>
                 </motion.span>
               </motion.h1>
@@ -284,8 +280,7 @@ const LandingPage: NextPage = (props) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1.2 }}
               >
-                The easiest way to organize your Secret Santa gift exchange. No
-                accounts, no hassle - just holiday joy!
+                {t("hero.description")}
               </motion.p>
 
               <motion.div
@@ -316,7 +311,7 @@ const LandingPage: NextPage = (props) => {
                       whileHover={{ x: [0, 4, 0] }}
                       transition={{ repeat: Infinity, duration: 1 }}
                     >
-                      Start Now
+                      {t("hero.button")}
                       <span aria-hidden="true">→</span>
                     </motion.span>
                   </button>
@@ -340,15 +335,15 @@ const LandingPage: NextPage = (props) => {
             >
               <div className="text-center">
                 <div className="text-3xl font-bold text-white">100%</div>
-                <div className="text-sm text-gray-400">Free Forever</div>
+                <div className="text-sm text-gray-400">{t("stats.free")}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-white">1 Min</div>
-                <div className="text-sm text-gray-400">Setup Time</div>
+                <div className="text-sm text-gray-400">{t("stats.setup")}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-white">AI</div>
-                <div className="text-sm text-gray-400">Gift Ideas</div>
+                <div className="text-sm text-gray-400">{t("stats.ideas")}</div>
               </div>
             </motion.div>
           </motion.div>
@@ -370,7 +365,7 @@ const LandingPage: NextPage = (props) => {
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
           >
-            How It Works
+            {t("howItWorks.title")}
           </motion.h2>
           <div className="mx-auto max-w-5xl px-4">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -401,10 +396,10 @@ const LandingPage: NextPage = (props) => {
                     {item.step}
                   </div>
                   <h3 className="mb-2 text-xl font-semibold text-white transition-all duration-300 group-hover:text-red-400">
-                    {item.title}
+                    {t(item.titleKey)}
                   </h3>
                   <p className="text-gray-400 transition-all duration-300 group-hover:text-red-200">
-                    {item.description}
+                    {t(item.descriptionKey)}
                   </p>
                 </motion.div>
               ))}
@@ -428,12 +423,12 @@ const LandingPage: NextPage = (props) => {
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
           >
-            Why Choose Us
+            {t("features.title")}
           </motion.h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
               <motion.article
-                key={index}
+                key={feature.titleKey}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
@@ -454,15 +449,15 @@ const LandingPage: NextPage = (props) => {
                 <motion.div
                   className="mb-4 text-4xl transition-all duration-300 group-hover:scale-110 group-hover:text-green-500"
                   role="img"
-                  aria-label={feature.title}
+                  aria-label={t(feature.titleKey)}
                 >
                   {feature.emoji}
                 </motion.div>
                 <h3 className="mb-2 text-xl font-semibold text-white transition-all duration-300 group-hover:text-green-400">
-                  {feature.title}
+                  {t(feature.titleKey)}
                 </h3>
                 <p className="text-gray-400 transition-all duration-300 group-hover:text-green-200">
-                  {feature.description}
+                  {t(feature.descriptionKey)}
                 </p>
               </motion.article>
             ))}
@@ -486,12 +481,9 @@ const LandingPage: NextPage = (props) => {
             className="mx-auto max-w-2xl px-4"
           >
             <h2 className="mb-4 text-3xl font-bold text-white">
-              Ready to Start Your Secret Santa?
+              {t("cta.title")}
             </h2>
-            <p className="mb-8 text-gray-300">
-              Join thousands of happy gift-givers and make this holiday season
-              unforgettable!
-            </p>
+            <p className="mb-8 text-gray-300">{t("cta.description")}</p>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -510,7 +502,7 @@ const LandingPage: NextPage = (props) => {
                 className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-green-500 to-green-700 px-8 py-4 text-xl font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-green-500/50"
                 aria-label="Create your Secret Santa exchange now"
               >
-                Create Exchange
+                {t("cta.button")}
               </button>
             </motion.div>
           </motion.div>
@@ -523,6 +515,14 @@ const LandingPage: NextPage = (props) => {
       </main>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? "en", ["common", "home"])),
+    },
+  };
 };
 
 export default LandingPage;

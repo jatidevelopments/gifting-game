@@ -30,7 +30,7 @@ export function SEOMetadata({
     "Secret Santa with Rules",
     "Gift Ideas Generator",
     "Holiday Gift Exchange",
-    "Secret Santa 2025",
+    "Secret Santa 2024",
   ].join(", ");
 
   return (

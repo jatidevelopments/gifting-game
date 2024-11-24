@@ -1,0 +1,237 @@
+{
+  "results": {
+    "copy": {
+      "message": "🎄 Hallo {{name}}! Deine Wichtel-Zuordnung ist fertig!\n\nKlicke hier, um zu sehen, wem du etwas schenkst: {{url}}",
+      "success": "Link für {{name}} kopiert! 🎁",
+      "error": "Link konnte nicht kopiert werden. Bitte versuche es erneut."
+    },
+    "status": {
+      "pending_ideas": {
+        "icon": "🎨",
+        "message": "Generiere Geschenkideen..."
+      },
+      "pending_images": {
+        "icon": "✨",
+        "message": "Erstelle Geschenkvisualisierungen..."
+      },
+      "completed": {
+        "icon": "🎁",
+        "message": "Bereit zum Teilen!"
+      },
+      "default": {
+        "icon": "⏳",
+        "message": "Verarbeite..."
+      }
+    },
+    "generate": {
+      "title": "Bereit, Magie zu erschaffen?",
+      "description": "Lass uns die magischen Zuordnungen für deinen Geschenkeaustausch generieren!",
+      "button": "Zuordnungen generieren",
+      "retry": "Erneut versuchen"
+    },
+    "assignments": {
+      "title": "🎄 Wichtel-Zuordnungen",
+      "subtitle": "Teile diese magischen Links mit deinen Teilnehmern!",
+      "copied": "Kopiert!",
+      "copy_link": "Link kopieren",
+      "share_whatsapp": "Via WhatsApp teilen",
+      "share_email": "Via E-Mail teilen",
+      "loading": {
+        "title": "🎁 Erschaffe Magie",
+        "subtitle": "Generiere deine Wichtel-Zuordnungen...",
+        "description": "Dies wird nur einen Moment dauern!"
+      },
+      "is_gifting_to": "beschenkt",
+      "ready_to_share": "Bereit zum Teilen",
+      "pending_gift_ideas": "Generiere Geschenkideen",
+      "in_progress": "In Bearbeitung"
+    },
+    "processing": "Verarbeite...",
+    "regenerate_ideas": "Ideen neu generieren",
+    "regenerate_assignments": "Zuordnungen neu generieren",
+    "previous_step": "Vorheriger Schritt"
+  },
+  "participants": {
+    "meta": {
+      "title": "Teilnehmer hinzufügen",
+      "description": "Füge Teilnehmer zu deiner Wichtel-Aktion hinzu"
+    },
+    "title": "Lade deine Wichtel ein",
+    "subtitle": "Füge die magischen Teilnehmer hinzu, die bei deiner Wichtel-Aktion mitmachen!",
+    "add_section": {
+      "title": "Teilnehmer hinzufügen",
+      "description": "Gib den Namen einer Person ein, die bei der Wichtel-Aktion mitmachen soll",
+      "input_placeholder": "Gib den Namen des Teilnehmers ein...",
+      "adding": "Füge hinzu...",
+      "add_button": "Hinzufügen"
+    },
+    "next_button": "Nächster Schritt",
+    "no_participants": "Noch keine Teilnehmer hinzugefügt. Beginne damit, jemanden oben hinzuzufügen! 🎁",
+    "clear_all_button": "Alles löschen",
+    "delete_modal": {
+      "title": "Teilnehmer entfernen",
+      "message": "Bist du sicher, dass du \"{{name}}\" entfernen möchtest?",
+      "confirm": "Entfernen",
+      "cancel": "Abbrechen"
+    },
+    "clear_all_modal": {
+      "title": "Alle Teilnehmer löschen",
+      "message": "Bist du sicher, dass du alle Teilnehmer entfernen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "confirm": "Alles löschen",
+      "cancel": "Abbrechen"
+    }
+  },
+  "magic": {
+    "title": "Dein magischer Moment",
+    "description": "Lass uns herausfinden, wem du eine Freude machen darfst!",
+    "loading": "Lade deine Wichtel-Zuordnung...",
+    "error": "Konnte die Wichtel-Zuordnung nicht laden",
+    "reveal": {
+      "title": "Dein Wichtel ist...",
+      "description": "Du wurdest {{name}} zugeordnet! Hier sind einige Details:",
+      "interests": "Interessen",
+      "preferences": "Vorlieben",
+      "restrictions": "Einschränkungen",
+      "budget": "Budget",
+      "notes": "Notizen"
+    }
+  },
+  "ideas": {
+    "title": "Geschenkideen",
+    "description": "Basierend auf den Interessen deines Wichtels",
+    "loading": "Generiere Geschenkideen...",
+    "error": "Konnte keine Geschenkideen generieren",
+    "empty": "Keine Geschenkideen verfügbar"
+  },
+  "magic_words": {
+    "title": "Erstelle deine magischen Wörter",
+    "subtitle": "Füge verzauberte Wörter hinzu, die bei der perfekten Geschenkwahl helfen!",
+    "add_section": {
+      "title": "Magisches Wort hinzufügen",
+      "description": "Gib magische Wörter ein, die die perfekten Geschenke beschreiben (z.B. gemütlich, kreativ, abenteuerlich)",
+      "input_placeholder": "Gib ein magisches Wort ein...",
+      "add_button": "Wort hinzufügen",
+      "generate_button": "Generieren",
+      "select_category": "Wähle zuerst eine Kategorie aus, um dein magisches Wort hinzuzufügen ✨",
+      "clear_all": "Alles löschen"
+    },
+    "loading": "Lade magische Wörter...",
+    "no_magic_words": "Noch keine magischen Wörter hinzugefügt. Beginne damit, einige verzauberte Wörter oben hinzuzufügen! ✨",
+    "categories": {
+      "color": {
+        "emoji": "🎨",
+        "name": "Farbe"
+      },
+      "texture": {
+        "emoji": "🧸",
+        "name": "Textur"
+      },
+      "style": {
+        "emoji": "🎭",
+        "name": "Stil"
+      },
+      "mood": {
+        "emoji": "🌟",
+        "name": "Stimmung"
+      },
+      "utility": {
+        "emoji": "🛠️",
+        "name": "Nützlichkeit"
+      },
+      "interest": {
+        "emoji": "🎯",
+        "name": "Interesse"
+      }
+    },
+    "navigation": {
+      "previous": "Vorheriger Schritt",
+      "next": "Nächster Schritt"
+    },
+    "delete_modal": {
+      "title": "Zauberwort löschen",
+      "message": "Möchtest du dieses Zauberwort wirklich löschen?",
+      "confirm": "Löschen",
+      "cancel": "Abbrechen"
+    },
+    "clear_all_modal": {
+      "title": "Alle Zauberwörter löschen",
+      "message": "Möchtest du wirklich alle Zauberwörter löschen? Dies kann nicht rückgängig gemacht werden.",
+      "confirm": "Alle löschen",
+      "cancel": "Abbrechen"
+    }
+  },
+  "loading_animation": {
+    "messages": [
+      {
+        "icon": "🎲",
+        "title": "Mische Teilnehmer",
+        "description": "Stelle sicher, dass jeder einen einzigartigen Wichtelpartner bekommt..."
+      },
+      {
+        "icon": "🎨",
+        "title": "Erstelle Geschenkideen",
+        "description": "Unsere Wichtel denken sich personalisierte Vorschläge aus..."
+      },
+      {
+        "icon": "🎁",
+        "title": "Verpacke alles",
+        "description": "Füge etwas festliche Magie zu deinen Zuteilungen hinzu..."
+      },
+      {
+        "icon": "✨",
+        "title": "Streue Sternenstaub",
+        "description": "Mache deine Wichtel-Erfahrung besonders magisch..."
+      },
+      {
+        "icon": "🎄",
+        "title": "Verbreite Weihnachtszauber",
+        "description": "Fast fertig, um deine magischen Paarungen zu enthüllen..."
+      }
+    ]
+  },
+  "layout": {
+    "navigation": {
+      "participants": {
+        "label": "Teilnehmer"
+      },
+      "magic_words": {
+        "label": "Magische Wörter"
+      },
+      "game_results": {
+        "label": "Ergebnisse"
+      }
+    }
+  },
+  "assignment": {
+    "loading": {
+      "title": "🎄 Die Wichtel bereiten deine Zuteilung vor...",
+      "description": "Einen Moment, während wir alles vorbereiten!"
+    },
+    "error": {
+      "title": "Ho ho... Oh nein! 🎅",
+      "message": "Der Weihnachtsmann konnte deine Zuteilung nicht in seiner Liste finden"
+    },
+    "pin": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "create_description": "Erstelle eine magische PIN, um deine Wichtel-Überraschung zu schützen!",
+      "enter_description": "Gib deine magische PIN ein, um deine Wichtel-Zuteilung zu sehen!",
+      "input_placeholder": "PIN eingeben (4-8 Zeichen)",
+      "show": "Anzeigen",
+      "hide": "Verbergen",
+      "submit_create": "🎄 Festliche PIN festlegen",
+      "submit_unlock": "✨ Magie freischalten"
+    },
+    "reveal": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "pre_reveal_description": "Bereit, deine Wichtel-Mission zu entdecken?",
+      "post_reveal_description": "Hier ist deine festliche Zuteilung!",
+      "reveal_button": "🎁 Deine Zuteilung auspacken",
+      "receiver_intro": "Deine Wichtel-Mission ist es, Freude zu verbreiten an:",
+      "magic_words_title": "✨ Magische Wörter für deine Geschenkwahl:",
+      "ai_ideas_title": "KI-generierte Geschenkideen:",
+      "ai_ideas_description": "🎨 Die Wichtel haben diese magischen Geschenkideen extra für dich erstellt!",
+      "footer": "Psst... Bewahre den Weihnachtszauber! 🤫 ✨"
+    },
+    "click_to_reveal": "Klicke auf das Geschenk, um deine Zuteilung zu enthüllen!"
+  }
+}

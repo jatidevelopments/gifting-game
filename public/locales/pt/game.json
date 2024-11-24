@@ -1,0 +1,239 @@
+{
+  "results": {
+    "copy": {
+      "message": " Olá {{name}}! Sua atribuição do Amigo Secreto está pronta!\n\nClique aqui para ver para quem você vai dar um presente: {{url}}",
+      "success": "Link copiado para {{name}}! ",
+      "error": "Não foi possível copiar o link. Por favor, tente novamente."
+    },
+    "status": {
+      "pending_ideas": {
+        "icon": "",
+        "message": "Gerando ideias de presentes..."
+      },
+      "pending_images": {
+        "icon": "",
+        "message": "Criando visuais dos presentes..."
+      },
+      "completed": {
+        "icon": "",
+        "message": "Pronto para compartilhar!"
+      },
+      "default": {
+        "icon": "",
+        "message": "Processando..."
+      }
+    },
+    "generate": {
+      "title": "Pronto para criar magia?",
+      "description": "Vamos gerar as atribuições mágicas para sua troca de presentes!",
+      "button": "Gerar atribuições",
+      "retry": "Tentar novamente"
+    },
+    "assignments": {
+      "title": " Atribuições do Amigo Secreto",
+      "subtitle": "Compartilhe estes links mágicos com os participantes!",
+      "copied": "Copiado!",
+      "copy_link": "Copiar link",
+      "share_whatsapp": "Compartilhar via WhatsApp",
+      "share_email": "Compartilhar via e-mail",
+      "loading": {
+        "title": " Criando Magia",
+        "subtitle": "Gerando suas atribuições do Amigo Secreto...",
+        "description": "Isso levará apenas um momento!"
+      },
+      "is_gifting_to": "vai presentear",
+      "ready_to_share": "Pronto para compartilhar",
+      "pending_gift_ideas": "Gerando ideias de presentes",
+      "in_progress": "Em andamento"
+    },
+    "processing": "Processando...",
+    "regenerate_ideas": "Gerar Novas Ideias",
+    "regenerate_assignments": "Gerar Novas Atribuições",
+    "previous_step": "Passo anterior"
+  },
+  "participants": {
+    "meta": {
+      "title": "Adicionar participantes",
+      "description": "Adicione participantes à sua troca de presentes"
+    },
+    "title": "Convide seus duendes",
+    "subtitle": "Adicione os participantes mágicos que se juntarão à sua troca de presentes!",
+    "add_section": {
+      "title": "Adicionar participante",
+      "description": "Digite o nome de uma pessoa que participará da troca de presentes",
+      "input_placeholder": "Digite o nome do participante...",
+      "adding": "Adicionando...",
+      "add_button": "Adicionar"
+    },
+    "next_button": "Próximo passo",
+    "no_participants": "Nenhum participante adicionado ainda. Comece adicionando alguém acima! ",
+    "clear_all_button": "Limpar tudo",
+    "delete_modal": {
+      "title": "Remover participante",
+      "message": "Tem certeza que deseja remover \"{{name}}\"?",
+      "confirm": "Remover",
+      "cancel": "Cancelar"
+    },
+    "clear_all_modal": {
+      "title": "Limpar todos os participantes",
+      "message": "Tem certeza que deseja remover todos os participantes? Esta ação não pode ser desfeita.",
+      "confirm": "Limpar tudo",
+      "cancel": "Cancelar"
+    }
+  },
+  "magic": {
+    "title": "Seu momento mágico",
+    "description": "Vamos descobrir quem você vai fazer feliz!",
+    "loading": "Carregando seu sorteio...",
+    "error": "Não foi possível carregar o sorteio",
+    "reveal": {
+      "title": "Seu Amigo Secreto é...",
+      "description": "Você foi sorteado para {{name}}! Aqui estão alguns detalhes:",
+      "interests": "Interesses",
+      "preferences": "Preferências",
+      "restrictions": "Restrições",
+      "budget": "Orçamento",
+      "notes": "Observações"
+    }
+  },
+  "ideas": {
+    "title": "Ideias de presentes",
+    "description": "Baseado nos interesses do seu Amigo Secreto",
+    "loading": "Gerando ideias de presentes...",
+    "error": "Não foi possível gerar ideias de presentes",
+    "empty": "Nenhuma ideia de presente disponível"
+  },
+  "magic_words": {
+    "title": "Crie suas palavras mágicas",
+    "subtitle": "Adicione palavras encantadas para guiar a escolha perfeita do presente!",
+    "add_section": {
+      "title": "Adicionar palavra mágica",
+      "description": "Digite palavras mágicas que descrevem os presentes perfeitos (ex: aconchegante, criativo, aventureiro)",
+      "input_placeholder": "Digite uma palavra mágica...",
+      "add_button": "Adicionar palavra",
+      "generate_button": "Gerar",
+      "select_category": "Primeiro escolha uma categoria para adicionar sua palavra mágica ",
+      "clear_all": "Limpar tudo"
+    },
+    "loading": "Carregando palavras mágicas...",
+    "no_magic_words": "Nenhuma palavra mágica adicionada ainda. Comece adicionando algumas palavras encantadas acima! ",
+    "categories": {
+      "color": {
+        "emoji": "",
+        "name": "cor"
+      },
+      "texture": {
+        "emoji": "",
+        "name": "textura"
+      },
+      "style": {
+        "emoji": "",
+        "name": "estilo"
+      },
+      "mood": {
+        "emoji": "",
+        "name": "humor"
+      },
+      "utility": {
+        "emoji": "",
+        "name": "utilidade"
+      },
+      "interest": {
+        "emoji": "",
+        "name": "interesse"
+      }
+    },
+    "navigation": {
+      "previous": "Passo anterior",
+      "next": "Próximo passo"
+    },
+    "modals": {
+      "delete": {
+        "title": "Excluir palavra mágica",
+        "message": "Tem certeza que deseja excluir esta palavra mágica?",
+        "confirm": "Excluir",
+        "cancel": "Cancelar"
+      },
+      "clear_all": {
+        "title": "Limpar todas as palavras mágicas",
+        "message": "Tem certeza que deseja limpar todas as palavras mágicas? Esta ação não pode ser desfeita.",
+        "confirm": "Limpar tudo",
+        "cancel": "Cancelar"
+      }
+    }
+  },
+  "loading_animation": {
+    "messages": [
+      {
+        "icon": "",
+        "title": "Embaralhando participantes",
+        "description": "Garantindo que cada um receba um parceiro único para presentear..."
+      },
+      {
+        "icon": "",
+        "title": "Criando ideias de presentes",
+        "description": "Nossos duendes estão pensando em sugestões personalizadas..."
+      },
+      {
+        "icon": "",
+        "title": "Embrulhando presentes",
+        "description": "Adicionando um toque de magia festiva às suas atribuições..."
+      },
+      {
+        "icon": "",
+        "title": "Espalhando pó de estrelas",
+        "description": "Tornando sua experiência de Amigo Secreto ainda mais especial..."
+      },
+      {
+        "icon": "",
+        "title": "Espalhando o espírito natalino",
+        "description": "Quase pronto para revelar seus pares mágicos..."
+      }
+    ]
+  },
+  "layout": {
+    "navigation": {
+      "participants": {
+        "label": "Participantes"
+      },
+      "magic_words": {
+        "label": "Palavras mágicas"
+      },
+      "game_results": {
+        "label": "Resultados"
+      }
+    }
+  },
+  "assignment": {
+    "loading": {
+      "title": " Os duendes estão preparando sua atribuição...",
+      "description": "Um momento enquanto preparamos tudo!"
+    },
+    "error": {
+      "title": "Ho ho... Oh não! ",
+      "message": "O Papai Noel não conseguiu encontrar sua atribuição em sua lista"
+    },
+    "pin": {
+      "title": "Ho Ho Ho, {{name}}! ",
+      "create_description": "Crie um PIN mágico para proteger sua surpresa do Amigo Secreto!",
+      "enter_description": "Digite seu PIN mágico para ver sua atribuição do Amigo Secreto!",
+      "input_placeholder": "Digite o PIN (4-8 caracteres)",
+      "show": "Mostrar",
+      "hide": "Ocultar",
+      "submit_create": " Definir PIN festivo",
+      "submit_unlock": " Desbloquear a magia"
+    },
+    "reveal": {
+      "title": "Ho Ho Ho, {{name}}! ",
+      "pre_reveal_description": "Pronto para descobrir sua missão de Amigo Secreto?",
+      "post_reveal_description": "Aqui está sua atribuição festiva!",
+      "reveal_button": " Desembrulhar sua atribuição",
+      "receiver_intro": "Sua missão de Amigo Secreto é levar alegria para:",
+      "magic_words_title": " Palavras mágicas para guiar seu presente:",
+      "ai_ideas_title": "Ideias de presentes geradas por IA:",
+      "ai_ideas_description": " Os duendes criaram estas ideias mágicas de presentes especialmente para você!",
+      "footer": "Shh... Mantenha viva a magia do Natal! "
+    },
+    "click_to_reveal": "Clique no presente para revelar sua atribuição!"
+  }
+}

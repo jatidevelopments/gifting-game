@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Gratis Lootjes Trekken Organisator | Eenvoudig & Magisch",
+  "description": "Organiseer je lootjes trekken gratis en eenvoudig! Perfect voor familie, vrienden of kantoorfeestjes. Automatische toewijzing, verlanglijstjes en privélinks voor alle deelnemers.",
+  "hero": {
+    "title": "Maak je lootjes trekken dit jaar magisch",
+    "title1": "Maak",
+    "title2": "je",
+    "title3": "lootjes",
+    "subtitle1": "dit jaar",
+    "subtitle2": "magisch",
+    "description": "De makkelijkste manier om lootjes te trekken. Geen account nodig - alleen maar feestelijke gezelligheid!",
+    "button": "Begin nu"
+  },
+  "stats": {
+    "free": "Altijd gratis",
+    "setup": "Snel geregeld",
+    "ideas": "Cadeautips"
+  },
+  "features": {
+    "title": "Waarom kiezen voor ons?",
+    "setup": {
+      "title": "Supersnel geregeld",
+      "description": "Maak je lootjes groep aan in enkele seconden. Zonder registratie!"
+    },
+    "matching": {
+      "title": "Slimme toewijzing",
+      "description": "Ons algoritme zorgt voor eerlijke en willekeurige cadeautoewijzingen."
+    },
+    "ideas": {
+      "title": "Cadeautips",
+      "description": "Ontvang AI-gestuurde cadeausuggesties op basis van interesses en budget."
+    },
+    "privacy": {
+      "title": "Privé & Veilig",
+      "description": "Toewijzingen blijven geheim en worden gedeeld via privélinks."
+    }
+  },
+  "howItWorks": {
+    "title": "Hoe werkt het?",
+    "step1": {
+      "title": "Groep aanmaken",
+      "description": "Start je lootjes trekken met één klik"
+    },
+    "step2": {
+      "title": "Deelnemers toevoegen",
+      "description": "Nodig vrienden, familie of collega's uit"
+    },
+    "step3": {
+      "title": "Toewijzingen ontvangen",
+      "description": "Wij verdelen de lootjes willekeurig"
+    }
+  },
+  "cta": {
+    "title": "Klaar om lootjes te trekken?",
+    "description": "Doe mee met duizenden blije deelnemers en maak deze feestdagen onvergetelijk!",
+    "button": "Maak groep aan"
+  }
+}

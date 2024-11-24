@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Opret udveksling",
+    "join": "Deltag i udveksling",
+    "start": "Start nu",
+    "next": "Næste",
+    "back": "Tilbage",
+    "submit": "Send",
+    "cancel": "Annuller",
+    "close": "Luk",
+    "save": "Gem",
+    "edit": "Rediger",
+    "delete": "Slet",
+    "share": "Del"
+  },
+  "loading": "Indlæser...",
+  "error": "Der opstod en fejl",
+  "success": "Succes!",
+  "required": "Påkrævet",
+  "optional": "Valgfrit",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. Alle rettigheder forbeholdes."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "Spred julemagien!",
+    "description": "Del MySecretSanta med venner og familie for at gøre gaveudvekslingen endnu mere magisk",
+    "defaultTitle": "\ud83e\udd81 Opdag MySecretSanta - Den mest magiske m\u00e5de at organisere Pakkeleg p\u00e5! \ud83c\udf08"
+  }
+}

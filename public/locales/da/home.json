@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Gratis Pakkeleg Organisator | Nemt & Magisk",
+  "description": "Opret og organiser din pakkeleg helt gratis! Perfekt til familie, venner eller firmafester. Automatisk matchning, ønskelister og private links til alle deltagere.",
+  "hero": {
+    "title": "Gør din pakkeleg magisk i år",
+    "title1": "Gør",
+    "title2": "din",
+    "title3": "pakkeleg",
+    "subtitle1": "i år",
+    "subtitle2": "magisk",
+    "description": "Den nemmeste måde at organisere pakkeleg på. Ingen konto nødvendig - kun julestemning!",
+    "button": "Start nu"
+  },
+  "stats": {
+    "free": "Altid gratis",
+    "setup": "Hurtig start",
+    "ideas": "Gaveidéer"
+  },
+  "features": {
+    "title": "Derfor skal du vælge os",
+    "setup": {
+      "title": "Nem opsætning",
+      "description": "Opret din pakkeleg på sekunder. Ingen registrering!"
+    },
+    "matching": {
+      "title": "Smart matchning",
+      "description": "Vores algoritme sikrer fair og tilfældig gavefordeling."
+    },
+    "ideas": {
+      "title": "Gaveidéer",
+      "description": "Få AI-drevne gaveforslag baseret på interesser og budget."
+    },
+    "privacy": {
+      "title": "Privat & Sikkert",
+      "description": "Matchninger holdes hemmelige og deles via private links."
+    }
+  },
+  "howItWorks": {
+    "title": "Sådan fungerer det",
+    "step1": {
+      "title": "Opret pakkeleg",
+      "description": "Start din pakkeleg med ét klik"
+    },
+    "step2": {
+      "title": "Tilføj deltagere",
+      "description": "Inviter venner, familie eller kolleger"
+    },
+    "step3": {
+      "title": "Få matchninger",
+      "description": "Vi fordeler parrene tilfældigt"
+    }
+  },
+  "cta": {
+    "title": "Klar til pakkeleg?",
+    "description": "Slut dig til tusindvis af glade deltagere og gør denne jul uforglemmelig!",
+    "button": "Opret pakkeleg"
+  }
+}

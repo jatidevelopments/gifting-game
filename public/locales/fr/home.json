@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Organisateur de Père Noël Secret Gratuit | Simple & Magique",
+  "description": "Créez et organisez votre échange de cadeaux Père Noël Secret gratuitement ! Parfait pour la famille, les amis ou les fêtes de bureau. Attribution automatique, listes de souhaits et liens privés pour tous les participants.",
+  "hero": {
+    "title": "Rendez votre Père Noël Secret magique cette année",
+    "title1": "Rendez",
+    "title2": "votre",
+    "title3": "Secret",
+    "subtitle1": "cette année",
+    "subtitle2": "magique",
+    "description": "La façon la plus simple d'organiser votre Père Noël Secret. Sans inscription, sans tracas - juste la magie de Noël !",
+    "button": "Commencer"
+  },
+  "stats": {
+    "free": "Gratuit à vie",
+    "setup": "Installation rapide",
+    "ideas": "Idées cadeaux"
+  },
+  "features": {
+    "title": "Nos avantages",
+    "setup": {
+      "title": "Installation facile",
+      "description": "Créez votre groupe en quelques secondes. Sans inscription !"
+    },
+    "matching": {
+      "title": "Attribution intelligente",
+      "description": "Notre algorithme assure une distribution équitable et aléatoire des cadeaux."
+    },
+    "ideas": {
+      "title": "Idées cadeaux",
+      "description": "Recevez des suggestions de cadeaux personnalisées par IA selon les intérêts et le budget."
+    },
+    "privacy": {
+      "title": "Privé & Sécurisé",
+      "description": "Les attributions restent secrètes et sont partagées via des liens privés."
+    }
+  },
+  "howItWorks": {
+    "title": "Comment ça marche",
+    "step1": {
+      "title": "Créer l'échange",
+      "description": "Lancez votre Père Noël Secret en un clic"
+    },
+    "step2": {
+      "title": "Inviter les participants",
+      "description": "Invitez vos amis, famille ou collègues"
+    },
+    "step3": {
+      "title": "Recevoir les attributions",
+      "description": "Nous distribuons les paires aléatoirement"
+    }
+  },
+  "cta": {
+    "title": "Prêt à lancer votre Père Noël Secret ?",
+    "description": "Rejoignez des milliers de participants enchantés et rendez ces fêtes inoubliables !",
+    "button": "Créer l'échange"
+  }
+}

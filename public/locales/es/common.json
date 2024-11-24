@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Crear intercambio",
+    "join": "Unirse al intercambio",
+    "start": "Comenzar ahora",
+    "next": "Siguiente",
+    "back": "Atrás",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "share": "Compartir"
+  },
+  "loading": "Cargando...",
+  "error": "Ha ocurrido un error",
+  "success": "¡Éxito!",
+  "required": "Obligatorio",
+  "optional": "Opcional",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. Todos los derechos reservados."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "¡Comparte la magia navideña!",
+    "description": "Comparte MySecretSanta con amigos y familia para hacer más mágica la entrega de regalos",
+    "defaultTitle": "🎁 ¡Descubre MySecretSanta - La forma más mágica de organizar un Amigo Invisible! ✨"
+  }
+}

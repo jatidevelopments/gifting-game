@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Gratis Julklappsutdelning | Enkelt & Magiskt",
+  "description": "Skapa och organisera din julklappsutdelning helt gratis! Perfekt för familj, vänner eller företagsfester. Automatisk matchning, önskelistor och privata länkar för alla deltagare.",
+  "hero": {
+    "title": "Gör din julklappsutdelning magisk i år",
+    "title1": "Gör",
+    "title2": "din",
+    "title3": "utdelning",
+    "subtitle1": "i år",
+    "subtitle2": "magisk",
+    "description": "Det enklaste sättet att organisera julklappsutdelningen. Inget konto behövs - bara julglädje!",
+    "button": "Börja nu"
+  },
+  "stats": {
+    "free": "Alltid gratis",
+    "setup": "Snabb start",
+    "ideas": "Presenttips"
+  },
+  "features": {
+    "title": "Därför väljer du oss",
+    "setup": {
+      "title": "Enkel start",
+      "description": "Skapa din julklappsgrupp på sekunder. Ingen registrering!"
+    },
+    "matching": {
+      "title": "Smart matchning",
+      "description": "Vår algoritm säkerställer rättvis och slumpmässig presentfördelning."
+    },
+    "ideas": {
+      "title": "Presenttips",
+      "description": "Få AI-drivna presentförslag baserade på intressen och budget."
+    },
+    "privacy": {
+      "title": "Privat & Säkert",
+      "description": "Matchningarna hålls hemliga och delas via privata länkar."
+    }
+  },
+  "howItWorks": {
+    "title": "Hur fungerar det?",
+    "step1": {
+      "title": "Skapa utdelning",
+      "description": "Starta din julklappsutdelning med ett klick"
+    },
+    "step2": {
+      "title": "Lägg till deltagare",
+      "description": "Bjud in vänner, familj eller kollegor"
+    },
+    "step3": {
+      "title": "Få matchningar",
+      "description": "Vi fördelar paren slumpmässigt"
+    }
+  },
+  "cta": {
+    "title": "Redo för julklappsutdelning?",
+    "description": "Gå med tusentals glada deltagare och gör denna jul oförglömlig!",
+    "button": "Skapa utdelning"
+  }
+}

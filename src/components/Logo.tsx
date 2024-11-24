@@ -1,7 +1,7 @@
-import { type FC } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { type FC } from "react";
 
 interface LogoProps {
   href?: string;
@@ -11,7 +11,7 @@ interface LogoProps {
 }
 
 export const Logo: FC<LogoProps> = ({
-  href = "/",
+  href,
   size = "normal",
   layout = "horizontal",
   showImage = true,

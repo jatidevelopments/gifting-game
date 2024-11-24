@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Utwórz wymianę",
+    "join": "Dołącz do wymiany",
+    "start": "Rozpocznij teraz",
+    "next": "Dalej",
+    "back": "Wstecz",
+    "submit": "Wyślij",
+    "cancel": "Anuluj",
+    "close": "Zamknij",
+    "save": "Zapisz",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "share": "Udostępnij"
+  },
+  "loading": "Ładowanie...",
+  "error": "Wystąpił błąd",
+  "success": "Sukces!",
+  "required": "Wymagane",
+  "optional": "Opcjonalne",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. Wszelkie prawa zastrzeżone."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "Podziel się świąteczną magią!",
+    "description": "Podziel się MySecretSanta z przyjaciółmi i rodziną, aby uczynić dawanie prezentów jeszcze bardziej magicznym",
+    "defaultTitle": "🎁 Odkryj MySecretSanta - Najbardziej magiczny sposób na organizację Tajemniczego Mikołaja! ✨"
+  }
+}

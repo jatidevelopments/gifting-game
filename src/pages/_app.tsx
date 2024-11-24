@@ -1,14 +1,25 @@
+import { appWithTranslation } from "next-i18next";
 import { type AppType } from "next/app";
-import "../styles/globals.css";
-import { Toaster } from "react-hot-toast";
-import { Snow } from "../components/Snow";
-import { Layout } from "../components/Layout";
-import { SnowballEffect } from "../components/SnowballEffect";
-import { SocialShareButtons } from "../components/SocialShareButtons";
-import { TRPCProvider } from "../trpc/provider";
-import { useRouter } from "next/router";
 import { Cinzel, Raleway } from "next/font/google";
+import { useRouter } from "next/router";
+import { Toaster } from "react-hot-toast";
+import dynamic from "next/dynamic";
 import { SEOMetadata } from "../components/SEOMetadata";
+import "../styles/globals.css";
+import { TRPCProvider } from "../trpc/provider";
+
+// Dynamic imports for components with client-side features
+const Snow = dynamic(() => import("../components/Snow").then(mod => mod.Snow), {
+  ssr: false
+});
+
+const SnowballEffect = dynamic(() => import("../components/SnowballEffect").then(mod => mod.SnowballEffect), {
+  ssr: false
+});
+
+const Layout = dynamic(() => import("../components/Layout"), {
+  ssr: true
+});
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -23,27 +34,26 @@ const raleway = Raleway({
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   const router = useRouter();
-  
+
   return (
     <TRPCProvider>
       <SEOMetadata path={router.asPath} />
       <div
         className={`min-h-screen bg-gradient-to-b from-[#1a1f35] via-[#2c1f35] to-[#1a1f35] ${raleway.className} ${cinzel.variable}`}
       >
-        {/* Background effects */}
         <div className="pointer-events-none fixed inset-0">
           <Snow />
+          <SnowballEffect />
         </div>
-        {/* Main content */}
+
         <Layout>
           <Component {...pageProps} />
         </Layout>
-        {/* Interactive overlay */}
-        <SnowballEffect />
-        <Toaster position="bottom-right" />
+
+        <Toaster position="bottom-center" />
       </div>
     </TRPCProvider>
   );
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);

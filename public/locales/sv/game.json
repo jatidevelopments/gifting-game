@@ -1,0 +1,217 @@
+{
+  "results": {
+    "copy": {
+      "message": "🎄 Hej {{name}}! Din Hemliga Tomte-tilldelning är klar!\n\nKlicka här för att se vem du ska ge en present till: {{url}}",
+      "success": "Länk kopierad för {{name}}! 🎁",
+      "error": "Kunde inte kopiera länken. Försök igen."
+    },
+    "status": {
+      "pending_ideas": {
+        "icon": "🎨",
+        "message": "Genererar presentidéer..."
+      },
+      "pending_images": {
+        "icon": "✨",
+        "message": "Skapar presentvisualer..."
+      },
+      "completed": {
+        "icon": "🎁",
+        "message": "Redo att dela!"
+      },
+      "default": {
+        "icon": "⏳",
+        "message": "Bearbetar..."
+      }
+    },
+    "generate": {
+      "title": "Redo att skapa magi?",
+      "description": "Låt oss generera de magiska tilldelningarna för din presentutdelning!",
+      "button": "Generera tilldelningar",
+      "retry": "Försök igen"
+    },
+    "assignments": {
+      "title": "🎄 Hemliga Tomte-tilldelningar",
+      "subtitle": "Dela dessa magiska länkar med deltagarna!",
+      "copied": "Kopierad!",
+      "copy_link": "Kopiera länk",
+      "share_whatsapp": "Dela via WhatsApp",
+      "share_email": "Dela via e-post",
+      "loading": {
+        "title": "🎁 Skapar Magi",
+        "subtitle": "Genererar dina Hemliga Tomte-tilldelningar...",
+        "description": "Detta tar bara ett ögonblick!"
+      },
+      "is_gifting_to": "ger present till",
+      "ready_to_share": "Redo att dela",
+      "pending_gift_ideas": "Genererar presentidéer",
+      "in_progress": "Pågår"
+    },
+    "processing": "Bearbetar...",
+    "regenerate_ideas": "Generera Nya Idéer",
+    "regenerate_assignments": "Generera Nya Tilldelningar",
+    "previous_step": "Föregående steg"
+  },
+  "participants": {
+    "meta": {
+      "title": "Lägg till deltagare",
+      "description": "Lägg till deltagare i din julklappsutdelning"
+    },
+    "title": "Bjud in dina tomtar",
+    "subtitle": "Lägg till de magiska deltagarna som ska vara med i din julklappsutdelning!",
+    "add_section": {
+      "title": "Lägg till deltagare",
+      "description": "Ange namnet på en person som ska delta i julklappsutdelningen",
+      "input_placeholder": "Ange deltagarens namn...",
+      "adding": "Lägger till...",
+      "add_button": "Lägg till"
+    },
+    "next_button": "Nästa steg",
+    "no_participants": "Inga deltagare tillagda än. Börja med att lägga till någon ovan! 🎁",
+    "clear_all_button": "Rensa allt",
+    "delete_modal": {
+      "title": "Ta bort deltagare",
+      "message": "Är du säker på att du vill ta bort \"{{name}}\"?",
+      "confirm": "Ta bort",
+      "cancel": "Avbryt"
+    },
+    "clear_all_modal": {
+      "title": "Rensa alla deltagare",
+      "message": "Är du säker på att du vill ta bort alla deltagare? Denna åtgärd kan inte ångras.",
+      "confirm": "Rensa allt",
+      "cancel": "Avbryt"
+    }
+  },
+  "magic_words": {
+    "title": "Skapa dina magiska ord",
+    "subtitle": "Lägg till förtrollade ord för att vägleda det perfekta presentvalet!",
+    "add_section": {
+      "title": "Lägg till magiskt ord",
+      "description": "Ange magiska ord som beskriver de perfekta presenterna (t.ex: mysig, kreativ, äventyrlig)",
+      "input_placeholder": "Ange ett magiskt ord...",
+      "add_button": "Lägg till ord",
+      "generate_button": "Generera",
+      "select_category": "Välj först en kategori för att lägga till ditt magiska ord ✨",
+      "clear_all": "Rensa allt"
+    },
+    "loading": "Laddar magiska ord...",
+    "no_magic_words": "Inga magiska ord tillagda än. Börja med att lägga till några förtrollade ord ovan! ✨",
+    "categories": {
+      "color": {
+        "emoji": "🎨",
+        "name": "färg"
+      },
+      "texture": {
+        "emoji": "🧸",
+        "name": "textur"
+      },
+      "style": {
+        "emoji": "🎭",
+        "name": "stil"
+      },
+      "mood": {
+        "emoji": "🌟",
+        "name": "humör"
+      },
+      "utility": {
+        "emoji": "🛠️",
+        "name": "användbarhet"
+      },
+      "interest": {
+        "emoji": "🎯",
+        "name": "intresse"
+      }
+    },
+    "navigation": {
+      "previous": "Föregående steg",
+      "next": "Nästa steg"
+    },
+    "modals": {
+      "delete": {
+        "title": "Ta bort magiskt ord",
+        "message": "Är du säker på att du vill ta bort detta magiska ord?",
+        "confirm": "Ta bort",
+        "cancel": "Avbryt"
+      },
+      "clear_all": {
+        "title": "Rensa alla magiska ord",
+        "message": "Är du säker på att du vill rensa alla magiska ord? Detta kan inte ångras.",
+        "confirm": "Rensa alla",
+        "cancel": "Avbryt"
+      }
+    }
+  },
+  "loading_animation": {
+    "messages": [
+      {
+        "icon": "🎲",
+        "title": "Blandar deltagare",
+        "description": "Ser till att alla får en unik presentpartner..."
+      },
+      {
+        "icon": "🎨",
+        "title": "Skapar presentidéer",
+        "description": "Våra tomtar tänker ut personliga förslag..."
+      },
+      {
+        "icon": "🎁",
+        "title": "Slår in presenter",
+        "description": "Lägger till en touch av festlig magi till dina tilldelningar..."
+      },
+      {
+        "icon": "✨",
+        "title": "Strör stjärnstoft",
+        "description": "Gör din Julklappsspel-upplevelse ännu mer speciell..."
+      },
+      {
+        "icon": "🎄",
+        "title": "Sprider julstämning",
+        "description": "Nästan redo att avslöja dina magiska par..."
+      }
+    ]
+  },
+  "layout": {
+    "navigation": {
+      "participants": {
+        "label": "Deltagare"
+      },
+      "magic_words": {
+        "label": "Magiska ord"
+      },
+      "game_results": {
+        "label": "Resultat"
+      }
+    }
+  },
+  "assignment": {
+    "loading": {
+      "title": "🎄 Tomtenissarna förbereder din tilldelning...",
+      "description": "Ett ögonblick medan vi förbereder allt!"
+    },
+    "error": {
+      "title": "Ho ho... Åh nej! 🎅",
+      "message": "Jultomten kunde inte hitta din tilldelning i sin lista"
+    },
+    "pin": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "create_description": "Skapa en magisk PIN-kod för att skydda din Hemliga Tomte-överraskning!",
+      "enter_description": "Ange din magiska PIN-kod för att se din Hemliga Tomte-tilldelning!",
+      "input_placeholder": "Ange PIN-kod (4-8 tecken)",
+      "show": "Visa",
+      "hide": "Dölj",
+      "submit_create": "🎄 Ställ in festlig PIN-kod",
+      "submit_unlock": "✨ Lås upp magin"
+    },
+    "reveal": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "pre_reveal_description": "Redo att upptäcka ditt Hemliga Tomte-uppdrag?",
+      "post_reveal_description": "Här är din festliga tilldelning!",
+      "reveal_button": "🎁 Packa upp din tilldelning",
+      "receiver_intro": "Ditt Hemliga Tomte-uppdrag är att sprida glädje till:",
+      "magic_words_title": "✨ Magiska ord för att vägleda din gåva:",
+      "ai_ideas_title": "AI-genererade presentidéer:",
+      "ai_ideas_description": "🎨 Tomtenissarna har skapat dessa magiska presentidéer just för dig!",
+      "footer": "Schh... Håll julmagin vid liv! 🤫 ✨"
+    },
+    "click_to_reveal": "Klicka på presenten för att avslöja din tilldelning!"
+  }
+}

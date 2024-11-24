@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Crea scambio",
+    "join": "Unisciti allo scambio",
+    "start": "Inizia ora",
+    "next": "Avanti",
+    "back": "Indietro",
+    "submit": "Invia",
+    "cancel": "Annulla",
+    "close": "Chiudi",
+    "save": "Salva",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "share": "Condividi"
+  },
+  "loading": "Caricamento...",
+  "error": "Si è verificato un errore",
+  "success": "Successo!",
+  "required": "Obbligatorio",
+  "optional": "Opzionale",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. Tutti i diritti riservati."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "Diffondi la magia delle feste!",
+    "description": "Condividi MySecretSanta con amici e familiari per rendere lo scambio dei regali ancora più magico",
+    "defaultTitle": "🎁 Scopri MySecretSanta - Il modo più magico per organizzare un Babbo Natale Segreto! ✨"
+  }
+}

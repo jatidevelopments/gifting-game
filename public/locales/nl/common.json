@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Uitwisseling aanmaken",
+    "join": "Deelnemen aan uitwisseling",
+    "start": "Nu beginnen",
+    "next": "Volgende",
+    "back": "Terug",
+    "submit": "Versturen",
+    "cancel": "Annuleren",
+    "close": "Sluiten",
+    "save": "Opslaan",
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "share": "Delen"
+  },
+  "loading": "Laden...",
+  "error": "Er is een fout opgetreden",
+  "success": "Gelukt!",
+  "required": "Verplicht",
+  "optional": "Optioneel",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. Alle rechten voorbehouden."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "Verspreid de feestelijke magie!",
+    "description": "Deel MySecretSanta met vrienden en familie om het geven van cadeaus nog magischer te maken",
+    "defaultTitle": "\ud83c\udf81 Ontdek MySecretSanta - De meest magische manier om Sinterklaas te organiseren! \ud83d\udc9f"
+  }
+}

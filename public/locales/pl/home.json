@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Darmowy Organizator Tajemniczego Mikołaja | Łatwy i Magiczny",
+  "description": "Stwórz i zorganizuj swoją wymianę prezentów Tajemniczego Mikołaja za darmo! Idealne dla rodziny, przyjaciół lub imprez firmowych. Automatyczne dopasowanie, listy życzeń i prywatne linki dla wszystkich uczestników.",
+  "hero": {
+    "title": "Uczyń swojego Tajemniczego Mikołaja magicznym w tym roku",
+    "title1": "Uczyń",
+    "title2": "swojego",
+    "title3": "Mikołaja",
+    "subtitle1": "w tym roku",
+    "subtitle2": "magicznym",
+    "description": "Najprostszy sposób na zorganizowanie Tajemniczego Mikołaja. Bez rejestracji, bez kłopotów - tylko świąteczna radość!",
+    "button": "Rozpocznij teraz"
+  },
+  "stats": {
+    "free": "Zawsze za darmo",
+    "setup": "Szybka konfiguracja",
+    "ideas": "Pomysły na prezenty"
+  },
+  "features": {
+    "title": "Dlaczego my?",
+    "setup": {
+      "title": "Prosta konfiguracja",
+      "description": "Stwórz swoją grupę w kilka sekund. Bez rejestracji!"
+    },
+    "matching": {
+      "title": "Inteligentne dopasowanie",
+      "description": "Nasz algorytm zapewnia sprawiedliwy i losowy przydział prezentów."
+    },
+    "ideas": {
+      "title": "Pomysły na prezenty",
+      "description": "Otrzymuj spersonalizowane sugestie prezentów oparte na AI według zainteresowań i budżetu."
+    },
+    "privacy": {
+      "title": "Prywatne i bezpieczne",
+      "description": "Przydziały pozostają tajne i są udostępniane przez prywatne linki."
+    }
+  },
+  "howItWorks": {
+    "title": "Jak to działa",
+    "step1": {
+      "title": "Stwórz wymianę",
+      "description": "Rozpocznij swojego Tajemniczego Mikołaja jednym kliknięciem"
+    },
+    "step2": {
+      "title": "Dodaj uczestników",
+      "description": "Zaproś przyjaciół, rodzinę lub współpracowników"
+    },
+    "step3": {
+      "title": "Otrzymaj przydziały",
+      "description": "Losowo przydzielamy pary"
+    }
+  },
+  "cta": {
+    "title": "Gotowy na Tajemniczego Mikołaja?",
+    "description": "Dołącz do tysięcy szczęśliwych uczestników i uczyń te święta niezapomnianymi!",
+    "button": "Stwórz wymianę"
+  }
+}

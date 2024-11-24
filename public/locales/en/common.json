@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Create Exchange",
+    "join": "Join Exchange",
+    "start": "Start Now",
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "share": "Share"
+  },
+  "loading": "Loading...",
+  "error": "An error occurred",
+  "success": "Success!",
+  "required": "Required",
+  "optional": "Optional",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. All rights reserved."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "Spread the Holiday Magic!",
+    "description": "Share MySecretSanta with friends and family to make gift-giving more magical",
+    "defaultTitle": "🎁 Discovered MySecretSanta - The Most Magical Way to Organize Secret Santa! ✨"
+  }
+}

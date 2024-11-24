@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Organizador Gratuito de Amigo Secreto | Fácil e Mágico",
+  "description": "Crie e organize sua troca de presentes do Amigo Secreto gratuitamente! Perfeito para família, amigos ou festas empresariais. Sorteio automático, listas de desejos e links privados para todos os participantes.",
+  "hero": {
+    "title": "Faça seu Amigo Secreto mágico este ano",
+    "title1": "Faça",
+    "title2": "seu",
+    "title3": "Secreto",
+    "subtitle1": "este ano",
+    "subtitle2": "mágico",
+    "description": "A maneira mais fácil de organizar seu Amigo Secreto. Sem cadastro, sem complicação - só diversão natalina!",
+    "button": "Começar agora"
+  },
+  "stats": {
+    "free": "Sempre gratuito",
+    "setup": "Configuração rápida",
+    "ideas": "Sugestões de presentes"
+  },
+  "features": {
+    "title": "Por que nos escolher?",
+    "setup": {
+      "title": "Configuração simples",
+      "description": "Crie seu grupo de Amigo Secreto em segundos. Sem cadastro!"
+    },
+    "matching": {
+      "title": "Sorteio inteligente",
+      "description": "Nosso algoritmo garante sorteios justos e aleatórios para todos."
+    },
+    "ideas": {
+      "title": "Sugestões de presentes",
+      "description": "Receba sugestões personalizadas com IA baseadas em interesses e orçamento."
+    },
+    "privacy": {
+      "title": "Privado e seguro",
+      "description": "Os sorteios permanecem secretos e são compartilhados por links privados."
+    }
+  },
+  "howItWorks": {
+    "title": "Como funciona",
+    "step1": {
+      "title": "Criar brincadeira",
+      "description": "Inicie seu Amigo Secreto com um clique"
+    },
+    "step2": {
+      "title": "Adicionar participantes",
+      "description": "Convide amigos, família ou colegas"
+    },
+    "step3": {
+      "title": "Receber sorteios",
+      "description": "Distribuímos os pares aleatoriamente"
+    }
+  },
+  "cta": {
+    "title": "Pronto para seu Amigo Secreto?",
+    "description": "Junte-se a milhares de pessoas felizes e torne este Natal inesquecível!",
+    "button": "Criar brincadeira"
+  }
+}

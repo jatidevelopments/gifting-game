@@ -1,0 +1,239 @@
+{
+  "results": {
+    "copy": {
+      "message": "🎄 Hej {{name}}! Din Hemmelige Julemand-tildeling er klar!\n\nKlik her for at se, hvem du skal give en gave til: {{url}}",
+      "success": "Link kopieret for {{name}}! 🎁",
+      "error": "Kunne ikke kopiere linket. Prøv venligst igen."
+    },
+    "status": {
+      "pending_ideas": {
+        "icon": "🎨",
+        "message": "Genererer gaveforslag..."
+      },
+      "pending_images": {
+        "icon": "✨",
+        "message": "Opretter gavevisualiseringer..."
+      },
+      "completed": {
+        "icon": "🎁",
+        "message": "Klar til at dele!"
+      },
+      "default": {
+        "icon": "⏳",
+        "message": "Behandler..."
+      }
+    },
+    "generate": {
+      "title": "Klar til at skabe magi?",
+      "description": "Lad os generere de magiske tildelinger til din gaveudveksling!",
+      "button": "Generer tildelinger",
+      "retry": "Prøv igen"
+    },
+    "assignments": {
+      "title": "🎄 Hemmelige Julemand-tildelinger",
+      "subtitle": "Del disse magiske links med deltagerne!",
+      "copied": "Kopieret!",
+      "copy_link": "Kopiér link",
+      "share_whatsapp": "Del via WhatsApp",
+      "share_email": "Del via e-mail",
+      "loading": {
+        "title": "🎁 Skaber Magi",
+        "subtitle": "Genererer dine Hemmelige Julemand-tildelinger...",
+        "description": "Dette tager kun et øjeblik!"
+      },
+      "is_gifting_to": "giver gave til",
+      "ready_to_share": "Klar til at dele",
+      "pending_gift_ideas": "Genererer gaveforslag",
+      "in_progress": "I gang"
+    },
+    "processing": "Behandler...",
+    "regenerate_ideas": "Generer Nye Idéer",
+    "regenerate_assignments": "Generer Nye Tildelinger",
+    "previous_step": "Forrige trin"
+  },
+  "participants": {
+    "meta": {
+      "title": "Tilføj deltagere",
+      "description": "Tilføj deltagere til din julegaveudveksling"
+    },
+    "title": "Inviter dine nisser",
+    "subtitle": "Tilføj de magiske deltagere til din julegaveudveksling!",
+    "add_section": {
+      "title": "Tilføj deltager",
+      "description": "Indtast navnet på en person, der skal deltage i julegaveudvekslingen",
+      "input_placeholder": "Indtast deltagerens navn...",
+      "adding": "Tilføjer...",
+      "add_button": "Tilføj"
+    },
+    "next_button": "Næste trin",
+    "no_participants": "Ingen deltagere tilføjet endnu. Start med at tilføje nogen ovenfor! 🎁",
+    "clear_all_button": "Ryd alt",
+    "delete_modal": {
+      "title": "Fjern deltager",
+      "message": "Er du sikker på, at du vil fjerne \"{{name}}\"?",
+      "confirm": "Fjern",
+      "cancel": "Annuller"
+    },
+    "clear_all_modal": {
+      "title": "Ryd alle deltagere",
+      "message": "Er du sikker på, at du vil fjerne alle deltagere? Denne handling kan ikke fortrydes.",
+      "confirm": "Ryd alt",
+      "cancel": "Annuller"
+    }
+  },
+  "magic": {
+    "title": "Dit magiske øjeblik",
+    "description": "Lad os se, hvem du skal gøre glad!",
+    "loading": "Indlæser din trækning...",
+    "error": "Kunne ikke indlæse trækningen",
+    "reveal": {
+      "title": "Din pakkeleg-person er...",
+      "description": "Du har trukket {{name}}! Her er nogle detaljer:",
+      "interests": "Interesser",
+      "preferences": "Præferencer",
+      "restrictions": "Begrænsninger",
+      "budget": "Budget",
+      "notes": "Noter"
+    }
+  },
+  "ideas": {
+    "title": "Gaveidéer",
+    "description": "Baseret på din pakkeleg-persons interesser",
+    "loading": "Genererer gaveidéer...",
+    "error": "Kunne ikke generere gaveidéer",
+    "empty": "Ingen gaveidéer tilgængelige"
+  },
+  "magic_words": {
+    "title": "Skab dine magiske ord",
+    "subtitle": "Tilføj fortryllede ord for at guide det perfekte gavevalg!",
+    "add_section": {
+      "title": "Tilføj magisk ord",
+      "description": "Indtast magiske ord, der beskriver de perfekte gaver (f.eks: hyggelig, kreativ, eventyrlysten)",
+      "input_placeholder": "Indtast et magisk ord...",
+      "add_button": "Tilføj ord",
+      "generate_button": "Generer",
+      "select_category": "Vælg først en kategori for at tilføje dit magiske ord ✨",
+      "clear_all": "Ryd alt"
+    },
+    "loading": "Indlæser magiske ord...",
+    "no_magic_words": "Ingen magiske ord tilføjet endnu. Start med at tilføje nogle fortryllede ord ovenfor! ✨",
+    "categories": {
+      "color": {
+        "emoji": "🎨",
+        "name": "farve"
+      },
+      "texture": {
+        "emoji": "🧸",
+        "name": "tekstur"
+      },
+      "style": {
+        "emoji": "🎭",
+        "name": "stil"
+      },
+      "mood": {
+        "emoji": "🌟",
+        "name": "humør"
+      },
+      "utility": {
+        "emoji": "🛠️",
+        "name": "anvendelighed"
+      },
+      "interest": {
+        "emoji": "🎯",
+        "name": "interesse"
+      }
+    },
+    "navigation": {
+      "previous": "Forrige trin",
+      "next": "Næste trin"
+    },
+    "modals": {
+      "delete": {
+        "title": "Slet magisk ord",
+        "message": "Er du sikker på, at du vil slette dette magiske ord?",
+        "confirm": "Slet",
+        "cancel": "Annuller"
+      },
+      "clear_all": {
+        "title": "Ryd alle magiske ord",
+        "message": "Er du sikker på, at du vil rydde alle magiske ord? Dette kan ikke fortrydes.",
+        "confirm": "Ryd alle",
+        "cancel": "Annuller"
+      }
+    }
+  },
+  "loading_animation": {
+    "messages": [
+      {
+        "icon": "🎲",
+        "title": "Blander deltagere",
+        "description": "Sikrer at alle får en unik gavepartner..."
+      },
+      {
+        "icon": "🎨",
+        "title": "Skaber gaveforslag",
+        "description": "Vores nisser udtænker personlige forslag..."
+      },
+      {
+        "icon": "🎁",
+        "title": "Pakker gaver ind",
+        "description": "Tilføjer et strejf af festlig magi til dine tildelinger..."
+      },
+      {
+        "icon": "✨",
+        "title": "Drysser stjernestøv",
+        "description": "Gør din Hemmelig Julemand-oplevelse endnu mere speciel..."
+      },
+      {
+        "icon": "🎄",
+        "title": "Spreder julestemning",
+        "description": "Næsten klar til at afsløre dine magiske par..."
+      }
+    ]
+  },
+  "layout": {
+    "navigation": {
+      "participants": {
+        "label": "Deltagere"
+      },
+      "magic_words": {
+        "label": "Magiske ord"
+      },
+      "game_results": {
+        "label": "Resultater"
+      }
+    }
+  },
+  "assignment": {
+    "loading": {
+      "title": "🎄 Nisserne forbereder din tildeling...",
+      "description": "Et øjeblik mens vi forbereder alt!"
+    },
+    "error": {
+      "title": "Ho ho... Åh nej! 🎅",
+      "message": "Julemanden kunne ikke finde din tildeling på sin liste"
+    },
+    "pin": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "create_description": "Opret en magisk PIN-kode for at beskytte din Hemmelige Julemand-overraskelse!",
+      "enter_description": "Indtast din magiske PIN-kode for at se din Hemmelige Julemand-tildeling!",
+      "input_placeholder": "Indtast PIN-kode (4-8 tegn)",
+      "show": "Vis",
+      "hide": "Skjul",
+      "submit_create": "🎄 Indstil festlig PIN-kode",
+      "submit_unlock": "✨ Lås op for magien"
+    },
+    "reveal": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "pre_reveal_description": "Klar til at opdage din Hemmelige Julemand-mission?",
+      "post_reveal_description": "Her er din festlige tildeling!",
+      "reveal_button": "🎁 Pak din tildeling ud",
+      "receiver_intro": "Din Hemmelige Julemand-mission er at sprede glæde til:",
+      "magic_words_title": "✨ Magiske ord til at guide din gave:",
+      "ai_ideas_title": "AI-genererede gaveforslag:",
+      "ai_ideas_description": "🎨 Nisserne har skabt disse magiske gaveforslag specielt til dig!",
+      "footer": "Shh... Hold julemagien i live! 🤫 ✨"
+    },
+    "click_to_reveal": "Klik på gaven for at afsløre din tildeling!"
+  }
+}

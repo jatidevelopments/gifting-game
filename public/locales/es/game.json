@@ -1,0 +1,218 @@
+{
+  "results": {
+    "copy": {
+      "message": "¡Hola {{name}}! ¡Tu asignación de Amigo Invisible está lista!\n\nHaz clic aquí para ver a quién le harás un regalo: {{url}}",
+      "success": "¡Enlace copiado para {{name}}! ",
+      "error": "No se pudo copiar el enlace. Por favor, inténtalo de nuevo."
+    },
+    "status": {
+      "pending_ideas": {
+        "icon": "",
+        "message": "Generando ideas de regalo..."
+      },
+      "pending_images": {
+        "icon": "",
+        "message": "Creando visuales de regalo..."
+      },
+      "completed": {
+        "icon": "",
+        "message": "¡Listo para compartir!"
+      },
+      "default": {
+        "icon": "",
+        "message": "Procesando..."
+      }
+    },
+    "generate": {
+      "title": "¿Listo para crear magia?",
+      "description": "¡Generemos las asignaciones mágicas para tu intercambio de regalos!",
+      "button": "Generar asignaciones",
+      "retry": "Intentar de nuevo"
+    },
+    "assignments": {
+      "title": " Asignaciones del Amigo Invisible",
+      "subtitle": "¡Comparte estos enlaces mágicos con los participantes!",
+      "copied": "¡Copiado!",
+      "copy_link": "Copiar enlace",
+      "share_whatsapp": "Compartir por WhatsApp",
+      "share_email": "Compartir por correo",
+      "loading": {
+        "title": " Creando Magia",
+        "subtitle": "Generando tus asignaciones del Amigo Invisible...",
+        "description": "¡Esto solo tomará un momento!"
+      },
+      "is_gifting_to": "le regala a",
+      "ready_to_share": "Listo para compartir",
+      "pending_gift_ideas": "Generando ideas de regalo",
+      "in_progress": "En progreso"
+    },
+    "processing": "Procesando...",
+    "regenerate_ideas": "Regenerar Ideas",
+    "regenerate_assignments": "Regenerar Asignaciones",
+    "previous_step": "Paso anterior"
+  },
+  "participants": {
+    "meta": {
+      "title": "Agregar participantes",
+      "description": "Agrega participantes a tu intercambio de regalos"
+    },
+    "title": "Invita a tus duendes",
+    "subtitle": "¡Agrega los participantes mágicos que se unirán a tu intercambio de regalos!",
+    "add_section": {
+      "title": "Agregar participante",
+      "description": "Ingresa el nombre de una persona que participará en el intercambio de regalos",
+      "input_placeholder": "Ingresa el nombre del participante...",
+      "adding": "Agregando...",
+      "add_button": "Agregar"
+    },
+    "next_button": "Siguiente paso",
+    "no_participants": "Aún no hay participantes agregados. ¡Comienza agregando a alguien arriba! ",
+    "clear_all_button": "Borrar todo",
+    "delete_modal": {
+      "title": "Eliminar participante",
+      "message": "¿Estás seguro de que quieres eliminar a \"{{name}}\"?",
+      "confirm": "Eliminar",
+      "cancel": "Cancelar"
+    },
+    "clear_all_modal": {
+      "title": "Borrar todos los participantes",
+      "message": "¿Estás seguro de que quieres eliminar a todos los participantes? Esta acción no se puede deshacer.",
+      "confirm": "Borrar todo",
+      "cancel": "Cancelar"
+    }
+  },
+  "magic_words": {
+    "title": "Crea tus palabras mágicas",
+    "subtitle": "¡Agrega palabras encantadas para guiar la elección perfecta del regalo!",
+    "add_section": {
+      "title": "Agregar palabra mágica",
+      "description": "Ingresa palabras mágicas que describan los regalos perfectos (ej: acogedor, creativo, aventurero)",
+      "input_placeholder": "Ingresa una palabra mágica...",
+      "add_button": "Agregar palabra",
+      "generate_button": "Generar",
+      "select_category": "Primero elige una categoría para agregar tu palabra mágica ",
+      "clear_all": "Borrar todo"
+    },
+    "loading": "Cargando palabras mágicas...",
+    "no_magic_words": "Aún no se han agregado palabras mágicas. ¡Comienza agregando algunas palabras encantadas arriba! ✨",
+    "categories": {
+      "color": {
+        "emoji": "🎨",
+        "name": "color"
+      },
+      "texture": {
+        "emoji": "🧸",
+        "name": "textura"
+      },
+      "style": {
+        "emoji": "🎭",
+        "name": "estilo"
+      },
+      "mood": {
+        "emoji": "🌟",
+        "name": "estado de ánimo"
+      },
+      "utility": {
+        "emoji": "🛠️",
+        "name": "utilidad"
+      },
+      "interest": {
+        "emoji": "🎯",
+        "name": "interés"
+      }
+    },
+    "navigation": {
+      "previous": "Paso anterior",
+      "next": "Siguiente paso"
+    },
+    "delete_modal": {
+      "title": "Eliminar palabra mágica",
+      "message": "¿Estás seguro de que quieres eliminar esta palabra mágica?",
+      "confirm": "Eliminar",
+      "cancel": "Cancelar"
+    },
+    "clear_all_modal": {
+      "title": "Borrar todas las palabras mágicas",
+      "message": "¿Estás seguro de que quieres borrar todas las palabras mágicas? Esta acción no se puede deshacer.",
+      "confirm": "Borrar todo",
+      "cancel": "Cancelar"
+    }
+  },
+  "loading_animation": {
+    "messages": [
+      {
+        "icon": "",
+        "title": "Mezclando participantes",
+        "description": "Asegurando que cada uno reciba un compañero único para regalar..."
+      },
+      {
+        "icon": "",
+        "title": "Creando ideas de regalos",
+        "description": "Nuestros duendes están pensando en sugerencias personalizadas..."
+      },
+      {
+        "icon": "",
+        "title": "Envolviendo regalos",
+        "description": "Agregando un toque de magia festiva a tus asignaciones..."
+      },
+      {
+        "icon": "",
+        "title": "Esparciendo polvo de estrellas",
+        "description": "Haciendo tu experiencia de Amigo Invisible aún más especial..."
+      },
+      {
+        "icon": "",
+        "title": "Difundiendo el espíritu navideño",
+        "description": "Casi listos para revelar tus parejas mágicas..."
+      }
+    ]
+  },
+  "layout": {
+    "navigation": {
+      "participants": {
+        "label": "Participantes"
+      },
+      "magic_words": {
+        "label": "Palabras mágicas"
+      },
+      "game_results": {
+        "label": "Resultados"
+      }
+    }
+  },
+  "assignment": {
+    "loading": {
+      "title": "🎄 Los duendes están preparando tu asignación...",
+      "description": "¡Un momento mientras preparamos todo!"
+    },
+    "error": {
+      "title": "¡Ho ho... Oh no! 🎅",
+      "message": "Papá Noel no pudo encontrar tu asignación en su lista"
+    },
+    "pin": {
+      "title": "¡Ho Ho Ho, {{name}}! 🎅",
+      "create_description": "¡Crea un PIN mágico para proteger tu sorpresa de Amigo Invisible!",
+      "enter_description": "¡Ingresa tu PIN mágico para ver tu asignación de Amigo Invisible!",
+      "input_placeholder": "Ingresa el PIN (4-8 caracteres)",
+      "show": "Mostrar",
+      "hide": "Ocultar",
+      "submit_create": "🎄 Establecer PIN festivo",
+      "submit_unlock": "✨ Desbloquear la magia"
+    },
+    "reveal": {
+      "title": "¡Ho Ho Ho, {{name}}! 🎅",
+      "pre_reveal_description": "¿Listo para descubrir tu misión de Amigo Invisible?",
+      "post_reveal_description": "¡Aquí está tu asignación festiva!",
+      "reveal_button": "🎁 Desenvolver tu asignación",
+      "receiver_intro": "Tu misión de Amigo Invisible es llevar alegría a:",
+      "magic_words_title": "✨ Palabras mágicas para guiar tu regalo:",
+      "ai_ideas_title": "Ideas de regalos generadas por IA:",
+      "ai_ideas_description": "🎨 ¡Los duendes crearon estas ideas mágicas de regalos solo para ti!",
+      "footer": "Shh... ¡Mantén viva la magia navideña! 🤫 ✨"
+    },
+    "click_to_reveal": "¡Haz clic en el regalo para revelar tu asignación!",
+  },
+  "assignment": {
+    {{ ... }}
+  }
+}

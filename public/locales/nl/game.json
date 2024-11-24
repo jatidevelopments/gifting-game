@@ -1,0 +1,237 @@
+{
+  "results": {
+    "copy": {
+      "message": " Hoi {{name}}! Je Geheime Kerstman toewijzing is klaar!\n\nKlik hier om te zien aan wie je een cadeau geeft: {{url}}",
+      "success": "Link gekopieerd voor {{name}}! ",
+      "error": "Kon de link niet kopiëren. Probeer het opnieuw."
+    },
+    "status": {
+      "pending_ideas": {
+        "icon": "",
+        "message": "Cadeausuggesties genereren..."
+      },
+      "pending_images": {
+        "icon": "",
+        "message": "Cadeauafbeeldingen maken..."
+      },
+      "completed": {
+        "icon": "",
+        "message": "Klaar om te delen!"
+      },
+      "default": {
+        "icon": "",
+        "message": "Verwerken..."
+      }
+    },
+    "generate": {
+      "title": "Klaar om magie te creëren?",
+      "description": "Laten we de magische toewijzingen voor je cadeauuitwisseling genereren!",
+      "button": "Genereer toewijzingen",
+      "retry": "Opnieuw proberen"
+    },
+    "assignments": {
+      "title": " Geheime Kerstman Toewijzingen",
+      "subtitle": "Deel deze magische links met de deelnemers!",
+      "copied": "Gekopieerd!",
+      "copy_link": "Kopieer link",
+      "share_whatsapp": "Deel via WhatsApp",
+      "share_email": "Deel via e-mail",
+      "loading": {
+        "title": " Magie Creëren",
+        "subtitle": "Je Geheime Kerstman toewijzingen genereren...",
+        "description": "Dit duurt maar een momentje!"
+      },
+      "is_gifting_to": "geeft een cadeau aan",
+      "ready_to_share": "Klaar om te delen",
+      "pending_gift_ideas": "Cadeausuggesties genereren",
+      "in_progress": "In behandeling"
+    },
+    "processing": "Verwerken...",
+    "regenerate_ideas": "Genereer Nieuwe Ideeën",
+    "regenerate_assignments": "Genereer Nieuwe Toewijzingen",
+    "previous_step": "Vorige stap"
+  },
+  "participants": {
+    "meta": {
+      "title": "Deelnemers toevoegen",
+      "description": "Voeg deelnemers toe aan je cadeauuitwisseling"
+    },
+    "title": "Nodig je elfen uit",
+    "subtitle": "Voeg de magische deelnemers toe die meedoen aan je cadeauuitwisseling!",
+    "add_section": {
+      "title": "Deelnemer toevoegen",
+      "description": "Voer de naam in van iemand die meedoet aan het cadeauuitwisseling",
+      "input_placeholder": "Voer de naam van de deelnemer in...",
+      "adding": "Toevoegen...",
+      "add_button": "Toevoegen"
+    },
+    "next_button": "Volgende stap",
+    "no_participants": "Nog geen deelnemers toegevoegd. Begin met iemand hierboven toe te voegen! ",
+    "clear_all_button": "Alles wissen",
+    "delete_modal": {
+      "title": "Deelnemer verwijderen",
+      "message": "Weet je zeker dat je \"{{name}}\" wilt verwijderen?",
+      "confirm": "Verwijderen",
+      "cancel": "Annuleren"
+    },
+    "clear_all_modal": {
+      "title": "Alle deelnemers wissen",
+      "message": "Weet je zeker dat je alle deelnemers wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+      "confirm": "Alles wissen",
+      "cancel": "Annuleren"
+    }
+  },
+  "magic_words": {
+    "title": "Maak je magische woorden",
+    "subtitle": "Voeg betoverde woorden toe om de perfecte cadeaukeuze te begeleiden!",
+    "add_section": {
+      "title": "Magisch woord toevoegen",
+      "description": "Voer magische woorden in die de perfecte cadeaus beschrijven (bijv: gezellig, creatief, avontuurlijk)",
+      "input_placeholder": "Voer een magisch woord in...",
+      "add_button": "Woord toevoegen",
+      "generate_button": "Genereren",
+      "select_category": "Kies eerst een categorie om je magische woord toe te voegen ",
+      "clear_all": "Alles wissen"
+    },
+    "loading": "Magische woorden laden...",
+    "no_magic_words": "Nog geen magische woorden toegevoegd. Begin met het toevoegen van enkele betoverde woorden hierboven! ✨",
+    "categories": {
+      "color": {
+        "emoji": "🎨",
+        "name": "kleur"
+      },
+      "texture": {
+        "emoji": "🧸",
+        "name": "textuur"
+      },
+      "style": {
+        "emoji": "🎭",
+        "name": "stijl"
+      },
+      "mood": {
+        "emoji": "🌟",
+        "name": "stemming"
+      },
+      "utility": {
+        "emoji": "🛠️",
+        "name": "bruikbaarheid"
+      },
+      "interest": {
+        "emoji": "🎯",
+        "name": "interesse"
+      }
+    },
+    "navigation": {
+      "previous": "Vorige stap",
+      "next": "Volgende stap"
+    },
+    "delete_modal": {
+      "title": "Magisch woord verwijderen",
+      "message": "Weet je zeker dat je dit magische woord wilt verwijderen?",
+      "confirm": "Verwijderen",
+      "cancel": "Annuleren"
+    },
+    "clear_all_modal": {
+      "title": "Alle magische woorden wissen",
+      "message": "Weet je zeker dat je alle magische woorden wilt wissen? Dit kan niet ongedaan worden gemaakt.",
+      "confirm": "Alles wissen",
+      "cancel": "Annuleren"
+    }
+  },
+  "loading_animation": {
+    "messages": [
+      {
+        "icon": "🎲",
+        "title": "Deelnemers schudden",
+        "description": "Zorgen dat iedereen een unieke cadeaupartner krijgt..."
+      },
+      {
+        "icon": "🎨",
+        "title": "Cadeauideeën maken",
+        "description": "Onze elfen bedenken gepersonaliseerde suggesties..."
+      },
+      {
+        "icon": "🎁",
+        "title": "Cadeaus inpakken",
+        "description": "Een vleugje feestelijke magie toevoegen aan je toewijzingen..."
+      },
+      {
+        "icon": "✨",
+        "title": "Sterrenpoeder strooien",
+        "description": "Je cadeauuitwisseling ervaring nog specialer maken..."
+      },
+      {
+        "icon": "🎄",
+        "title": "Kerstsfeer verspreiden",
+        "description": "Bijna klaar om je magische koppels te onthullen..."
+      }
+    ]
+  },
+  "layout": {
+    "navigation": {
+      "participants": {
+        "label": "Deelnemers"
+      },
+      "magic_words": {
+        "label": "Magische woorden"
+      },
+      "game_results": {
+        "label": "Resultaten"
+      }
+    }
+  },
+  "magic": {
+    "title": "Jouw magische moment",
+    "description": "Laten we ontdekken wie je blij gaat maken!",
+    "loading": "Je toewijzing laden...",
+    "error": "Kon de toewijzing niet laden",
+    "reveal": {
+      "title": "Jouw Sinterklaas is...",
+      "description": "Je bent toegewezen aan {{name}}! Hier zijn wat details:",
+      "interests": "Interesses",
+      "preferences": "Voorkeuren",
+      "restrictions": "Beperkingen",
+      "budget": "Budget",
+      "notes": "Notities"
+    }
+  },
+  "ideas": {
+    "title": "Cadeautips",
+    "description": "Gebaseerd op de interesses van je Sinterklaas",
+    "loading": "Cadeautips genereren...",
+    "error": "Kon geen cadeautips genereren",
+    "empty": "Geen cadeautips beschikbaar"
+  },
+  "assignment": {
+    "loading": {
+      "title": "🎄 De elfen bereiden je toewijzing voor...",
+      "description": "Een moment terwijl we alles voorbereiden!"
+    },
+    "error": {
+      "title": "Ho ho... Oh nee! 🎅",
+      "message": "De Kerstman kon je toewijzing niet vinden in zijn lijst"
+    },
+    "pin": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "create_description": "Maak een magische PIN aan om je Geheime Kerstman-verrassing te beschermen!",
+      "enter_description": "Voer je magische PIN in om je Geheime Kerstman-toewijzing te zien!",
+      "input_placeholder": "Voer PIN in (4-8 tekens)",
+      "show": "Tonen",
+      "hide": "Verbergen",
+      "submit_create": "🎄 Feestelijke PIN instellen",
+      "submit_unlock": "✨ Ontgrendel de magie"
+    },
+    "reveal": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "pre_reveal_description": "Klaar om je Geheime Kerstman-missie te ontdekken?",
+      "post_reveal_description": "Hier is je feestelijke toewijzing!",
+      "reveal_button": "🎁 Pak je toewijzing uit",
+      "receiver_intro": "Jouw Geheime Kerstman-missie is om vreugde te brengen aan:",
+      "magic_words_title": "✨ Magische woorden om je cadeau te begeleiden:",
+      "ai_ideas_title": "AI-gegenereerde cadeausuggesties:",
+      "ai_ideas_description": "🎨 De elfen hebben deze magische cadeausuggesties speciaal voor jou gemaakt!",
+      "footer": "Ssst... Houd de kerstmagie levend! 🤫 ✨"
+    },
+    "click_to_reveal": "Klik op het cadeau om je toewijzing te onthullen!"
+  }
+}

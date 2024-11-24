@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Créer un échange",
+    "join": "Rejoindre l'échange",
+    "start": "Commencer",
+    "next": "Suivant",
+    "back": "Retour",
+    "submit": "Envoyer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "share": "Partager"
+  },
+  "loading": "Chargement...",
+  "error": "Une erreur est survenue",
+  "success": "Succès !",
+  "required": "Obligatoire",
+  "optional": "Optionnel",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. Tous droits réservés."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "Partagez la magie des fêtes !",
+    "description": "Partagez MySecretSanta avec vos amis et votre famille pour rendre les cadeaux encore plus magiques",
+    "defaultTitle": "🎁 Découvrez MySecretSanta - La façon la plus magique d'organiser un Secret Santa ! ✨"
+  }
+}

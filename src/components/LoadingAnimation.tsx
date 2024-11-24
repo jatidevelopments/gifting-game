@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
-const loadingMessages = [
+type LoadingMessage = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+const fallbackMessages: LoadingMessage[] = [
   {
     icon: "🎲",
     title: "Shuffling Participants",
@@ -30,7 +37,16 @@ const loadingMessages = [
 ];
 
 export const LoadingAnimation = () => {
+  const { t } = useTranslation("game");
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  
+  const translatedMessages = t("loading_animation.messages", {
+    returnObjects: true,
+  });
+
+  const loadingMessages: LoadingMessage[] = Array.isArray(translatedMessages) 
+    ? translatedMessages 
+    : fallbackMessages;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,9 +54,13 @@ export const LoadingAnimation = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [loadingMessages.length]);
 
   const currentMessage = loadingMessages[currentMessageIndex];
+
+  if (!currentMessage) {
+    return null;
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -61,15 +81,15 @@ export const LoadingAnimation = () => {
               <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-r from-purple-500/20 to-red-500/20"></div>
               <div className="absolute inset-3 rounded-full bg-gradient-to-r from-purple-500 to-red-500"></div>
               <div className="absolute inset-4 flex items-center justify-center rounded-full bg-gray-900">
-                <span className="text-4xl">{currentMessage!.icon}</span>
+                <span className="text-4xl">{currentMessage.icon}</span>
               </div>
             </div>
 
             <div className="space-y-2">
               <h2 className="bg-gradient-to-r from-purple-400 to-red-400 bg-clip-text font-cinzel text-2xl text-transparent">
-                {currentMessage!.title}
+                {currentMessage.title}
               </h2>
-              <p className="text-gray-400">{currentMessage!.description}</p>
+              <p className="text-gray-400">{currentMessage.description}</p>
             </div>
           </motion.div>
 

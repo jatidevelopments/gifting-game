@@ -1,0 +1,215 @@
+{
+  "results": {
+    "copy": {
+      "message": "🎄 Ciao {{name}}! La tua assegnazione di Babbo Natale Segreto è pronta!\n\nClicca qui per vedere a chi farai un regalo: {{url}}",
+      "success": "Link copiato per {{name}}! 🎁",
+      "error": "Impossibile copiare il link. Per favore riprova."
+    },
+    "status": {
+      "pending_ideas": {
+        "icon": "🎨",
+        "message": "Generazione idee regalo..."
+      },
+      "pending_images": {
+        "icon": "✨",
+        "message": "Creazione visuali regalo..."
+      },
+      "completed": {
+        "icon": "🎁",
+        "message": "Pronto per condividere!"
+      },
+      "default": {
+        "icon": "⏳",
+        "message": "Elaborazione..."
+      }
+    },
+    "generate": {
+      "title": "Pronto a creare la magia?",
+      "description": "Generiamo le assegnazioni magiche per il tuo scambio di regali!",
+      "button": "Genera assegnazioni",
+      "retry": "Riprova"
+    },
+    "assignments": {
+      "title": "🎄 Assegnazioni Babbo Natale Segreto",
+      "subtitle": "Condividi questi link magici con i partecipanti!",
+      "copied": "Copiato!",
+      "copy_link": "Copia link",
+      "share_whatsapp": "Condividi via WhatsApp",
+      "share_email": "Condividi via email",
+      "loading": {
+        "title": "🎁 Creazione della Magia",
+        "subtitle": "Generazione delle assegnazioni di Babbo Natale Segreto...",
+        "description": "Ci vorrà solo un momento!"
+      },
+      "is_gifting_to": "fa un regalo a",
+      "ready_to_share": "Pronto per condividere",
+      "pending_gift_ideas": "Generazione idee regalo",
+      "in_progress": "In corso"
+    },
+    "processing": "Elaborazione...",
+    "regenerate_ideas": "Rigenera Idee",
+    "regenerate_assignments": "Rigenera Assegnazioni",
+    "previous_step": "Passo precedente"
+  },
+  "participants": {
+    "meta": {
+      "title": "Aggiungi partecipanti",
+      "description": "Aggiungi partecipanti al tuo scambio di regali"
+    },
+    "title": "Invita i tuoi elfi",
+    "subtitle": "Aggiungi i partecipanti magici che si uniranno al tuo scambio di regali!",
+    "add_section": {
+      "title": "Aggiungi partecipante",
+      "description": "Inserisci il nome di una persona che parteciperà allo scambio di regali",
+      "input_placeholder": "Inserisci il nome del partecipante...",
+      "adding": "Aggiunta in corso...",
+      "add_button": "Aggiungi"
+    },
+    "next_button": "Prossimo passo",
+    "no_participants": "Nessun partecipante aggiunto finora. Inizia aggiungendo qualcuno sopra! 🎁",
+    "clear_all_button": "Cancella tutto",
+    "delete_modal": {
+      "title": "Rimuovi partecipante",
+      "message": "Sei sicuro di voler rimuovere \"{{name}}\"?",
+      "confirm": "Rimuovi",
+      "cancel": "Annulla"
+    },
+    "clear_all_modal": {
+      "title": "Cancella tutti i partecipanti",
+      "message": "Sei sicuro di voler rimuovere tutti i partecipanti? Questa azione non può essere annullata.",
+      "confirm": "Cancella tutto",
+      "cancel": "Annulla"
+    }
+  },
+  "magic_words": {
+    "title": "Crea le tue parole magiche",
+    "subtitle": "Aggiungi parole incantate per guidare la scelta perfetta del regalo!",
+    "add_section": {
+      "title": "Aggiungi parola magica",
+      "description": "Inserisci parole magiche che descrivono i regali perfetti (es: accogliente, creativo, avventuroso)",
+      "input_placeholder": "Inserisci una parola magica...",
+      "add_button": "Aggiungi parola",
+      "generate_button": "Genera",
+      "select_category": "Prima scegli una categoria per aggiungere la tua parola magica ✨",
+      "clear_all": "Cancella tutto"
+    },
+    "loading": "Caricamento parole magiche...",
+    "no_magic_words": "Nessuna parola magica aggiunta finora. Inizia aggiungendo alcune parole incantate sopra! ✨",
+    "categories": {
+      "color": {
+        "emoji": "🎨",
+        "name": "colore"
+      },
+      "texture": {
+        "emoji": "🧸",
+        "name": "texture"
+      },
+      "style": {
+        "emoji": "🎭",
+        "name": "stile"
+      },
+      "mood": {
+        "emoji": "🌟",
+        "name": "umore"
+      },
+      "utility": {
+        "emoji": "🛠️",
+        "name": "utilità"
+      },
+      "interest": {
+        "emoji": "🎯",
+        "name": "interesse"
+      }
+    },
+    "navigation": {
+      "previous": "Passo precedente",
+      "next": "Passo successivo"
+    },
+    "delete_modal": {
+      "title": "Elimina parola magica",
+      "message": "Sei sicuro di voler eliminare questa parola magica?",
+      "confirm": "Elimina",
+      "cancel": "Annulla"
+    },
+    "clear_all_modal": {
+      "title": "Cancella tutte le parole magiche",
+      "message": "Sei sicuro di voler cancellare tutte le parole magiche? Questa azione non può essere annullata.",
+      "confirm": "Cancella tutto",
+      "cancel": "Annulla"
+    }
+  },
+  "loading_animation": {
+    "messages": [
+      {
+        "icon": "🎲",
+        "title": "Mescolando i partecipanti",
+        "description": "Mi assicuro che ognuno riceva un partner unico per i regali..."
+      },
+      {
+        "icon": "🎨",
+        "title": "Creando idee regalo",
+        "description": "I nostri elfi stanno pensando a suggerimenti personalizzati..."
+      },
+      {
+        "icon": "🎁",
+        "title": "Impacchettando i regali",
+        "description": "Aggiungendo un tocco di magia festiva alle tue assegnazioni..."
+      },
+      {
+        "icon": "✨",
+        "title": "Spargendo polvere di stelle",
+        "description": "Rendendo la tua esperienza di Babbo Natale Segreto ancora più speciale..."
+      },
+      {
+        "icon": "🎄",
+        "title": "Diffondendo lo spirito natalizio",
+        "description": "Quasi pronti a rivelare le tue coppie magiche..."
+      }
+    ]
+  },
+  "layout": {
+    "navigation": {
+      "participants": {
+        "label": "Partecipanti"
+      },
+      "magic_words": {
+        "label": "Parole magiche"
+      },
+      "game_results": {
+        "label": "Risultati"
+      }
+    }
+  },
+  "assignment": {
+    "loading": {
+      "title": "🎄 Gli elfi stanno preparando la tua assegnazione...",
+      "description": "Un momento mentre prepariamo tutto!"
+    },
+    "error": {
+      "title": "Ho ho... Oh no! 🎅",
+      "message": "Babbo Natale non ha trovato la tua assegnazione nella sua lista"
+    },
+    "pin": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "create_description": "Crea un PIN magico per proteggere la tua sorpresa di Babbo Natale Segreto!",
+      "enter_description": "Inserisci il tuo PIN magico per vedere la tua assegnazione di Babbo Natale Segreto!",
+      "input_placeholder": "Inserisci il PIN (4-8 caratteri)",
+      "show": "Mostra",
+      "hide": "Nascondi",
+      "submit_create": "🎄 Imposta PIN festivo",
+      "submit_unlock": "✨ Sblocca la magia"
+    },
+    "reveal": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "pre_reveal_description": "Pronto a scoprire la tua missione di Babbo Natale Segreto?",
+      "post_reveal_description": "Ecco la tua assegnazione festiva!",
+      "reveal_button": "🎁 Scarta la tua assegnazione",
+      "receiver_intro": "La tua missione di Babbo Natale Segreto è portare gioia a:",
+      "magic_words_title": "✨ Parole magiche per guidare il tuo regalo:",
+      "ai_ideas_title": "Idee regalo generate dall'IA:",
+      "ai_ideas_description": "🎨 Gli elfi hanno creato queste magiche idee regalo apposta per te!",
+      "footer": "Shh... Mantieni viva la magia del Natale! 🤫 ✨"
+    },
+    "click_to_reveal": "Clicca sul regalo per scoprire la tua assegnazione!"
+  }
+}

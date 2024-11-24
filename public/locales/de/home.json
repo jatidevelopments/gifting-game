@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Kostenloser Wichtel-Organizer | Einfach & Magisch",
+  "description": "Organisiere deine Wichtel-Runde ganz einfach und kostenlos! Perfekt für Familie, Freunde oder Firmenevents. Mit automatischer Zuordnung, Wunschlisten und privaten Links für alle Teilnehmer.",
+  "hero": {
+    "title": "Mach dein Wichteln dieses Jahr zum Highlight",
+    "title1": "Mach",
+    "title2": "dein",
+    "title3": "Wichteln",
+    "subtitle1": "dieses Jahr",
+    "subtitle2": "zum Highlight",
+    "description": "Der einfachste Weg, deine Wichtel-Runde zu organisieren. Keine Anmeldung nötig - nur pure Weihnachtsfreude!",
+    "button": "Jetzt starten"
+  },
+  "stats": {
+    "free": "Für immer kostenlos",
+    "setup": "Blitzschnell",
+    "ideas": "Geschenkideen"
+  },
+  "features": {
+    "title": "Deine Vorteile",
+    "setup": {
+      "title": "Blitzschnell eingerichtet",
+      "description": "Erstelle deine Wichtel-Gruppe in Sekunden. Ohne Anmeldung!"
+    },
+    "matching": {
+      "title": "Clevere Zuordnung",
+      "description": "Unser Algorithmus sorgt für faire und zufällige Geschenkzuordnungen."
+    },
+    "ideas": {
+      "title": "Geschenkideen",
+      "description": "Erhalte KI-gestützte Geschenkvorschläge basierend auf Interessen und Budget."
+    },
+    "privacy": {
+      "title": "Privat & Sicher",
+      "description": "Zuordnungen bleiben geheim und werden über private Links geteilt."
+    }
+  },
+  "howItWorks": {
+    "title": "So funktioniert's",
+    "step1": {
+      "title": "Gruppe erstellen",
+      "description": "Starte deine Wichtel-Runde mit einem Klick"
+    },
+    "step2": {
+      "title": "Teilnehmer einladen",
+      "description": "Lade Freunde, Familie oder Kollegen ein"
+    },
+    "step3": {
+      "title": "Zuordnung erhalten",
+      "description": "Wir verteilen die Wichtel-Paare zufällig"
+    }
+  },
+  "cta": {
+    "title": "Bereit zum Wichteln?",
+    "description": "Schließe dich tausenden glücklichen Wichteln an und mache diese Weihnachtszeit unvergesslich!",
+    "button": "Gruppe erstellen"
+  }
+}

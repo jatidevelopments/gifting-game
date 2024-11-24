@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "create": "Austausch erstellen",
+    "join": "Austausch beitreten",
+    "start": "Jetzt starten",
+    "next": "Weiter",
+    "back": "Zurück",
+    "submit": "Absenden",
+    "cancel": "Abbrechen",
+    "close": "Schließen",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "share": "Teilen"
+  },
+  "loading": "Lädt...",
+  "error": "Ein Fehler ist aufgetreten",
+  "success": "Erfolg!",
+  "required": "Erforderlich",
+  "optional": "Optional",
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "pt": "Português",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "da": "Dansk"
+  },
+  "footer": {
+    "copyright": "MySecretSanta. Alle Rechte vorbehalten."
+  },
+  "brand": {
+    "name": "MySecretSanta"
+  },
+  "social": {
+    "title": "Verbreite den Zauber der Weihnachtszeit!",
+    "description": "Teile MySecretSanta mit Freunden und Familie, um das Schenken noch magischer zu gestalten",
+    "defaultTitle": " MySecretSanta entdeckt - Die magischste Art, Wichteln zu organisieren! "
+  }
+}

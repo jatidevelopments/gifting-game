@@ -1,9 +1,11 @@
 import { PlusIcon, SparklesIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { FloatingGameLink } from "~/components/FloatingGameLink";
 import { GameLayout } from "~/components/GameLayout";
 import { useMagicWords } from "~/hooks/useMagicWords";
@@ -71,7 +73,7 @@ const categoryStyles: Record<
   },
 };
 
-const MagicWords: NextPage = (props) => {
+const MagicWords: NextPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <GameLayout>
       <MagicWordsContent />
@@ -80,6 +82,7 @@ const MagicWords: NextPage = (props) => {
 };
 
 const MagicWordsContent = () => {
+  const { t } = useTranslation("game");
   const router = useRouter();
   const { gameId } = router.query;
 
@@ -116,7 +119,7 @@ const MagicWordsContent = () => {
           className="rounded-lg bg-white/10 p-8 text-center backdrop-blur-sm"
         >
           <div className="mx-auto mb-4 h-16 w-16 animate-spin rounded-full border-4 border-green-500 border-t-transparent"></div>
-          <p className="text-gray-400">Loading magic words...</p>
+          <p className="text-gray-400">{t("magic_words.loading")}</p>
         </motion.div>
       </div>
     );
@@ -136,13 +139,11 @@ const MagicWordsContent = () => {
         <div className="mb-3 flex items-center justify-center space-x-2">
           <h1 className="text-4xl">✨</h1>
           <h1 className="bg-gradient-to-r from-red-400 via-purple-400 to-red-400 bg-clip-text font-cinzel text-4xl text-transparent">
-            Create Your Magic Words
+            {t("magic_words.title")}
           </h1>
           <h1 className="text-4xl">✨</h1>
         </div>
-        <p className="text-gray-400">
-          Add enchanted words to guide the perfect gift selection!
-        </p>
+        <p className="text-gray-400">{t("magic_words.subtitle")}</p>
       </motion.div>
 
       <motion.div
@@ -154,13 +155,12 @@ const MagicWordsContent = () => {
           <div className="mb-4 space-y-2">
             <div className="flex items-center justify-start space-x-2">
               <h2 className="bg-gradient-to-r from-purple-400 to-red-400 bg-clip-text font-cinzel text-2xl text-transparent">
-                Add a Magic Word
+                {t("magic_words.add_section.title")}
               </h2>
               <h2 className="text-2xl">✨</h2>
             </div>
             <p className="text-sm text-gray-400">
-              Enter magical words that describe the perfect gifts (e.g., cozy,
-              creative, adventurous)
+              {t("magic_words.add_section.description")}
             </p>
           </div>
 
@@ -176,8 +176,10 @@ const MagicWordsContent = () => {
                     : `${categoryStyles[category.name]?.bgColor} ${categoryStyles[category.name]?.textColor} ${categoryStyles[category.name]?.hoverBg} ${categoryStyles[category.name]?.borderColor}`,
                 )}
               >
-                <span>{categoryStyles[category.name]?.emoji}</span>
-                <span>{category.name}</span>
+                <span>
+                  {t(`magic_words.categories.${category.name}.emoji`)}
+                </span>
+                <span>{t(`magic_words.categories.${category.name}.name`)}</span>
               </button>
             ))}
           </div>
@@ -187,7 +189,7 @@ const MagicWordsContent = () => {
               type="text"
               value={newWord}
               onChange={(e) => setNewWord(e.target.value)}
-              placeholder="Enter a magic word..."
+              placeholder={t("magic_words.add_section.input_placeholder")}
               className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-500/50 sm:text-base"
             />
             <div className="flex w-full flex-col gap-2 sm:flex-row">
@@ -205,7 +207,7 @@ const MagicWordsContent = () => {
                 className="flex w-full items-center justify-center gap-2 rounded-lg border border-purple-500/20 bg-gradient-to-r from-purple-500/20 to-red-500/20 px-4 py-2.5 text-sm text-white/90 transition-all hover:from-purple-500/30 hover:to-red-500/30 disabled:cursor-not-allowed disabled:opacity-50 sm:text-base"
               >
                 <PlusIcon className="h-5 w-5" />
-                <span>Add Word</span>
+                <span>{t("magic_words.add_section.add_button")}</span>
               </button>
               <button
                 type="button"
@@ -214,14 +216,14 @@ const MagicWordsContent = () => {
                 className="flex w-full items-center justify-center gap-2 rounded-lg border border-purple-500/20 bg-gradient-to-r from-purple-500/20 to-red-500/20 px-4 py-2.5 text-sm text-white/90 transition-all hover:from-purple-500/30 hover:to-red-500/30 disabled:cursor-not-allowed disabled:opacity-50 sm:text-base"
               >
                 <SparklesIcon className="h-5 w-5" />
-                <span>Generate</span>
+                <span>{t("magic_words.add_section.generate_button")}</span>
               </button>
             </div>
           </div>
 
           {!selectedCategoryId && (
             <p className="mt-2 text-sm text-yellow-400">
-              Select a category first to add your magic word ✨
+              {t("magic_words.add_section.select_category")}
             </p>
           )}
 
@@ -235,7 +237,7 @@ const MagicWordsContent = () => {
               className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-red-500/20 px-4 py-2 text-red-400 transition-colors hover:bg-red-500/20 hover:text-red-300 sm:w-auto"
             >
               <XMarkIcon className="h-5 w-5" />
-              <span>Clear All</span>
+              <span>{t("magic_words.add_section.clear_all")}</span>
             </button>
           )}
         </div>
@@ -248,7 +250,7 @@ const MagicWordsContent = () => {
             className="flex items-center space-x-2 rounded-lg border border-white/10 bg-white/5 px-6 py-2 text-white/80 transition-colors hover:bg-white/10"
           >
             <span className="text-xl">←</span>
-            <span>Previous Step</span>
+            <span>{t("magic_words.navigation.previous")}</span>
           </Link>
         )}
         <Link
@@ -261,7 +263,7 @@ const MagicWordsContent = () => {
               "pointer-events-none cursor-not-allowed opacity-50",
           )}
         >
-          <span>Next Step</span>
+          <span>{t("magic_words.navigation.next")}</span>
           <span className="text-xl">→</span>
         </Link>
       </div>
@@ -273,14 +275,11 @@ const MagicWordsContent = () => {
             animate={{ opacity: 1 }}
             className="py-8 text-center text-gray-400"
           >
-            <p>
-              No magic words added yet. Start by adding some enchanted words
-              above! 🪄
-            </p>
+            <p>{t("magic_words.no_magic_words")}</p>
           </motion.div>
         ) : (
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-            {magicWords.map((magicWord, index) => (
+            {magicWords.map((magicWord: any, index: number) => (
               <motion.div
                 key={magicWord.id}
                 layout
@@ -302,7 +301,9 @@ const MagicWordsContent = () => {
                       )}
                     >
                       <span className="text-sm">
-                        {categoryStyles[magicWord.category.name]?.emoji}
+                        {t(
+                          `magic_words.categories.${magicWord.category.name}.emoji`,
+                        )}
                       </span>
                     </div>
                     <div className="flex flex-col">
@@ -319,7 +320,9 @@ const MagicWordsContent = () => {
                         {magicWord.word}
                       </span>
                       <span className="text-xs text-gray-400 group-hover:text-gray-300">
-                        {magicWord.category.name}
+                        {t(
+                          `magic_words.categories.${magicWord.category.name}.name`,
+                        )}
                       </span>
                     </div>
                   </div>
@@ -344,23 +347,40 @@ const MagicWordsContent = () => {
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
         onConfirm={confirmDelete}
-        title="Delete Magic Word"
-        message={`Are you sure you want to delete "${magicWordToDelete?.word}"?`}
-        confirmText="Delete"
-        cancelText="Cancel"
+        title={t("magic_words.delete_modal.title")}
+        message={t("magic_words.delete_modal.message", {
+          word: magicWordToDelete?.word,
+        })}
+        confirmText={t("magic_words.delete_modal.confirm")}
+        cancelText={t("magic_words.delete_modal.cancel")}
       />
 
       <ConfirmationModal
         isOpen={isClearAllModalOpen}
         onClose={() => setIsClearAllModalOpen(false)}
         onConfirm={handleClearAll}
-        title="Clear All Magic Words"
-        message="Are you sure you want to delete all magic words? This action cannot be undone."
-        confirmText="Clear All"
-        cancelText="Cancel"
+        title={t("magic_words.clear_all_modal.title")}
+        message={t("magic_words.clear_all_modal.message")}
+        confirmText={t("magic_words.clear_all_modal.confirm")}
+        cancelText={t("magic_words.clear_all_modal.cancel")}
       />
     </div>
   );
+};
+
+export const getStaticProps = async ({ locale }: { locale: string }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "game"])),
+    },
+  };
+};
+
+export const getStaticPaths = async () => {
+  return {
+    paths: [], // indicates that no page needs be created at build time
+    fallback: "blocking", // indicates the type of fallback
+  };
 };
 
 export default MagicWords;

@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Organizzatore Gratuito di Babbo Natale Segreto | Facile e Magico",
+  "description": "Crea e organizza il tuo scambio di regali Babbo Natale Segreto gratuitamente! Perfetto per famiglia, amici o feste aziendali. Abbinamento automatico, liste dei desideri e link privati per tutti i partecipanti.",
+  "hero": {
+    "title": "Rendi magico il tuo Babbo Natale Segreto quest'anno",
+    "title1": "Rendi",
+    "title2": "il tuo",
+    "title3": "Segreto",
+    "subtitle1": "quest'anno",
+    "subtitle2": "magico",
+    "description": "Il modo più semplice per organizzare il tuo Babbo Natale Segreto. Nessuna registrazione, nessun problema - solo gioia natalizia!",
+    "button": "Inizia ora"
+  },
+  "stats": {
+    "free": "Sempre gratuito",
+    "setup": "Configurazione rapida",
+    "ideas": "Idee regalo"
+  },
+  "features": {
+    "title": "I nostri vantaggi",
+    "setup": {
+      "title": "Configurazione facile",
+      "description": "Crea il tuo gruppo in pochi secondi. Senza registrazione!"
+    },
+    "matching": {
+      "title": "Abbinamento intelligente",
+      "description": "Il nostro algoritmo garantisce assegnazioni eque e casuali per tutti."
+    },
+    "ideas": {
+      "title": "Idee regalo",
+      "description": "Ricevi suggerimenti personalizzati con IA in base a interessi e budget."
+    },
+    "privacy": {
+      "title": "Privato e sicuro",
+      "description": "Le assegnazioni rimangono segrete e vengono condivise tramite link privati."
+    }
+  },
+  "howItWorks": {
+    "title": "Come funziona",
+    "step1": {
+      "title": "Crea lo scambio",
+      "description": "Avvia il tuo Babbo Natale Segreto con un clic"
+    },
+    "step2": {
+      "title": "Aggiungi partecipanti",
+      "description": "Invita amici, famiglia o colleghi"
+    },
+    "step3": {
+      "title": "Ricevi le assegnazioni",
+      "description": "Distribuiamo le coppie in modo casuale"
+    }
+  },
+  "cta": {
+    "title": "Pronto per il tuo Babbo Natale Segreto?",
+    "description": "Unisciti a migliaia di persone felici e rendi questo Natale indimenticabile!",
+    "button": "Crea scambio"
+  }
+}

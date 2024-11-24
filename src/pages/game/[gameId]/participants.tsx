@@ -1,19 +1,21 @@
 import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { type NextPage } from "next";
+import { type NextPage, InferGetStaticPropsType } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import toast from "react-hot-toast";
+import { FloatingGameLink } from "~/components/FloatingGameLink";
 import { GameLayout } from "~/components/GameLayout";
 import { useParticipants } from "~/hooks/useParticipants";
 import { api } from "~/utils/api";
 import { ConfirmationModal } from "../../../components/ConfirmationModal";
-import { CopyLinkButton } from "~/components/CopyLinkButton";
-import { FloatingGameLink } from "~/components/FloatingGameLink";
 
-const ParticipantsPage: NextPage = (props) => {
+const ParticipantsPage: NextPage = (
+  props: InferGetStaticPropsType<typeof getStaticProps>,
+) => {
   return (
     <GameLayout>
       <ParticipantsContent />
@@ -22,6 +24,7 @@ const ParticipantsPage: NextPage = (props) => {
 };
 
 const ParticipantsContent = () => {
+  const { t } = useTranslation("game");
   const {
     newParticipant,
     setNewParticipant,
@@ -47,26 +50,13 @@ const ParticipantsContent = () => {
     { enabled: !!gameId },
   );
 
-  const clearAllParticipants = api.participant.clearAllParticipants.useMutation(
-    {
-      onSuccess: () => {
-        toast.success("All participants cleared successfully!");
-        setIsClearAllModalOpen(false);
-      },
-      onError: (error: any) => {
-        toast.error(error.message);
-        setIsClearAllModalOpen(false);
-      },
-    },
-  );
-
   return (
     <>
       <Head>
-        <title>Add Participants - MySecretSanta</title>
+        <title>{t("participants.meta.title")} - MySecretSanta</title>
         <meta
           name="description"
-          content="Add participants to your gift exchange"
+          content={t("participants.meta.description")}
         />
       </Head>
 
@@ -79,12 +69,12 @@ const ParticipantsContent = () => {
           <div className="mb-3 flex items-center justify-center space-x-2">
             <h1 className="text-3xl sm:text-4xl">🎄</h1>
             <h1 className="bg-gradient-to-r from-red-400 via-purple-400 to-red-400 bg-clip-text font-cinzel text-3xl text-transparent sm:text-4xl">
-              Invite Your Elves
+              {t("participants.title")}
             </h1>
             <h1 className="text-3xl sm:text-4xl">🎅</h1>
           </div>
           <p className="text-sm text-gray-400 sm:text-base">
-            Add the magical participants who will join your gift exchange!
+            {t("participants.subtitle")}
           </p>
         </motion.div>
 
@@ -98,12 +88,12 @@ const ParticipantsContent = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-start space-x-2">
                   <h2 className="bg-gradient-to-r from-purple-400 to-red-400 bg-clip-text font-cinzel text-xl text-transparent sm:text-2xl">
-                    Add a Participant
+                    {t("participants.add_section.title")}
                   </h2>
                   <h2 className="text-xl sm:text-2xl">✨</h2>
                 </div>
                 <p className="text-xs text-gray-400 sm:text-sm">
-                  Enter the name of someone joining the gift exchange
+                  {t("participants.add_section.description")}
                 </p>
               </div>
 
@@ -112,7 +102,7 @@ const ParticipantsContent = () => {
                   type="text"
                   value={newParticipant}
                   onChange={(e) => setNewParticipant(e.target.value)}
-                  placeholder="Enter participant name..."
+                  placeholder={t("participants.add_section.input_placeholder")}
                   className="flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-500/50 sm:text-base"
                 />
                 <button
@@ -123,12 +113,12 @@ const ParticipantsContent = () => {
                   {isAddingParticipant ? (
                     <>
                       <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white/90" />
-                      <span>Adding...</span>
+                      <span>{t("participants.add_section.adding")}</span>
                     </>
                   ) : (
                     <>
                       <PlusIcon className="h-5 w-5" />
-                      <span>Add</span>
+                      <span>{t("participants.add_section.add_button")}</span>
                     </>
                   )}
                 </button>
@@ -148,7 +138,7 @@ const ParticipantsContent = () => {
                   "pointer-events-none cursor-not-allowed opacity-50",
               )}
             >
-              <span>Next Step</span>
+              <span>{t("participants.next_button")}</span>
               <span className="text-xl">→</span>
             </Link>
           </div>
@@ -161,7 +151,7 @@ const ParticipantsContent = () => {
                 className="py-8 text-center text-gray-400"
               >
                 <p>
-                  No participants added yet. Start by adding someone above! 🎁
+                  {t("participants.no_participants")}
                 </p>
               </motion.div>
             ) : (
@@ -207,7 +197,7 @@ const ParticipantsContent = () => {
                 className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-400 transition-colors hover:bg-red-500/20 hover:text-red-300 sm:text-base"
               >
                 <XMarkIcon className="h-5 w-5" />
-                <span>Clear All</span>
+                <span>{t("participants.clear_all_button")}</span>
               </button>
             </div>
           )}
@@ -225,24 +215,39 @@ const ParticipantsContent = () => {
           isOpen={isDeleteModalOpen}
           onClose={() => setIsDeleteModalOpen(false)}
           onConfirm={confirmDelete}
-          title="Delete Participant"
-          message={`Are you sure you want to delete "${participantToDelete?.name}"?`}
-          confirmText="Delete"
-          cancelText="Cancel"
+          title={t("participants.delete_modal.title")}
+          message={t("participants.delete_modal.message", { name: participantToDelete?.name })}
+          confirmText={t("participants.delete_modal.confirm")}
+          cancelText={t("participants.delete_modal.cancel")}
         />
 
         <ConfirmationModal
           isOpen={isClearAllModalOpen}
           onClose={() => setIsClearAllModalOpen(false)}
           onConfirm={handleClearAll}
-          title="Clear All Participants"
-          message="Are you sure you want to delete all participants? This action cannot be undone."
-          confirmText="Clear All"
-          cancelText="Cancel"
+          title={t("participants.clear_all_modal.title")}
+          message={t("participants.clear_all_modal.message")}
+          confirmText={t("participants.clear_all_modal.confirm")}
+          cancelText={t("participants.clear_all_modal.cancel")}
         />
       </div>
     </>
   );
+};
+
+export const getStaticProps = async ({ locale }: { locale: string }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "game"])),
+    },
+  };
+};
+
+export const getStaticPaths = async () => {
+  return {
+    paths: [], // indicates that no page needs be created at build time
+    fallback: "blocking", // indicates the type of fallback
+  };
 };
 
 export default ParticipantsPage;

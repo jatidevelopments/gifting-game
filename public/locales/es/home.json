@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Organizador de Amigo Invisible Gratuito | ¡Fácil y Mágico!",
+  "description": "¡Crea y organiza tu Amigo Invisible de forma gratuita! Perfecto para familia, amigos o fiestas de empresa. Asignación automática, listas de deseos y enlaces privados para todos los participantes.",
+  "hero": {
+    "title": "Haz que tu Amigo Invisible sea mágico este año",
+    "title1": "Haz",
+    "title2": "tu",
+    "title3": "Invisible",
+    "subtitle1": "este año",
+    "subtitle2": "mágico",
+    "description": "La forma más fácil de organizar tu Amigo Invisible. Sin registros, sin complicaciones - ¡solo diversión navideña!",
+    "button": "¡Comenzar!"
+  },
+  "stats": {
+    "free": "Siempre gratis",
+    "setup": "Configuración rápida",
+    "ideas": "Ideas para regalos"
+  },
+  "features": {
+    "title": "¿Por qué elegirnos?",
+    "setup": {
+      "title": "Configuración sencilla",
+      "description": "¡Crea tu grupo de Amigo Invisible en segundos, sin registro!"
+    },
+    "matching": {
+      "title": "Asignación inteligente",
+      "description": "Nuestro algoritmo garantiza asignaciones justas y aleatorias para todos."
+    },
+    "ideas": {
+      "title": "Ideas para regalos",
+      "description": "Recibe sugerencias personalizadas con IA según intereses y presupuesto."
+    },
+    "privacy": {
+      "title": "Privado y seguro",
+      "description": "Las asignaciones se mantienen en secreto y se comparten mediante enlaces privados."
+    }
+  },
+  "howItWorks": {
+    "title": "¿Cómo funciona?",
+    "step1": {
+      "title": "Crear intercambio",
+      "description": "Inicia tu Amigo Invisible con un clic"
+    },
+    "step2": {
+      "title": "Añadir participantes",
+      "description": "Invita a amigos, familia o compañeros"
+    },
+    "step3": {
+      "title": "Recibir asignaciones",
+      "description": "Asignamos las parejas aleatoriamente"
+    }
+  },
+  "cta": {
+    "title": "¿Listo para tu Amigo Invisible?",
+    "description": "¡Únete a miles de personas felices y haz que estas fiestas sean inolvidables!",
+    "button": "Crear intercambio"
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "results": {
+    "copy": {
+      "message": "🎄 Cześć {{name}}! Twoje przypisanie Tajemniczego Mikołaja jest gotowe!\n\nKliknij tutaj, aby zobaczyć, komu podarujesz prezent: {{url}}",
+      "success": "Link skopiowany dla {{name}}! 🎁",
+      "error": "Nie można skopiować linku. Spróbuj ponownie."
+    },
+    "status": {
+      "pending_ideas": {
+        "icon": "🎨",
+        "message": "Generowanie pomysłów na prezenty..."
+      },
+      "pending_images": {
+        "icon": "✨",
+        "message": "Tworzenie wizualizacji prezentów..."
+      },
+      "completed": {
+        "icon": "🎁",
+        "message": "Gotowe do udostępnienia!"
+      },
+      "default": {
+        "icon": "⏳",
+        "message": "Przetwarzanie..."
+      }
+    },
+    "generate": {
+      "title": "Gotowy na stworzenie magii?",
+      "description": "Wygenerujmy magiczne przypisania dla twojej wymiany prezentów!",
+      "button": "Generuj przypisania",
+      "retry": "Spróbuj ponownie"
+    },
+    "assignments": {
+      "title": "🎄 Przypisania Tajemniczego Mikołaja",
+      "subtitle": "Udostępnij te magiczne linki uczestnikom!",
+      "copied": "Skopiowano!",
+      "copy_link": "Kopiuj link",
+      "share_whatsapp": "Udostępnij przez WhatsApp",
+      "share_email": "Udostępnij przez e-mail",
+      "loading": {
+        "title": "🎁 Tworzenie Magii",
+        "subtitle": "Generowanie przypisań Tajemniczego Mikołaja...",
+        "description": "To zajmie tylko chwilę!"
+      },
+      "is_gifting_to": "daje prezent dla",
+      "ready_to_share": "Gotowe do udostępnienia",
+      "pending_gift_ideas": "Generowanie pomysłów na prezenty",
+      "in_progress": "W trakcie"
+    },
+    "processing": "Przetwarzanie...",
+    "regenerate_ideas": "Wygeneruj Nowe Pomysły",
+    "regenerate_assignments": "Wygeneruj Nowe Przypisania",
+    "previous_step": "Poprzedni krok"
+  },
+  "participants": {
+    "meta": {
+      "title": "Dodaj uczestników",
+      "description": "Dodaj uczestników do swojej wymiany prezentów"
+    },
+    "title": "Zaproś swoje elfy",
+    "subtitle": "Dodaj magicznych uczestników, którzy dołączą do twojej wymiany prezentów!",
+    "add_section": {
+      "title": "Dodaj uczestnika",
+      "description": "Wpisz imię osoby, która weźmie udział w wymianie prezentów",
+      "input_placeholder": "Wpisz imię uczestnika...",
+      "adding": "Dodawanie...",
+      "add_button": "Dodaj"
+    },
+    "next_button": "Następny krok",
+    "no_participants": "Nie dodano jeszcze żadnych uczestników. Zacznij od dodania kogoś powyżej! 🎁",
+    "clear_all_button": "Wyczyść wszystko",
+    "delete_modal": {
+      "title": "Usuń uczestnika",
+      "message": "Czy na pewno chcesz usunąć \"{{name}}\"?",
+      "confirm": "Usuń",
+      "cancel": "Anuluj"
+    },
+    "clear_all_modal": {
+      "title": "Wyczyść wszystkich uczestników",
+      "message": "Czy na pewno chcesz usunąć wszystkich uczestników? Tej akcji nie można cofnąć.",
+      "confirm": "Wyczyść wszystko",
+      "cancel": "Anuluj"
+    }
+  },
+  "magic_words": {
+    "title": "Stwórz swoje magiczne słowa",
+    "subtitle": "Dodaj zaczarowane słowa, aby pokierować idealnym wyborem prezentu!",
+    "add_section": {
+      "title": "Dodaj magiczne słowo",
+      "description": "Wpisz magiczne słowa opisujące idealne prezenty (np: przytulny, kreatywny, przygodowy)",
+      "input_placeholder": "Wpisz magiczne słowo...",
+      "add_button": "Dodaj słowo",
+      "generate_button": "Generuj",
+      "select_category": "Najpierw wybierz kategorię, aby dodać swoje magiczne słowo ✨",
+      "clear_all": "Wyczyść wszystko"
+    },
+    "loading": "Ładowanie magicznych słów...",
+    "no_magic_words": "Nie dodano jeszcze żadnych magicznych słów. Zacznij od dodania kilku zaczarowanych słów powyżej! ✨",
+    "categories": {
+      "color": {
+        "emoji": "🎨",
+        "name": "kolor"
+      },
+      "texture": {
+        "emoji": "🧸",
+        "name": "tekstura"
+      },
+      "style": {
+        "emoji": "🎭",
+        "name": "styl"
+      },
+      "mood": {
+        "emoji": "🌟",
+        "name": "nastrój"
+      },
+      "utility": {
+        "emoji": "🛠️",
+        "name": "użyteczność"
+      },
+      "interest": {
+        "emoji": "🎯",
+        "name": "zainteresowanie"
+      }
+    },
+    "navigation": {
+      "previous": "Poprzedni krok",
+      "next": "Następny krok"
+    },
+    "modals": {
+      "delete": {
+        "title": "Usuń magiczne słowo",
+        "message": "Czy na pewno chcesz usunąć to magiczne słowo?",
+        "confirm": "Usuń",
+        "cancel": "Anuluj"
+      },
+      "clear_all": {
+        "title": "Wyczyść wszystkie magiczne słowa",
+        "message": "Czy na pewno chcesz wyczyścić wszystkie magiczne słowa? Tej akcji nie można cofnąć.",
+        "confirm": "Wyczyść wszystko",
+        "cancel": "Anuluj"
+      }
+    }
+  },
+  "loading_animation": {
+    "messages": [
+      {
+        "icon": "🎲",
+        "title": "Tasowanie uczestników",
+        "description": "Upewnianie się, że każdy otrzyma unikalnego partnera do prezentów..."
+      },
+      {
+        "icon": "🎨",
+        "title": "Tworzenie pomysłów na prezenty",
+        "description": "Nasze elfy wymyślają spersonalizowane sugestie..."
+      },
+      {
+        "icon": "🎁",
+        "title": "Pakowanie prezentów",
+        "description": "Dodawanie świątecznej magii do twoich przypisań..."
+      },
+      {
+        "icon": "✨",
+        "title": "Rozsypywanie gwiezdnego pyłu",
+        "description": "Sprawianie, że twoje doświadczenie Tajemniczego Mikołaja będzie jeszcze bardziej wyjątkowe..."
+      },
+      {
+        "icon": "🎄",
+        "title": "Rozsiewanie świątecznego ducha",
+        "description": "Już prawie gotowe do ujawnienia twoich magicznych par..."
+      }
+    ]
+  },
+  "layout": {
+    "navigation": {
+      "participants": {
+        "label": "Uczestnicy"
+      },
+      "magic_words": {
+        "label": "Magiczne słowa"
+      },
+      "game_results": {
+        "label": "Wyniki"
+      }
+    }
+  },
+  "assignment": {
+    "loading": {
+      "title": "🎄 Elfy przygotowują twoje przydzielenie...",
+      "description": "Chwileczkę, przygotowujemy wszystko!"
+    },
+    "error": {
+      "title": "Ho ho... O nie! 🎅",
+      "message": "Święty Mikołaj nie mógł znaleźć twojego przydzielenia na swojej liście"
+    },
+    "pin": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "create_description": "Stwórz magiczny PIN, aby chronić swoją niespodziankę Tajemniczego Mikołaja!",
+      "enter_description": "Wprowadź swój magiczny PIN, aby zobaczyć swoje przydzielenie Tajemniczego Mikołaja!",
+      "input_placeholder": "Wprowadź PIN (4-8 znaków)",
+      "show": "Pokaż",
+      "hide": "Ukryj",
+      "submit_create": "🎄 Ustaw świąteczny PIN",
+      "submit_unlock": "✨ Odblokuj magię"
+    },
+    "reveal": {
+      "title": "Ho Ho Ho, {{name}}! 🎅",
+      "pre_reveal_description": "Gotowy na odkrycie swojej misji Tajemniczego Mikołaja?",
+      "post_reveal_description": "Oto twoje świąteczne przydzielenie!",
+      "reveal_button": "🎁 Rozpakuj swoje przydzielenie",
+      "receiver_intro": "Twoją misją Tajemniczego Mikołaja jest przyniesienie radości:",
+      "magic_words_title": "✨ Magiczne słowa do wyboru prezentu:",
+      "ai_ideas_title": "Pomysły na prezenty wygenerowane przez AI:",
+      "ai_ideas_description": "🎨 Elfy stworzyły te magiczne pomysły na prezenty specjalnie dla ciebie!",
+      "footer": "Ciii... Zachowaj świąteczną magię! 🤫 ✨"
+    },
+    "click_to_reveal": "Kliknij prezent, aby odkryć swoje przypisanie!"
+  }
+}

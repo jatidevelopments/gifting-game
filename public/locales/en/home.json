@@ -1,0 +1,58 @@
+{
+  "title": "MySecretSanta - Free Secret Santa Gift Exchange Organizer | Easy & Fun",
+  "description": "Create and organize your Secret Santa gift exchange easily and for free! Perfect for family, friends, or office parties. Automatic matching, wish lists, and private links for all participants.",
+  "hero": {
+    "title": "Make Your Secret Santa Magical This Year",
+    "title1": "Make",
+    "title2": "Secret",
+    "title3": "Santa",
+    "subtitle1": "Magical",
+    "subtitle2": "This Year",
+    "description": "The easiest way to organize your Secret Santa gift exchange. No accounts, no hassle - just holiday joy!",
+    "button": "Start Now"
+  },
+  "stats": {
+    "free": "Free Forever",
+    "setup": "Setup Time",
+    "ideas": "Gift Ideas"
+  },
+  "features": {
+    "title": "Why Choose Us",
+    "setup": {
+      "title": "Easy Setup",
+      "description": "Create your Secret Santa group in seconds. No account needed!"
+    },
+    "matching": {
+      "title": "Smart Matching",
+      "description": "Our algorithm ensures fair and random gift assignments for everyone."
+    },
+    "ideas": {
+      "title": "Gift Ideas",
+      "description": "Get AI-powered gift suggestions based on interests and budget."
+    },
+    "privacy": {
+      "title": "Private & Secure",
+      "description": "Assignments are kept secret and shared through private links."
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "step1": {
+      "title": "Create Exchange",
+      "description": "Start your Secret Santa group with one click"
+    },
+    "step2": {
+      "title": "Add Members",
+      "description": "Invite your friends, family, or colleagues"
+    },
+    "step3": {
+      "title": "Get Matched",
+      "description": "We'll randomly assign gift exchanges"
+    }
+  },
+  "cta": {
+    "title": "Ready to Start Your Secret Santa?",
+    "description": "Join thousands of happy gift-givers and make this holiday season unforgettable!",
+    "button": "Create Exchange"
+  }
+}
