@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Logo } from "~/components/Logo";
 import { SocialShareButtons } from "~/components/SocialShareButtons";
 import { api } from "~/utils/api";
 
@@ -71,10 +70,7 @@ const item = {
 
 const LandingPage: NextPage = (props) => {
   const router = useRouter();
-
-  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
-  const shareTitle =
-    "Found MySecretSanta - the perfect app for organizing your Secret Santa gift exchange! Join the fun now";
+  const url = typeof window !== "undefined" ? window.location.href : "";
 
   const createGameRoom = api.gameRoom.create.useMutation({
     onSuccess: (data: any) => {
@@ -126,7 +122,7 @@ const LandingPage: NextPage = (props) => {
           content="Create and organize your Secret Santa gift exchange easily and for free! Perfect for family, friends, or office parties."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={currentUrl} />
+        <meta property="og:url" content={url} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -307,7 +303,7 @@ const LandingPage: NextPage = (props) => {
                       duration: 0.5,
                       repeat: Infinity,
                       repeatDelay: 5,
-                    }
+                    },
                   }}
                 >
                   <button
@@ -506,7 +502,7 @@ const LandingPage: NextPage = (props) => {
                   duration: 0.5,
                   repeat: Infinity,
                   repeatDelay: 5,
-                }
+                },
               }}
             >
               <button
@@ -522,7 +518,7 @@ const LandingPage: NextPage = (props) => {
 
         {/* Social Share Section */}
         <section aria-label="Share" className="mt-16">
-          <SocialShareButtons url={currentUrl} title={shareTitle} />
+          <SocialShareButtons />
         </section>
       </main>
     </div>

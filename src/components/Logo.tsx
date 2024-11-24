@@ -35,7 +35,7 @@ export const Logo: FC<LogoProps> = ({
           whileTap={{ scale: 0.95 }}
         >
           <div className={`relative ${logoSize}`}>
-            <motion.div 
+            <motion.div
               className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500 via-fuchsia-400 to-violet-600 shadow-lg"
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
@@ -77,7 +77,7 @@ export const Logo: FC<LogoProps> = ({
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          MySecretSanta
+          MySecretSantas.com
         </motion.span>
       </motion.span>
     </motion.div>

@@ -1,15 +1,15 @@
+import { AssignmentStatus as PrismaAssignmentStatus } from "@prisma/client";
 import { motion } from "framer-motion";
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
+import { FloatingGameLink } from "~/components/FloatingGameLink";
 import { GameLayout } from "~/components/GameLayout";
 import { LoadingAnimation } from "~/components/LoadingAnimation";
+import { ParticipantShareButtons } from "~/components/ParticipantShareButtons";
 import { useGameResults } from "~/hooks/useGameResults";
-import { CopyLinkButton } from "../../../components/CopyLinkButton";
-import { AssignmentStatus as PrismaAssignmentStatus } from "@prisma/client";
-import { FloatingGameLink } from "~/components/FloatingGameLink";
 
 const GameResults: NextPage = (props) => {
   return (
@@ -259,7 +259,7 @@ const GameResultsContent = () => {
         </p>
       </motion.div>
 
-      <div className="mb-3 flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <div className="mb-3 flex flex-col items-center justify-between gap-4 sm:flex-row sm:items-start">
         <Link
           href={`/game/${gameId}/magic-words`}
           className="flex items-center space-x-2 rounded-lg border border-white/10 bg-white/5 px-6 py-2 text-white/80 transition-colors hover:bg-white/10"
@@ -267,7 +267,7 @@ const GameResultsContent = () => {
           <span className="text-xl">←</span>
           <span>Previous Step</span>
         </Link>
-        <div className="flex gap-4">
+        <div className="flex w-full flex-col sm:flex-row gap-3 sm:w-auto">
           <button
             onClick={handleRetryGeneration}
             disabled={
@@ -277,7 +277,7 @@ const GameResultsContent = () => {
               isGeneratingIdeas ||
               isGeneratingImages
             }
-            className="group flex items-center gap-2 rounded-lg border border-yellow-500/20 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 px-6 py-2 text-white/90 transition-all hover:from-yellow-500/30 hover:to-orange-500/30 disabled:cursor-not-allowed disabled:opacity-50"
+            className="group min-w-[180px] flex items-center justify-center gap-2 rounded-lg border border-yellow-500/20 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 px-6 py-2 text-white/90 transition-all hover:from-yellow-500/30 hover:to-orange-500/30 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isGeneratingAssignments ||
             isLoadingAssignments ||
@@ -304,7 +304,7 @@ const GameResultsContent = () => {
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                   />
                 </svg>
-                <span>Retry Gift Ideas</span>
+                <span>Regenerate Ideas</span>
               </>
             )}
           </button>
@@ -321,7 +321,7 @@ const GameResultsContent = () => {
               isGeneratingIdeas ||
               isGeneratingImages
             }
-            className="group flex items-center gap-2 rounded-lg border border-purple-500/20 bg-gradient-to-r from-purple-500/20 to-red-500/20 px-6 py-2 text-white/90 transition-all hover:from-purple-500/30 hover:to-red-500/30 disabled:cursor-not-allowed disabled:opacity-50"
+            className="group min-w-[180px] flex items-center justify-center gap-2 rounded-lg border border-purple-500/20 bg-gradient-to-r from-purple-500/20 to-red-500/20 px-6 py-2 text-white/90 transition-all hover:from-purple-500/30 hover:to-red-500/30 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isGeneratingAssignments ||
             isLoadingAssignments ||
@@ -348,7 +348,7 @@ const GameResultsContent = () => {
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                   />
                 </svg>
-                <span>Regenerate</span>
+                <span>Regenerate Assignments</span>
               </>
             )}
           </button>
@@ -370,46 +370,70 @@ const GameResultsContent = () => {
                 : "border-white/10"
             }`}
           >
-            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-              <div className="flex items-center gap-3">
-                <div
-                  className={`flex h-10 w-10 items-center justify-center rounded-full border bg-gradient-to-br transition-colors ${
-                    assignment.status === "PENDING_GIFT_IDEAS"
-                      ? "border-yellow-500/20 from-yellow-500/20 to-orange-500/20"
-                      : "border-purple-500/20 from-purple-500/20 to-red-500/20"
-                  }`}
-                >
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-purple-500/20 bg-gradient-to-br from-purple-500/20 to-red-500/20 transition-colors group-hover:from-purple-500/30 group-hover:to-red-500/30">
                   <span className="text-xl">🎅</span>
                 </div>
-                <div>
-                  <h3 className="font-cinzel text-lg text-white/90">
-                    {assignment.gifter.name}
-                  </h3>
-                  <div className="flex items-center gap-2 text-sm">
-                    <span className="text-gray-400">is gifting to</span>
-                    <span className="font-medium text-white/80">
-                      {assignment.receiver.name}
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-col">
+                    <span className="line-clamp-1 text-base text-purple-400 transition-colors group-hover:text-purple-300 sm:text-lg">
+                      {assignment.gifter.name}
                     </span>
+                    <div className="mt-1 flex items-center gap-2">
+                      <span className="text-sm text-gray-400">
+                        is gifting to
+                      </span>
+                      <span className="line-clamp-1 text-base text-purple-400 transition-colors group-hover:text-purple-300 sm:text-lg">
+                        {assignment.receiver.name}
+                      </span>
+                    </div>
                   </div>
-                  <AssignmentStatus status={assignment.status} />
+                  <div
+                    className={`inline-flex h-7 items-center self-start rounded-full border px-3 ${
+                      assignment.status === "COMPLETED"
+                        ? "border-green-500/20 bg-green-500/5 text-green-400"
+                        : assignment.status === "PENDING_GIFT_IDEAS"
+                          ? "border-yellow-500/20 bg-yellow-500/5 text-yellow-400"
+                          : "border-purple-500/20 bg-purple-500/5 text-purple-400"
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <div
+                        className={`h-1.5 w-1.5 rounded-full ${
+                          assignment.status === "COMPLETED"
+                            ? "bg-green-400"
+                            : assignment.status === "PENDING_GIFT_IDEAS"
+                              ? "bg-yellow-400"
+                              : "bg-purple-400"
+                        }`}
+                      />
+                      <span className="text-xs font-medium">
+                        {assignment.status === "COMPLETED"
+                          ? "Ready to Share"
+                          : assignment.status === "PENDING_GIFT_IDEAS"
+                            ? "Pending Gift Ideas"
+                            : "In Progress"}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div className="flex items-center gap-3">
-                <CopyLinkButton
-                  onClick={() =>
-                    handleCopyLink(assignment.accessUrl, assignment.gifter.name)
-                  }
-                  // disabled={assignment.status !== 'COMPLETED'}
-                />
+              <div className="flex w-full flex-col items-end gap-3 sm:w-auto">
+                <div className="w-full sm:min-w-[200px]">
+                  <ParticipantShareButtons
+                    participantName={assignment.gifter.name}
+                    gameId={gameId}
+                  />
+                </div>
               </div>
             </div>
-
-            {gameId && (
-              <FloatingGameLink gameId={gameId} currentPage="participants" />
-            )}
           </motion.div>
         ))}
+
+        {gameId && (
+          <FloatingGameLink gameId={gameId} currentPage="participants" />
+        )}
       </div>
     </div>
   );
