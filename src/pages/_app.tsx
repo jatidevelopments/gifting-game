@@ -8,6 +8,7 @@ import { SocialShareButtons } from "../components/SocialShareButtons";
 import { TRPCProvider } from "../trpc/provider";
 import { useRouter } from "next/router";
 import { Cinzel, Raleway } from "next/font/google";
+import { SEOMetadata } from "../components/SEOMetadata";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -21,8 +22,11 @@ const raleway = Raleway({
 });
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+  const router = useRouter();
+  
   return (
     <TRPCProvider>
+      <SEOMetadata path={router.asPath} />
       <div
         className={`min-h-screen bg-gradient-to-b from-[#1a1f35] via-[#2c1f35] to-[#1a1f35] ${raleway.className} ${cinzel.variable}`}
       >
