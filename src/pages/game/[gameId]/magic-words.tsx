@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { CopyLinkButton } from "~/components/CopyLinkButton";
+import { FloatingGameLink } from "~/components/FloatingGameLink";
 import { GameLayout } from "~/components/GameLayout";
 import { useMagicWords } from "~/hooks/useMagicWords";
 import { ConfirmationModal } from "../../../components/ConfirmationModal";
@@ -337,7 +337,7 @@ const MagicWordsContent = () => {
       </div>
 
       {gameId && (
-        <CopyLinkButton gameCode={gameId as string} currentPage="magic-words" />
+        <FloatingGameLink gameId={gameId as string} currentPage="magic-words" />
       )}
 
       <ConfirmationModal

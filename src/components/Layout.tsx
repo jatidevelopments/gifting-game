@@ -262,10 +262,10 @@ export function Layout({ children }: LayoutProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`flex items-center space-x-2 rounded-lg px-4 py-2 font-cinzel text-sm font-medium transition-colors ${
+                    className={`inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 focus:ring-offset-gray-900 ${
                       isActive
-                        ? "bg-green-400/10 text-green-400"
-                        : "text-gray-400 hover:bg-white/5 hover:text-green-400"
+                        ? "bg-purple-500/20 text-white"
+                        : "text-gray-400 hover:bg-purple-500/10 hover:text-white"
                     }`}
                   >
                     <span className="h-6 w-6">{item.icon}</span>

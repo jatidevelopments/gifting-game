@@ -9,6 +9,7 @@ import { LoadingAnimation } from "~/components/LoadingAnimation";
 import { useGameResults } from "~/hooks/useGameResults";
 import { CopyLinkButton } from "../../../components/CopyLinkButton";
 import { AssignmentStatus as PrismaAssignmentStatus } from "@prisma/client";
+import { FloatingGameLink } from "~/components/FloatingGameLink";
 
 const GameResults: NextPage = (props) => {
   return (
@@ -403,6 +404,10 @@ const GameResultsContent = () => {
                 />
               </div>
             </div>
+
+            {gameId && (
+              <FloatingGameLink gameId={gameId} currentPage="participants" />
+            )}
           </motion.div>
         ))}
       </div>

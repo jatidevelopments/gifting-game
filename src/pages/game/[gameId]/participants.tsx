@@ -11,6 +11,7 @@ import { useParticipants } from "~/hooks/useParticipants";
 import { api } from "~/utils/api";
 import { ConfirmationModal } from "../../../components/ConfirmationModal";
 import { CopyLinkButton } from "~/components/CopyLinkButton";
+import { FloatingGameLink } from "~/components/FloatingGameLink";
 
 const ParticipantsPage: NextPage = (props) => {
   return (
@@ -213,8 +214,8 @@ const ParticipantsContent = () => {
         </div>
 
         {gameId && (
-          <CopyLinkButton
-            gameCode={gameId as string}
+          <FloatingGameLink
+            gameId={gameId as string}
             currentPage="participants"
           />
         )}
