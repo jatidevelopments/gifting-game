@@ -4,18 +4,20 @@ import { useState, useRef, useEffect } from "react";
 
 interface ParticipantShareButtonsProps {
   participantName: string;
+  assignmentId: string;
   gameId: string;
 }
 
 export function ParticipantShareButtons({
   participantName,
+  assignmentId,
   gameId,
 }: ParticipantShareButtonsProps) {
   const [copiedText, setCopiedText] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
   const textRefs = useRef<Record<string, HTMLSpanElement | null>>({});
 
-  const url = `${window.location.origin}/game/${gameId}/game-results`;
+  const url = `${window.location.origin}/assignment/${assignmentId}`;
   const message =
     `🎄 Hey ${participantName}! You're part of our Secret Santa gift exchange! 🎁\n\n` +
     "Here's what to do:\n" +
@@ -65,7 +67,7 @@ export function ParticipantShareButtons({
       color: "#EA4335",
       hoverColor: "#D33C2F",
       href: `mailto:?subject=${encodeURIComponent(
-        "🎄 Your Secret Santa Assignment is Ready! 🎁"
+        "🎄 Your Secret Santa Assignment is Ready! 🎁",
       )}&body=${encodeURIComponent(message + "\nClick here to join: " + url)}`,
       label: `Share`,
     },
@@ -82,7 +84,9 @@ export function ParticipantShareButtons({
 
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-xs font-medium text-gray-400 text-right">Share on...</span>
+      <span className="text-right text-xs font-medium text-gray-400">
+        Share on...
+      </span>
       <div className="flex flex-wrap justify-end gap-1.5">
         {shareLinks.map((platform, index) => {
           const Icon = platform.icon;

@@ -267,7 +267,7 @@ const GameResultsContent = () => {
           <span className="text-xl">←</span>
           <span>Previous Step</span>
         </Link>
-        <div className="flex w-full flex-col sm:flex-row gap-3 sm:w-auto">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
           <button
             onClick={handleRetryGeneration}
             disabled={
@@ -277,7 +277,7 @@ const GameResultsContent = () => {
               isGeneratingIdeas ||
               isGeneratingImages
             }
-            className="group min-w-[180px] flex items-center justify-center gap-2 rounded-lg border border-yellow-500/20 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 px-6 py-2 text-white/90 transition-all hover:from-yellow-500/30 hover:to-orange-500/30 disabled:cursor-not-allowed disabled:opacity-50"
+            className="group flex min-w-[180px] items-center justify-center gap-2 rounded-lg border border-yellow-500/20 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 px-6 py-2 text-white/90 transition-all hover:from-yellow-500/30 hover:to-orange-500/30 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isGeneratingAssignments ||
             isLoadingAssignments ||
@@ -321,7 +321,7 @@ const GameResultsContent = () => {
               isGeneratingIdeas ||
               isGeneratingImages
             }
-            className="group min-w-[180px] flex items-center justify-center gap-2 rounded-lg border border-purple-500/20 bg-gradient-to-r from-purple-500/20 to-red-500/20 px-6 py-2 text-white/90 transition-all hover:from-purple-500/30 hover:to-red-500/30 disabled:cursor-not-allowed disabled:opacity-50"
+            className="group flex min-w-[180px] items-center justify-center gap-2 rounded-lg border border-purple-500/20 bg-gradient-to-r from-purple-500/20 to-red-500/20 px-6 py-2 text-white/90 transition-all hover:from-purple-500/30 hover:to-red-500/30 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isGeneratingAssignments ||
             isLoadingAssignments ||
@@ -424,6 +424,7 @@ const GameResultsContent = () => {
                   <ParticipantShareButtons
                     participantName={assignment.gifter.name}
                     gameId={gameId}
+                    assignmentId={assignment.accessUrl}
                   />
                 </div>
               </div>
