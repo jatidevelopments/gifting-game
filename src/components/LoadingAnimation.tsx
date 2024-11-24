@@ -1,32 +1,32 @@
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const loadingMessages = [
   {
     icon: "🎲",
     title: "Shuffling Participants",
-    description: "Making sure everyone gets a unique gift buddy..."
+    description: "Making sure everyone gets a unique gift buddy...",
   },
   {
     icon: "🎨",
     title: "Creating Gift Ideas",
-    description: "Our elves are brainstorming personalized suggestions..."
+    description: "Our elves are brainstorming personalized suggestions...",
   },
   {
     icon: "🎁",
     title: "Wrapping Things Up",
-    description: "Adding some festive magic to your assignments..."
+    description: "Adding some festive magic to your assignments...",
   },
   {
     icon: "✨",
     title: "Sprinkling Magic Dust",
-    description: "Making your Secret Santa experience extra special..."
+    description: "Making your Secret Santa experience extra special...",
   },
   {
     icon: "🎄",
     title: "Spreading Holiday Cheer",
-    description: "Almost ready to reveal your magical pairings..."
-  }
+    description: "Almost ready to reveal your magical pairings...",
+  },
 ];
 
 export const LoadingAnimation = () => {
@@ -35,7 +35,7 @@ export const LoadingAnimation = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentMessageIndex((prev) => (prev + 1) % loadingMessages.length);
-    }, 1500);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -47,9 +47,9 @@ export const LoadingAnimation = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 max-w-2xl mx-auto"
+        className="mx-auto max-w-2xl rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
       >
-        <div className="text-center space-y-6">
+        <div className="space-y-6 text-center">
           <motion.div
             key={currentMessageIndex}
             initial={{ opacity: 0, y: 10 }}
@@ -57,16 +57,16 @@ export const LoadingAnimation = () => {
             exit={{ opacity: 0, y: -10 }}
             className="space-y-4"
           >
-            <div className="relative w-24 h-24 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-red-500/20 rounded-full animate-pulse"></div>
-              <div className="absolute inset-3 bg-gradient-to-r from-purple-500 to-red-500 rounded-full"></div>
-              <div className="absolute inset-4 bg-gray-900 rounded-full flex items-center justify-center">
+            <div className="relative mx-auto h-24 w-24">
+              <div className="absolute inset-0 animate-pulse rounded-full bg-gradient-to-r from-purple-500/20 to-red-500/20"></div>
+              <div className="absolute inset-3 rounded-full bg-gradient-to-r from-purple-500 to-red-500"></div>
+              <div className="absolute inset-4 flex items-center justify-center rounded-full bg-gray-900">
                 <span className="text-4xl">{currentMessage!.icon}</span>
               </div>
             </div>
-            
+
             <div className="space-y-2">
-              <h2 className="text-2xl font-cinzel bg-gradient-to-r from-purple-400 to-red-400 text-transparent bg-clip-text">
+              <h2 className="bg-gradient-to-r from-purple-400 to-red-400 bg-clip-text font-cinzel text-2xl text-transparent">
                 {currentMessage!.title}
               </h2>
               <p className="text-gray-400">{currentMessage!.description}</p>
@@ -77,8 +77,10 @@ export const LoadingAnimation = () => {
             {loadingMessages.map((_, index) => (
               <motion.div
                 key={index}
-                className={`w-2 h-2 rounded-full ${
-                  index === currentMessageIndex ? 'bg-purple-500' : 'bg-white/20'
+                className={`h-2 w-2 rounded-full ${
+                  index === currentMessageIndex
+                    ? "bg-purple-500"
+                    : "bg-white/20"
                 }`}
                 animate={{
                   scale: index === currentMessageIndex ? 1.2 : 1,

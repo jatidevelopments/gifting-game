@@ -6,6 +6,7 @@ import "./src/env.mjs";
 
 /** @type {import("next").NextConfig} */
 const config = {
+  output: 'standalone',
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
