@@ -1,4 +1,63 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Organizzatore Gratuito di Scambio Regali Segreto",
+    "description": "Crea e organizza il tuo scambio regali Secret Santa facilmente e gratuitamente! Perfetto per famiglia, amici o feste in ufficio. Abbinamento automatico, liste dei desideri e link privati per tutti i partecipanti.",
+    "keywords": "Secret Santa, Secret Santa 2024, Babbo Natale Segreto, Scambio Regali, Sorteggio Regali, Regalo di Natale, App Secret Santa Gratuita, Scambio Regali Anonimo, Scambio Regali a Distanza, Secret Santa Ufficio, Scambio Regali in Famiglia, Generatore Secret Santa, Organizzatore Scambio Regali, Secret Santa Online, Scambio Regali Natalizi, Secret Santa Virtuale, Generatore Idee Regalo, Scambio Regali Natalizi, Secret Santa con Regole, Regali Secret Santa, MySecretSanta",
+    "structuredData": {
+      "name": "MySecretSanta",
+      "shortName": "MySecretSanta App",
+      "description": "MySecretSanta è l'app web perfetta per organizzare scambi di regali Secret Santa. Crea gruppi, aggiungi partecipanti e lascia che la nostra app gestisca le assegnazioni mantenendo il divertimento e la segretezza!",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "url": "https://mysecretsantas.com",
+      "author": {
+        "name": "MySecretSanta Team",
+        "url": "https://mysecretsantas.com"
+      },
+      "features": [
+        "Crea gruppi per lo scambio di regali",
+        "Aggiungi parole magiche per suggerimenti personalizzati",
+        "Abbinamento automatico dei regali",
+        "Link privati per i partecipanti",
+        "Gratuito da utilizzare"
+      ],
+      "offers": {
+        "price": "0",
+        "currency": "EUR"
+      },
+      "screenshots": [
+        {
+          "url": "/product_screens/landing.png",
+          "caption": "Pagina Iniziale MySecretSanta - Inizia il Tuo Scambio Regali"
+        },
+        {
+          "url": "/product_screens/add_participants.png",
+          "caption": "Aggiungi Partecipanti al Tuo Gruppo Secret Santa"
+        },
+        {
+          "url": "/product_screens/add_magic_words.png",
+          "caption": "Aggiungi Parole Magiche per Suggerimenti Regalo con IA"
+        },
+        {
+          "url": "/product_screens/create_assignment_overview.png",
+          "caption": "Panoramica del Tuo Scambio Secret Santa"
+        },
+        {
+          "url": "/product_screens/assignment.png",
+          "caption": "Visualizza la Tua Assegnazione Secret Santa"
+        }
+      ],
+      "alternateNames": [
+        "Generatore Secret Santa",
+        "Organizzatore Scambio Regali",
+        "App Secret Santa"
+      ]
+    },
+    "social": {
+      "twitter": "@MySecretSanta",
+      "facebook": "MySecretSantaApp"
+    }
+  },
   "title": "MySecretSanta - Organizzatore Gratuito di Babbo Natale Segreto | Facile e Magico",
   "description": "Crea e organizza il tuo scambio di regali Babbo Natale Segreto gratuitamente! Perfetto per famiglia, amici o feste aziendali. Abbinamento automatico, liste dei desideri e link privati per tutti i partecipanti.",
   "hero": {

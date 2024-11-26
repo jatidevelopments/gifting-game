@@ -1,4 +1,63 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Organizador Gratuito de Amigo Secreto",
+    "description": "Crie e organize sua troca de presentes do Amigo Secreto facilmente e de graça! Perfeito para família, amigos ou festas de escritório. Combinação automática, listas de desejos e links privados para todos os participantes.",
+    "keywords": "Amigo Secreto, Secret Santa 2024, Amigo Oculto, Troca de Presentes, Sorteio de Presentes, Presente de Natal, App Gratuito de Amigo Secreto, Troca Anônima de Presentes, Troca de Presentes à Distância, Amigo Secreto no Escritório, Troca de Presentes em Família, Gerador de Amigo Secreto, Organizador de Troca de Presentes, Amigo Secreto Online, Troca de Presentes de Natal, Amigo Secreto Virtual, Gerador de Ideias de Presentes, Troca de Presentes de Natal, Amigo Secreto com Regras, Presentes de Amigo Secreto, MySecretSanta",
+    "structuredData": {
+      "name": "MySecretSanta",
+      "shortName": "MySecretSanta App",
+      "description": "MySecretSanta é o aplicativo web perfeito para organizar trocas de presentes do Amigo Secreto. Crie grupos, adicione participantes e deixe nosso aplicativo cuidar das atribuições mantendo a diversão e o segredo!",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "url": "https://mysecretsantas.com",
+      "author": {
+        "name": "MySecretSanta Team",
+        "url": "https://mysecretsantas.com"
+      },
+      "features": [
+        "Criar grupos de troca de presentes",
+        "Adicionar palavras mágicas para sugestões personalizadas",
+        "Combinação automática de presentes",
+        "Links privados para participantes",
+        "Gratuito para usar"
+      ],
+      "offers": {
+        "price": "0",
+        "currency": "BRL"
+      },
+      "screenshots": [
+        {
+          "url": "/product_screens/landing.png",
+          "caption": "Página Inicial MySecretSanta - Inicie Sua Troca de Presentes"
+        },
+        {
+          "url": "/product_screens/add_participants.png",
+          "caption": "Adicione Participantes ao Seu Grupo de Amigo Secreto"
+        },
+        {
+          "url": "/product_screens/add_magic_words.png",
+          "caption": "Adicione Palavras Mágicas para Sugestões de Presentes com IA"
+        },
+        {
+          "url": "/product_screens/create_assignment_overview.png",
+          "caption": "Visão Geral da Sua Troca de Amigo Secreto"
+        },
+        {
+          "url": "/product_screens/assignment.png",
+          "caption": "Veja Sua Atribuição do Amigo Secreto"
+        }
+      ],
+      "alternateNames": [
+        "Gerador de Amigo Secreto",
+        "Organizador de Troca de Presentes",
+        "App de Amigo Secreto"
+      ]
+    },
+    "social": {
+      "twitter": "@MySecretSanta",
+      "facebook": "MySecretSantaApp"
+    }
+  },
   "title": "MySecretSanta - Organizador Gratuito de Amigo Secreto | Fácil e Mágico",
   "description": "Crie e organize sua troca de presentes do Amigo Secreto gratuitamente! Perfeito para família, amigos ou festas empresariais. Sorteio automático, listas de desejos e links privados para todos os participantes.",
   "hero": {

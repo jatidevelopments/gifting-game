@@ -1,4 +1,63 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Organizador Gratuito de Intercambio de Regalos Secretos",
+    "description": "¡Crea y organiza tu intercambio de regalos de Amigo Secreto fácilmente y gratis! Perfecto para familia, amigos o fiestas de oficina. Emparejamiento automático, listas de deseos y enlaces privados para todos los participantes.",
+    "keywords": "Amigo Secreto, Secret Santa 2024, Amigo Invisible, Intercambio de Regalos, Sorteo de Regalos, Regalo de Navidad, Aplicación Gratuita de Amigo Secreto, Intercambio Anónimo de Regalos, Intercambio de Regalos a Distancia, Amigo Secreto Oficina, Intercambio de Regalos Familiar, Generador de Amigo Secreto, Organizador de Intercambio de Regalos, Amigo Secreto en Línea, Intercambio de Regalos Navideños, Amigo Secreto Virtual, Generador de Ideas de Regalos, Intercambio de Regalos Navideños, Amigo Secreto con Reglas, Regalos de Amigo Secreto, MySecretSanta",
+    "structuredData": {
+      "name": "MySecretSanta",
+      "shortName": "MySecretSanta App",
+      "description": "MySecretSanta es la aplicación web perfecta para organizar intercambios de regalos de Amigo Secreto. ¡Crea grupos, añade participantes y deja que nuestra aplicación maneje las asignaciones manteniendo la diversión y el secreto!",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "url": "https://mysecretsantas.com",
+      "author": {
+        "name": "MySecretSanta Team",
+        "url": "https://mysecretsantas.com"
+      },
+      "features": [
+        "Crear grupos de intercambio de regalos",
+        "Añadir palabras mágicas para sugerencias personalizadas",
+        "Emparejamiento automático de regalos",
+        "Enlaces privados para participantes",
+        "Gratis para usar"
+      ],
+      "offers": {
+        "price": "0",
+        "currency": "EUR"
+      },
+      "screenshots": [
+        {
+          "url": "/product_screens/landing.png",
+          "caption": "Página de Inicio de MySecretSanta - Comienza Tu Intercambio de Regalos"
+        },
+        {
+          "url": "/product_screens/add_participants.png",
+          "caption": "Añade Participantes a Tu Grupo de Amigo Secreto"
+        },
+        {
+          "url": "/product_screens/add_magic_words.png",
+          "caption": "Añade Palabras Mágicas para Sugerencias de Regalos con IA"
+        },
+        {
+          "url": "/product_screens/create_assignment_overview.png",
+          "caption": "Vista General de Tu Intercambio de Amigo Secreto"
+        },
+        {
+          "url": "/product_screens/assignment.png",
+          "caption": "Ver Tu Asignación de Amigo Secreto"
+        }
+      ],
+      "alternateNames": [
+        "Generador de Amigo Secreto",
+        "Organizador de Intercambio de Regalos",
+        "Aplicación de Amigo Secreto"
+      ]
+    },
+    "social": {
+      "twitter": "@MySecretSanta",
+      "facebook": "MySecretSantaApp"
+    }
+  },
   "title": "MySecretSanta - Organizador de Amigo Invisible Gratuito | ¡Fácil y Mágico!",
   "description": "¡Crea y organiza tu Amigo Invisible de forma gratuita! Perfecto para familia, amigos o fiestas de empresa. Asignación automática, listas de deseos y enlaces privados para todos los participantes.",
   "hero": {

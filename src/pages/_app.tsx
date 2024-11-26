@@ -1,24 +1,30 @@
 import { appWithTranslation } from "next-i18next";
 import { type AppType } from "next/app";
+import dynamic from "next/dynamic";
 import { Cinzel, Raleway } from "next/font/google";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
-import dynamic from "next/dynamic";
-import { SEOMetadata } from "../components/SEOMetadata";
 import "../styles/globals.css";
 import { TRPCProvider } from "../trpc/provider";
 
 // Dynamic imports for components with client-side features
-const Snow = dynamic(() => import("../components/Snow").then(mod => mod.Snow), {
-  ssr: false
-});
+const Snow = dynamic(
+  () => import("../components/Snow").then((mod) => mod.Snow),
+  {
+    ssr: false,
+  },
+);
 
-const SnowballEffect = dynamic(() => import("../components/SnowballEffect").then(mod => mod.SnowballEffect), {
-  ssr: false
-});
+const SnowballEffect = dynamic(
+  () =>
+    import("../components/SnowballEffect").then((mod) => mod.SnowballEffect),
+  {
+    ssr: false,
+  },
+);
 
 const Layout = dynamic(() => import("../components/Layout"), {
-  ssr: true
+  ssr: true,
 });
 
 const cinzel = Cinzel({
@@ -37,7 +43,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 
   return (
     <TRPCProvider>
-      <SEOMetadata path={router.asPath} />
       <div
         className={`min-h-screen bg-gradient-to-b from-[#1a1f35] via-[#2c1f35] to-[#1a1f35] ${raleway.className} ${cinzel.variable}`}
       >

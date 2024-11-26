@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
+import { LanguageFooter } from "./LanguageFooter";
 
 interface Snowflake {
   id: number;
@@ -291,8 +292,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 mt-auto py-8 text-center text-sm text-gray-400">
-        <p>&copy; {year}</p> All rights reserved
+      <footer className="relative z-10 mt-auto space-y-8 py-8">
+        <LanguageFooter />
+        <div className="text-center text-sm text-gray-400">
+          <p>&copy; {year} All rights reserved</p>
+        </div>
       </footer>
     </div>
   );

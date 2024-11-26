@@ -1,4 +1,63 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Organisateur Gratuit d'Échange de Cadeaux Secret",
+    "description": "Créez et organisez votre échange de cadeaux Secret Santa facilement et gratuitement ! Parfait pour la famille, les amis ou les fêtes de bureau. Appariement automatique, listes de souhaits et liens privés pour tous les participants.",
+    "keywords": "Secret Santa, Secret Santa 2024, Père Noël Secret, Échange de Cadeaux, Tirage au Sort, Cadeau de Noël, Application Secret Santa Gratuite, Échange de Cadeaux Anonyme, Échange de Cadeaux à Distance, Secret Santa Bureau, Échange de Cadeaux en Famille, Générateur Secret Santa, Organisateur d'Échange de Cadeaux, Secret Santa en Ligne, Échange de Cadeaux de Noël, Secret Santa Virtuel, Générateur d'Idées Cadeaux, Échange de Cadeaux des Fêtes, Secret Santa avec Règles, Cadeaux Secret Santa, MySecretSanta",
+    "structuredData": {
+      "name": "MySecretSanta",
+      "shortName": "MySecretSanta App",
+      "description": "MySecretSanta est l'application web parfaite pour organiser des échanges de cadeaux Secret Santa. Créez des groupes, ajoutez des participants et laissez notre application gérer les attributions tout en gardant le plaisir et le secret !",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "url": "https://mysecretsantas.com",
+      "author": {
+        "name": "MySecretSanta Team",
+        "url": "https://mysecretsantas.com"
+      },
+      "features": [
+        "Créer des groupes d'échange de cadeaux",
+        "Ajouter des mots magiques pour des suggestions personnalisées",
+        "Appariement automatique des cadeaux",
+        "Liens privés pour les participants",
+        "Gratuit à utiliser"
+      ],
+      "offers": {
+        "price": "0",
+        "currency": "EUR"
+      },
+      "screenshots": [
+        {
+          "url": "/product_screens/landing.png",
+          "caption": "Page d'Accueil MySecretSanta - Commencez Votre Échange de Cadeaux"
+        },
+        {
+          "url": "/product_screens/add_participants.png",
+          "caption": "Ajoutez des Participants à Votre Groupe Secret Santa"
+        },
+        {
+          "url": "/product_screens/add_magic_words.png",
+          "caption": "Ajoutez des Mots Magiques pour des Suggestions de Cadeaux par IA"
+        },
+        {
+          "url": "/product_screens/create_assignment_overview.png",
+          "caption": "Aperçu de Votre Échange Secret Santa"
+        },
+        {
+          "url": "/product_screens/assignment.png",
+          "caption": "Voir Votre Attribution Secret Santa"
+        }
+      ],
+      "alternateNames": [
+        "Générateur Secret Santa",
+        "Organisateur d'Échange de Cadeaux",
+        "Application Secret Santa"
+      ]
+    },
+    "social": {
+      "twitter": "@MySecretSanta",
+      "facebook": "MySecretSantaApp"
+    }
+  },
   "title": "MySecretSanta - Organisateur de Père Noël Secret Gratuit | Simple & Magique",
   "description": "Créez et organisez votre échange de cadeaux Père Noël Secret gratuitement ! Parfait pour la famille, les amis ou les fêtes de bureau. Attribution automatique, listes de souhaits et liens privés pour tous les participants.",
   "hero": {

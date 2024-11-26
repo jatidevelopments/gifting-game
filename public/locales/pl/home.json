@@ -1,4 +1,63 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Darmowy Organizator Wymiany Prezentów Mikołajkowych",
+    "description": "Twórz i organizuj wymianę prezentów mikołajkowych łatwo i za darmo! Idealne dla rodziny, przyjaciół lub imprez firmowych. Automatyczne dopasowanie, listy życzeń i prywatne linki dla wszystkich uczestników.",
+    "keywords": "Mikołajki, Secret Santa 2024, Wymiana Prezentów, Losowanie Prezentów, Prezent Świąteczny, Darmowa Aplikacja Mikołajkowa, Anonimowa Wymiana Prezentów, Zdalna Wymiana Prezentów, Mikołajki w Biurze, Rodzinna Wymiana Prezentów, Generator Mikołajek, Organizator Wymiany Prezentów, Mikołajki Online, Świąteczna Wymiana Prezentów, Wirtualne Mikołajki, Generator Pomysłów na Prezenty, Świąteczna Wymiana Prezentów, Mikołajki z Zasadami, Prezenty Mikołajkowe, MySecretSanta",
+    "structuredData": {
+      "name": "MySecretSanta",
+      "shortName": "MySecretSanta App",
+      "description": "MySecretSanta to idealna aplikacja internetowa do organizowania wymiany prezentów mikołajkowych. Twórz grupy, dodawaj uczestników i pozwól naszej aplikacji zająć się przydziałami, zachowując przy tym zabawę i tajemnicę!",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "url": "https://mysecretsantas.com",
+      "author": {
+        "name": "MySecretSanta Team",
+        "url": "https://mysecretsantas.com"
+      },
+      "features": [
+        "Tworzenie grup wymiany prezentów",
+        "Dodawanie magicznych słów dla spersonalizowanych sugestii",
+        "Automatyczne dopasowywanie par prezentowych",
+        "Prywatne linki dla uczestników",
+        "Darmowe użytkowanie"
+      ],
+      "offers": {
+        "price": "0",
+        "currency": "PLN"
+      },
+      "screenshots": [
+        {
+          "url": "/product_screens/landing.png",
+          "caption": "Strona Główna MySecretSanta - Rozpocznij Swoją Wymianę Prezentów"
+        },
+        {
+          "url": "/product_screens/add_participants.png",
+          "caption": "Dodaj Uczestników do Swojej Grupy Mikołajkowej"
+        },
+        {
+          "url": "/product_screens/add_magic_words.png",
+          "caption": "Dodaj Magiczne Słowa dla Sugestii Prezentów AI"
+        },
+        {
+          "url": "/product_screens/create_assignment_overview.png",
+          "caption": "Przegląd Twojej Wymiany Mikołajkowej"
+        },
+        {
+          "url": "/product_screens/assignment.png",
+          "caption": "Zobacz Swoje Przydzielenie Mikołajkowe"
+        }
+      ],
+      "alternateNames": [
+        "Generator Mikołajek",
+        "Organizator Wymiany Prezentów",
+        "Aplikacja Mikołajkowa"
+      ]
+    },
+    "social": {
+      "twitter": "@MySecretSanta",
+      "facebook": "MySecretSantaApp"
+    }
+  },
   "title": "MySecretSanta - Darmowy Organizator Tajemniczego Mikołaja | Łatwy i Magiczny",
   "description": "Stwórz i zorganizuj swoją wymianę prezentów Tajemniczego Mikołaja za darmo! Idealne dla rodziny, przyjaciół lub imprez firmowych. Automatyczne dopasowanie, listy życzeń i prywatne linki dla wszystkich uczestników.",
   "hero": {

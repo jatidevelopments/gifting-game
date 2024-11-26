@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { GetStaticProps, NextPage, InferGetStaticPropsType } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { SocialShareButtons } from "~/components/SocialShareButtons";
 import { api } from "~/utils/api";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import SEOMetadata from "~/components/SEOMetadata";
 
 const features = [
   {
@@ -61,11 +61,6 @@ const container = {
   },
 };
 
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
-
 const LandingPage: NextPage = (
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
@@ -102,40 +97,7 @@ const LandingPage: NextPage = (
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <Head>
-        <title>{t("title")}</title>
-        <meta name="description" content={t("description")} />
-        <meta
-          name="keywords"
-          content="Secret Santa, gift exchange, Christmas gift organizer, Secret Santa generator, gift exchange app, Secret Santa online, free Secret Santa organizer"
-        />
-        <meta
-          property="og:title"
-          content="MySecretSanta - Free Secret Santa Gift Exchange Organizer"
-        />
-        <meta
-          property="og:description"
-          content="Create and organize your Secret Santa gift exchange easily and for free! Perfect for family, friends, or office parties."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={url} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="MySecretSanta - Free Secret Santa Gift Exchange Organizer"
-        />
-        <meta
-          name="twitter:description"
-          content="Create and organize your Secret Santa gift exchange easily and for free!"
-        />
-        <link rel="canonical" href="https://mysecretsantas.com" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </Head>
-
-      {/* Main content */}
+      <SEOMetadata namespace="home" />
       <main className="relative z-10">
         {/* Hero section */}
         <motion.section

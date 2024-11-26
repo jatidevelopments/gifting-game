@@ -1,4 +1,63 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Free Secret Santa Gift Exchange Organizer",
+    "description": "Create and organize your Secret Santa gift exchange easily and for free! Perfect for family, friends, or office parties. Automatic matching, wish lists, and private links for all participants.",
+    "keywords": "Secret Santa, Secret Santa 2024, Santa Secret Santa, Secret Santa Secret, Secret Secret Santa, Secret Santa and, Secret Santa Secret Santa, AI Gift Suggestions, Free Secret Santa App, Anonymous Gift Exchange, Remote Gift Exchange, Office Secret Santa, Family Gift Exchange, Secret Santa Generator, Gift Exchange Organizer, Online Secret Santa, Christmas Gift Exchange, Virtual Secret Santa, Gift Ideas Generator, Holiday Gift Exchange, Secret Santa with Rules, Secret Santa Gifts, Good Secret Santa Gifts, Santa Gift, Gift Exchange Ideas, Santa Gift Exchange, Secret Santa Presents, Secret Santa Idee, MySecretSanta",
+    "structuredData": {
+      "name": "MySecretSanta",
+      "shortName": "MySecretSanta App",
+      "description": "MySecretSanta is the perfect web app for organizing Secret Santa gift exchanges. Create groups, add participants, and let our app handle the gift assignments while keeping everything fun and secret!",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "url": "https://mysecretsantas.com",
+      "author": {
+        "name": "MySecretSanta Team",
+        "url": "https://mysecretsantas.com"
+      },
+      "features": [
+        "Create gift exchange groups",
+        "Add magic words for personalized suggestions",
+        "Automatic gift pair matching",
+        "Private links for participants",
+        "Free to use"
+      ],
+      "offers": {
+        "price": "0",
+        "currency": "USD"
+      },
+      "screenshots": [
+        {
+          "url": "/product_screens/landing.png",
+          "caption": "MySecretSanta Landing Page - Start Your Gift Exchange"
+        },
+        {
+          "url": "/product_screens/add_participants.png",
+          "caption": "Add Participants to Your Secret Santa Group"
+        },
+        {
+          "url": "/product_screens/add_magic_words.png",
+          "caption": "Add Magic Words for AI-Powered Gift Suggestions"
+        },
+        {
+          "url": "/product_screens/create_assignment_overview.png",
+          "caption": "Overview of Your Secret Santa Exchange"
+        },
+        {
+          "url": "/product_screens/assignment.png",
+          "caption": "View Your Secret Santa Assignment"
+        }
+      ],
+      "alternateNames": [
+        "Secret Santa Generator",
+        "Gift Exchange Organizer",
+        "Secret Santa App"
+      ]
+    },
+    "social": {
+      "twitter": "@MySecretSanta",
+      "facebook": "MySecretSantaApp"
+    }
+  },
   "title": "MySecretSanta - Free Secret Santa Gift Exchange Organizer | Easy & Fun",
   "description": "Create and organize your Secret Santa gift exchange easily and for free! Perfect for family, friends, or office parties. Automatic matching, wish lists, and private links for all participants.",
   "hero": {

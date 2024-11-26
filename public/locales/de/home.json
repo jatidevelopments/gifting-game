@@ -1,4 +1,63 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Kostenloser Wichteln-Geschenkaustausch Organizer",
+    "description": "Erstelle und organisiere dein Wichteln einfach und kostenlos! Perfekt für Familie, Freunde oder Bürofeiern. Automatische Zuordnung, Wunschlisten und private Links für alle Teilnehmer.",
+    "keywords": "Wichteln, Secret Santa 2024, Wichteln Online, Wichteln Geschenke, Wichteln Spiel, Weihnachtsgeschenke, Kostenlose Wichteln App, Anonymer Geschenkaustausch, Digitales Wichteln, Büro Wichteln, Familien Wichteln, Wichteln Generator, Geschenkaustausch Organizer, Wichteln Online, Weihnachts Geschenkaustausch, Virtuelles Wichteln, Geschenkideen Generator, Weihnachts Wichteln, Wichteln mit Regeln, Wichtel Geschenke, MySecretSanta",
+    "structuredData": {
+      "name": "MySecretSanta",
+      "shortName": "MySecretSanta App",
+      "description": "MySecretSanta ist die perfekte Web-App für die Organisation von Wichteln. Erstelle Gruppen, füge Teilnehmer hinzu und lass unsere App die Zuordnungen vornehmen - alles mit Spaß und Geheimhaltung!",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "url": "https://mysecretsantas.com",
+      "author": {
+        "name": "MySecretSanta Team",
+        "url": "https://mysecretsantas.com"
+      },
+      "features": [
+        "Geschenkaustausch-Gruppen erstellen",
+        "Magische Wörter für personalisierte Vorschläge hinzufügen",
+        "Automatische Geschenkpaar-Zuordnung",
+        "Private Links für Teilnehmer",
+        "Kostenlos nutzbar"
+      ],
+      "offers": {
+        "price": "0",
+        "currency": "EUR"
+      },
+      "screenshots": [
+        {
+          "url": "/product_screens/landing.png",
+          "caption": "MySecretSanta Startseite - Starte deinen Geschenkaustausch"
+        },
+        {
+          "url": "/product_screens/add_participants.png",
+          "caption": "Füge Teilnehmer zu deiner Wichtelgruppe hinzu"
+        },
+        {
+          "url": "/product_screens/add_magic_words.png",
+          "caption": "Füge magische Wörter für KI-gestützte Geschenkvorschläge hinzu"
+        },
+        {
+          "url": "/product_screens/create_assignment_overview.png",
+          "caption": "Überblick über deinen Wichtel-Austausch"
+        },
+        {
+          "url": "/product_screens/assignment.png",
+          "caption": "Siehe deine Wichtel-Zuordnung"
+        }
+      ],
+      "alternateNames": [
+        "Wichteln Generator",
+        "Geschenkaustausch Organizer",
+        "Wichteln App"
+      ]
+    },
+    "social": {
+      "twitter": "@MySecretSanta",
+      "facebook": "MySecretSantaApp"
+    }
+  },
   "title": "MySecretSanta - Kostenloser Wichtel-Organizer | Einfach & Magisch",
   "description": "Organisiere deine Wichtel-Runde ganz einfach und kostenlos! Perfekt für Familie, Freunde oder Firmenevents. Mit automatischer Zuordnung, Wunschlisten und privaten Links für alle Teilnehmer.",
   "hero": {

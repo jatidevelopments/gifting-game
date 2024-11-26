@@ -1,4 +1,63 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Gratis Secret Santa Cadeauruil Organisator",
+    "description": "Maak en organiseer je Secret Santa cadeauruil eenvoudig en gratis! Perfect voor familie, vrienden of kantoorfeestjes. Automatische matching, verlanglijstjes en privélinks voor alle deelnemers.",
+    "keywords": "Secret Santa, Secret Santa 2024, Lootjes Trekken, Cadeauruil, Sinterklaas Surprise, Kerstcadeau, Gratis Secret Santa App, Anonieme Cadeauruil, Digitale Cadeauruil, Kantoor Secret Santa, Familie Cadeauruil, Secret Santa Generator, Cadeauruil Organisator, Online Secret Santa, Kerst Cadeauruil, Virtuele Secret Santa, Cadeau-ideeën Generator, Kerst Cadeauruil, Secret Santa met Regels, Secret Santa Cadeaus, MySecretSanta",
+    "structuredData": {
+      "name": "MySecretSanta",
+      "shortName": "MySecretSanta App",
+      "description": "MySecretSanta is de perfecte web-app voor het organiseren van Secret Santa cadeauruils. Maak groepen, voeg deelnemers toe en laat onze app de toewijzingen regelen met behoud van plezier en geheimhouding!",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "url": "https://mysecretsantas.com",
+      "author": {
+        "name": "MySecretSanta Team",
+        "url": "https://mysecretsantas.com"
+      },
+      "features": [
+        "Maak cadeauruil groepen aan",
+        "Voeg magische woorden toe voor gepersonaliseerde suggesties",
+        "Automatische cadeau-matching",
+        "Privélinks voor deelnemers",
+        "Gratis te gebruiken"
+      ],
+      "offers": {
+        "price": "0",
+        "currency": "EUR"
+      },
+      "screenshots": [
+        {
+          "url": "/product_screens/landing.png",
+          "caption": "MySecretSanta Startpagina - Begin Je Cadeauruil"
+        },
+        {
+          "url": "/product_screens/add_participants.png",
+          "caption": "Voeg Deelnemers Toe aan Je Secret Santa Groep"
+        },
+        {
+          "url": "/product_screens/add_magic_words.png",
+          "caption": "Voeg Magische Woorden Toe voor AI-gestuurde Cadeausuggesties"
+        },
+        {
+          "url": "/product_screens/create_assignment_overview.png",
+          "caption": "Overzicht van Je Secret Santa Uitwisseling"
+        },
+        {
+          "url": "/product_screens/assignment.png",
+          "caption": "Bekijk Je Secret Santa Toewijzing"
+        }
+      ],
+      "alternateNames": [
+        "Secret Santa Generator",
+        "Cadeauruil Organisator",
+        "Secret Santa App"
+      ]
+    },
+    "social": {
+      "twitter": "@MySecretSanta",
+      "facebook": "MySecretSantaApp"
+    }
+  },
   "title": "MySecretSanta - Gratis Lootjes Trekken Organisator | Eenvoudig & Magisch",
   "description": "Organiseer je lootjes trekken gratis en eenvoudig! Perfect voor familie, vrienden of kantoorfeestjes. Automatische toewijzing, verlanglijstjes en privélinks voor alle deelnemers.",
   "hero": {

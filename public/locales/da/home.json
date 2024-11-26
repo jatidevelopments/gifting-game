@@ -1,4 +1,63 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Gratis Hemmelig Julemand Gaveudveksling Organisator",
+    "description": "Opret og organiser din hemmelige julemand gaveudveksling nemt og gratis! Perfekt til familie, venner eller firmafester. Automatisk matching, ønskelister og private links til alle deltagere.",
+    "keywords": "Hemmelig Julemand, Secret Santa 2024, Pakkeleg, Gaveudveksling, Julegave, Gratis Secret Santa App, Anonym Gaveudveksling, Fjern Gaveudveksling, Kontor Secret Santa, Familie Gaveudveksling, Hemmelig Julemand Generator, Gaveudveksling Organisator, Online Hemmelig Julemand, Jul Gaveudveksling, Virtuel Hemmelig Julemand, Gaveidé Generator, Jul Gaveudveksling, Hemmelig Julemand med Regler, Hemmelig Julemand Gaver, MySecretSanta",
+    "structuredData": {
+      "name": "MySecretSanta",
+      "shortName": "MySecretSanta App",
+      "description": "MySecretSanta er den perfekte web-app til at organisere hemmelig julemand gaveudvekslinger. Opret grupper, tilføj deltagere og lad vores app håndtere tildelingerne mens det forbliver sjovt og hemmeligt!",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Web",
+      "url": "https://mysecretsantas.com",
+      "author": {
+        "name": "MySecretSanta Team",
+        "url": "https://mysecretsantas.com"
+      },
+      "features": [
+        "Opret gaveudvekslingsgrupper",
+        "Tilføj magiske ord for personlige forslag",
+        "Automatisk gave-matching",
+        "Private links til deltagere",
+        "Gratis at bruge"
+      ],
+      "offers": {
+        "price": "0",
+        "currency": "DKK"
+      },
+      "screenshots": [
+        {
+          "url": "/product_screens/landing.png",
+          "caption": "MySecretSanta Startside - Start Din Gaveudveksling"
+        },
+        {
+          "url": "/product_screens/add_participants.png",
+          "caption": "Tilføj Deltagere til Din Hemmelig Julemand Gruppe"
+        },
+        {
+          "url": "/product_screens/add_magic_words.png",
+          "caption": "Tilføj Magiske Ord for AI-drevne Gaveforslag"
+        },
+        {
+          "url": "/product_screens/create_assignment_overview.png",
+          "caption": "Oversigt over Din Hemmelig Julemand Udveksling"
+        },
+        {
+          "url": "/product_screens/assignment.png",
+          "caption": "Se Din Hemmelig Julemand Tildeling"
+        }
+      ],
+      "alternateNames": [
+        "Hemmelig Julemand Generator",
+        "Gaveudveksling Organisator",
+        "Hemmelig Julemand App"
+      ]
+    },
+    "social": {
+      "twitter": "@MySecretSanta",
+      "facebook": "MySecretSantaApp"
+    }
+  },
   "title": "MySecretSanta - Gratis Pakkeleg Organisator | Nemt & Magisk",
   "description": "Opret og organiser din pakkeleg helt gratis! Perfekt til familie, venner eller firmafester. Automatisk matchning, ønskelister og private links til alle deltagere.",
   "hero": {
