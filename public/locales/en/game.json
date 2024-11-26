@@ -1,4 +1,32 @@
 {
+  "meta": {
+    "title": "MySecretSanta - Free Secret Santa Gift Exchange Generator",
+    "description": "Create magical Secret Santa gift exchanges with AI-powered gift ideas. Perfect for family, office, and friend group Secret Santa presents.",
+    "keywords": "secret santa, secret santa gifts, santa gift exchange, gift exchange ideas"
+  },
+  "home": {
+    "hero": {
+      "title": "Create Your Secret Santa Gift Exchange",
+      "subtitle": "Make gift-giving magical with personalized Secret Santa presents and AI-powered gift ideas"
+    },
+    "features": {
+      "title": "The Perfect Secret Santa Gift Exchange",
+      "items": [
+        {
+          "title": "Smart Gift Ideas",
+          "description": "Get personalized Secret Santa gift suggestions based on personality"
+        },
+        {
+          "title": "Easy Gift Exchange",
+          "description": "Organize your Santa gift exchange in minutes"
+        },
+        {
+          "title": "Magical Experience",
+          "description": "Make Secret Santa special with festive animations"
+        }
+      ]
+    }
+  },
   "results": {
     "copy": {
       "message": "🎄 Hi {{name}}! Your Secret Santa assignment is ready!\n\nClick here to see who you're gifting to: {{url}}",
