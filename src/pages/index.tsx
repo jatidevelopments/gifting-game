@@ -62,7 +62,7 @@ const container = {
 };
 
 const LandingPage: NextPage = (
-  props: InferGetStaticPropsType<typeof getStaticProps>
+  props: InferGetStaticPropsType<typeof getStaticProps>,
 ) => {
   const router = useRouter();
   const { t } = useTranslation("home");
@@ -97,7 +97,41 @@ const LandingPage: NextPage = (
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <SEOMetadata namespace="home" />
+      <SEOMetadata
+        title={t("meta.title")}
+        description={t("meta.description")}
+        keywords={t("meta.keywords")}
+        metaStructuredDataName={t("meta.structuredData.name")}
+        metaStructuredDataDescription={t("meta.structuredData.description")}
+        metaStructuredDataFeatures={
+          t("meta.structuredData.features", {
+            returnObjects: true,
+          }) as string[]
+        }
+        metaStructuredDataAlternateNames={
+          t("meta.structuredData.alternateNames", {
+            returnObjects: true,
+          }) as string[]
+        }
+        metaStructuredDataApplicationCategory={t(
+          "meta.structuredData.applicationCategory",
+        )}
+        metaStructuredDataOperatingSystem={t(
+          "meta.structuredData.operatingSystem",
+        )}
+        metaStructuredDataOffersPrice={t("meta.structuredData.offers.price")}
+        metaStructuredDataOffersCurrency={t(
+          "meta.structuredData.offers.currency",
+        )}
+        metaStructuredDataAuthorName={t("meta.structuredData.author.name")}
+        metaStructuredDataAuthorUrl={t("meta.structuredData.author.url")}
+        screenshots={
+          t("meta.structuredData.screenshots", {
+            returnObjects: true,
+          }) as any[]
+        }
+        ogSiteName="MySecretSanta"
+      />
       <main className="relative z-10">
         {/* Hero section */}
         <motion.section

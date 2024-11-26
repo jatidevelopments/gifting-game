@@ -57,7 +57,7 @@ export const Logo: FC<LogoProps> = ({
         </motion.div>
       )}
       <motion.span
-        className="relative inline-block"
+        className="relative hidden sm:inline-block"
         animate={{
           textShadow: [
             "0 0 20px rgba(168,85,247,0.5)",

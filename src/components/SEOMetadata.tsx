@@ -1,11 +1,41 @@
-import { useTranslation } from "next-i18next";
 import Head from "next/head";
 
 interface SEOMetadataProps {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
+  keywords: string;
   path?: string;
-  namespace?: "home" | "game";
+  screenshots?: {
+    url: string;
+    caption: string;
+  }[];
+  alternateNames?: string[];
+  featureList?: string[];
+  image?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
+  metaStructuredDataName?: string;
+  metaStructuredDataAlternateNames?: string[];
+  metaStructuredDataApplicationCategory?: string;
+  metaStructuredDataOperatingSystem?: string;
+  metaStructuredDataOffersPrice?: string;
+  metaStructuredDataOffersCurrency?: string;
+  metaStructuredDataAuthorName?: string;
+  metaStructuredDataAuthorUrl?: string;
+  metaStructuredDataDescription?: string;
+  metaStructuredDataFeatures?: string[];
+  ogSiteName?: string;
+  ogLocale?: string;
+  twitterSite?: string;
+  twitterCreator?: string;
+  facebookAppId?: string;
+  canonicalUrl?: string;
+  robotsContent?: string;
+  googlebotContent?: string;
+  bingbotContent?: string;
+  manifestHref?: string;
+  appleTouchIconHref?: string;
 }
 
 interface StructuredData {
@@ -37,99 +67,117 @@ interface StructuredData {
 const SEOMetadata = ({
   title,
   description,
+  keywords,
   path = "",
-  namespace = "home",
+  screenshots = [],
+  alternateNames = [],
+  featureList = [],
+  image,
+  metaTitle,
+  metaDescription,
+  metaKeywords,
+  metaStructuredDataName,
+  metaStructuredDataAlternateNames,
+  metaStructuredDataApplicationCategory,
+  metaStructuredDataOperatingSystem,
+  metaStructuredDataOffersPrice,
+  metaStructuredDataOffersCurrency,
+  metaStructuredDataAuthorName,
+  metaStructuredDataAuthorUrl,
+  metaStructuredDataDescription,
+  metaStructuredDataFeatures,
+  ogSiteName,
+  ogLocale,
+  twitterSite,
+  twitterCreator,
+  facebookAppId,
+  canonicalUrl,
+  robotsContent,
+  googlebotContent,
+  bingbotContent,
+  manifestHref,
+  appleTouchIconHref,
 }: SEOMetadataProps) => {
-  const { t } = useTranslation(namespace);
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL ?? "https://mysecretsantas.com";
   const url = `${baseUrl}${path}`;
-
-  // Use translations or fallback to provided props
-  const metaTitle = title ?? t("meta.title");
-  const metaDescription = description ?? t("meta.description");
-  const metaKeywords = t("meta.keywords");
-
-  let screenShots = t("meta.structuredData.screenshots", {
-    returnObjects: true,
-  }) as { url: string; caption: string }[];
-
-  // if screenshot string
-  if (typeof screenShots === "string") {
-    screenShots = [];
-  }
+  const imageUrl = image ? `${baseUrl}${image}` : `${baseUrl}/og-image.png`;
 
   const structuredData: StructuredData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: t("meta.structuredData.name"),
-    alternateName: t("meta.structuredData.alternateNames", {
-      returnObjects: true,
-    }) as string[],
-    applicationCategory: t("meta.structuredData.applicationCategory"),
-    operatingSystem: t("meta.structuredData.operatingSystem"),
-    description: t("meta.structuredData.description"),
-    author: {
-      "@type": "Organization",
-      name: t("meta.structuredData.author.name"),
-      url: t("meta.structuredData.author.url"),
-    },
-    screenshots: screenShots.map(
-      (screenshot: { url: string; caption: string }) => ({
-        "@type": "ImageObject",
-        url: `${baseUrl}${screenshot.url}`,
-        caption: screenshot.caption,
-      }),
-    ),
+    name: metaStructuredDataName ?? title,
+    alternateName: metaStructuredDataAlternateNames ?? alternateNames,
+    applicationCategory:
+      metaStructuredDataApplicationCategory ?? "Entertainment",
+    operatingSystem: metaStructuredDataOperatingSystem ?? "Web",
     offers: {
       "@type": "Offer",
-      price: t("meta.structuredData.offers.price"),
-      priceCurrency: t("meta.structuredData.offers.currency"),
+      price: metaStructuredDataOffersPrice ?? "0",
+      priceCurrency: metaStructuredDataOffersCurrency ?? "USD",
     },
-    featureList: t("meta.structuredData.features", {
-      returnObjects: true,
-    }) as string[],
+    author: {
+      "@type": "Organization",
+      name: metaStructuredDataAuthorName ?? "MySecretSanta",
+      url: metaStructuredDataAuthorUrl ?? baseUrl,
+    },
+    screenshots: screenshots.map((screenshot) => ({
+      "@type": "ImageObject",
+      url: `${baseUrl}${screenshot.url}`,
+      caption: screenshot.caption,
+    })),
+    description: metaStructuredDataDescription ?? description,
+    featureList: metaStructuredDataFeatures ?? featureList,
   };
 
   return (
     <Head>
       {/* Basic Meta Tags */}
-      <title>{metaTitle}</title>
-      <meta name="description" content={metaDescription} />
-      <meta name="keywords" content={metaKeywords} />
+      <title>{metaTitle ?? title}</title>
+      <meta name="description" content={metaDescription ?? description} />
+      <meta name="keywords" content={metaKeywords ?? keywords} />
+      <meta name="application-name" content={metaStructuredDataName ?? title} />
       <meta
-        name="application-name"
-        content={t("meta.structuredData.shortName")}
+        name="author"
+        content={metaStructuredDataAuthorName ?? "MySecretSanta"}
       />
-      <meta name="author" content={t("meta.structuredData.author.name")} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="theme-color" content="#ffffff" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta
         name="apple-mobile-web-app-title"
-        content={t("meta.structuredData.shortName")}
+        content={metaStructuredDataName ?? title}
       />
       <meta name="format-detection" content="telephone=no" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
-      <meta property="og:site_name" content={t("meta.structuredData.name")} />
-      <meta property="og:title" content={metaTitle} />
-      <meta property="og:description" content={metaDescription} />
-      <meta property="og:image" content={`${baseUrl}/og-image.png`} />
-      <meta property="og:locale" content="en_US" />
-      <meta property="fb:app_id" content={t("meta.social.facebook")} />
+      <meta
+        property="og:site_name"
+        content={ogSiteName ?? metaStructuredDataName ?? title}
+      />
+      <meta property="og:title" content={metaTitle ?? title} />
+      <meta
+        property="og:description"
+        content={metaDescription ?? description}
+      />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:locale" content={ogLocale ?? "en_US"} />
+      <meta property="fb:app_id" content={facebookAppId} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content={t("meta.social.twitter")} />
-      <meta name="twitter:creator" content={t("meta.social.twitter")} />
+      <meta name="twitter:site" content={twitterSite} />
+      <meta name="twitter:creator" content={twitterCreator} />
       <meta name="twitter:url" content={url} />
-      <meta name="twitter:title" content={metaTitle} />
-      <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content={`${baseUrl}/og-image.png`} />
+      <meta name="twitter:title" content={metaTitle ?? title} />
+      <meta
+        name="twitter:description"
+        content={metaDescription ?? description}
+      />
+      <meta name="twitter:image" content={imageUrl} />
 
       {/* Structured Data */}
       <script
@@ -138,20 +186,32 @@ const SEOMetadata = ({
       />
 
       {/* Additional SEO tags */}
-      <link rel="canonical" href={url} />
-      <meta name="robots" content="index, follow, max-image-preview:large" />
+      <link rel="canonical" href={canonicalUrl ?? url} />
+      <meta
+        name="robots"
+        content={robotsContent ?? "index, follow, max-image-preview:large"}
+      />
       <meta
         name="googlebot"
-        content="index, follow, max-snippet:-1, max-image-preview:large"
+        content={
+          googlebotContent ??
+          "index, follow, max-snippet:-1, max-image-preview:large"
+        }
       />
       <meta
         name="bingbot"
-        content="index, follow, max-snippet:-1, max-image-preview:large"
+        content={
+          bingbotContent ??
+          "index, follow, max-snippet:-1, max-image-preview:large"
+        }
       />
 
       {/* PWA related tags */}
-      <link rel="manifest" href="/manifest.json" />
-      <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+      <link rel="manifest" href={manifestHref ?? "/manifest.json"} />
+      <link
+        rel="apple-touch-icon"
+        href={appleTouchIconHref ?? "/icons/apple-touch-icon.png"}
+      />
     </Head>
   );
 };
