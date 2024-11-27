@@ -1,5 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://mysecretsantas.com
 
 # Sitemaps
 Sitemap: https://mysecretsantas.com/sitemap.xml
