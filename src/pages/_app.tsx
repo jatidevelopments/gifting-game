@@ -5,6 +5,7 @@ import { Cinzel, Raleway } from "next/font/google";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 import "../styles/globals.css";
+import "../styles/blog.css";
 import { TRPCProvider } from "../trpc/provider";
 
 // Dynamic imports for components with client-side features

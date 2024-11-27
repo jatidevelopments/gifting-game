@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 import { BlogLayout } from "../../components/blog/BlogLayout";
-import "../../styles/blog.css";
 
 interface BlogPostProps {
   slug: string;
@@ -26,6 +25,7 @@ const BlogPost = ({ slug }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const posts = t("sections.posts", { returnObjects: true }) as {
     title: string;
     content: string;
+    image: string;
     description: string;
     keywords: string[];
   }[];
@@ -69,7 +69,7 @@ const BlogPost = ({ slug }: InferGetStaticPropsType<typeof getStaticProps>) => {
         >
           <div className="relative aspect-[21/9]">
             <Image
-              src={`/blog/${slug}.png`}
+              src={post.image}
               alt={post.title}
               className="object-cover"
               fill
@@ -187,28 +187,45 @@ const BlogPost = ({ slug }: InferGetStaticPropsType<typeof getStaticProps>) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async ({ locales = [] }) => {
-  const blogPosts = [
-    {
-      title: "Building Stronger Office Bonds Through Secret Santa",
-    },
-    {
-      title: "Making Family Christmas More Affordable and Fun",
-    },
-    {
-      title: "Virtual Secret Santa: Connecting Friends Across Distances",
-    },
+  const languages = [
+    "en",
+    "de",
+    "fr",
+    "da",
+    "es",
+    "it",
+    "nl",
+    "pl",
+    "pt",
+    "sv",
   ];
-
   const paths = locales.flatMap((locale) => {
-    return blogPosts.map((post) => ({
-      params: {
-        slug: post.title
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/(^-|-$)/g, ""),
-      },
-      locale,
-    }));
+    try {
+      // Import the blog.json file for the current locale
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const blogJson = require(`../../../public/locales/${locale}/blog.json`);
+      const posts = blogJson.sections.posts as {
+        title: string;
+        content: string;
+        image: string;
+        description: string;
+        keywords: string[];
+      }[];
+
+      // Create paths for each post in the current locale
+      return posts.map((post) => ({
+        params: {
+          slug: post.title
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, ""),
+        },
+        locale,
+      }));
+    } catch (error) {
+      console.warn(`Blog posts not found for locale: ${locale}`);
+      return [];
+    }
   });
 
   return {

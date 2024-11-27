@@ -12,6 +12,7 @@ const BlogIndex = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const posts = t("sections.posts", { returnObjects: true }) as {
     title: string;
     content: string;
+    image: string;
     description: string;
     keywords: string[];
     date: string;
@@ -85,7 +86,7 @@ const BlogIndex = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                         className="relative h-full w-full"
                       >
                         <Image
-                          src={`/blog/${slug}.png`}
+                          src={`${post.image}`}
                           alt={post.title}
                           className="object-cover transition-transform duration-300 group-hover:scale-105"
                           fill
